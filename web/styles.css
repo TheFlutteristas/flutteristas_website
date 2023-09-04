@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*************************************************************
+*                                       selection
+*************************************************************/
+::selection {
+    color: white;
+    background-color: lightblue;
+}
+
+/*************************************************************
+*                                          body
+*************************************************************/
+html, body {
+    background: #ccc;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', 'Arial', 'Helvetica', sans-serif;
+}
+
+/*************************************************************
+*                                          page
+*************************************************************/
+.page {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    margin: 1em 1em;
+    max-width: 1440px;
+    background: #fafafa;
+    padding: 0;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 40em) {
+    .page {
+        margin: 0;
+    }
+}
+
+/*************************************************************
+*                                      top-banner
+*************************************************************/
+#top-banner {
+    background-color: #000;
+    width: 100%;
+    object-fit: cover;
+    padding: 1em;
+}
+
+nav, footer {
+    position: relative;
+    background-color: #222;
+    color: #fff;
+}
+
+/*************************************************************
+*                                         footer
+*************************************************************/
+footer {
+    color: rgb(255, 255, 255, 0.5);
+    padding: 1.5em 1em;
+}
+
+/*************************************************************
+*                                           nav
+*************************************************************/
+nav input[type="checkbox"] {
+    display: none;
+}
+
+nav .menu-toggle {
+    display: none;
+    margin: 0;
+    padding: 1em 1.5em;
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+nav .menu-toggle::before {
+    content: " ";
+    display: inline-block;
+    transform: translateY(0px);
+    transition: transform 0.2s ease-out;
+}
+
+nav .icon {
+    margin: 0.25em 0.6em 0 0;
+}
+
+nav ul {
+    position: relative;
+    display: flex !important;
+    flex-flow: row wrap;
+    justify-content: center;
+    border-top: none;
+    padding: 0 0.25rem;
+    list-style: none;
+    font-size: 1rem;
+    margin: 0;
+    width: 100%;
+    color: #fff;
+    font-family: 'Quicksand', 'Tahoma', 'Arial', sans-serif;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 40em) {
+    nav ul {
+        display: block !important;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-in-out;
+    }
+
+    .toggle:checked + .menu-toggle + ul {
+        max-height: 600px;
+    }
+
+    nav .menu-toggle {
+        display: inline-block;
+    }
+
+    nav li:not(first-child) {
+        border-top: 1px solid rgb(255, 255, 255, 0.25);
+    }
+}
+
+nav li {
+    display: list-item;
+    margin: 0;
+}
+
+nav li a {
+    display: block;
+    margin: 0;
+    padding: 0.75em 1.25em;
+    border: none;
+}
+
+nav li a:link, nav li a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav li a:hover, nav li a:active {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+nav li a.current {
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+/*************************************************************
+*                                         article
+*************************************************************/
+article {
+    display: block;
+    margin: 0;
+    padding: 1.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+/*************************************************************
+*                                     post-content
+*************************************************************/
+/*
+div #post-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 840px;
+    width: 100%;
+}
+*/
+div #post-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 100%;
+}
+#post-content a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#post-content a:hover {
+    text-decoration: none;
+}
+
+/*************************************************************
+*                                        headers
+*************************************************************/
+h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    font-family: 'Quicksand', 'Tahoma', 'Arial', sans-serif;
+}
+
+/*************************************************************
+*                                    column page
+*************************************************************/
+/* column items */
+div #column-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #column-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 35em) {
+    div #column-items {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+/*************************************************************
+*                                    column item
+*************************************************************/
+.column-item {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.column-item img {
+    margin: 2em auto 0.5em auto;
+}
+
+#post-content .column-item a, #post-content .column-item a:visited {
+    text-decoration: none;
+    color: #000 !important;
+}
+
+.column-item a {
+    font-weight: normal !important;
+}
+
+.column-item a:hover {
+    font-weight: bold !important;
+}
+
+/*************************************************************
+*                                  2 column items
+*************************************************************/
+div #column-items-2cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #column-items-2cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*************************************************************
+*                           2 column items at 3/4
+*************************************************************/
+div #column-items-2-375-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 3fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #column-items-2-375-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/*************************************************************
+*                                 3 column items
+*************************************************************/
+div #column-items-3cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #column-items-3cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 35em) {
+    div #column-items-3cols {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+/*************************************************************
+*                                    product item
+*************************************************************/
+.product-item {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.product-item img {
+    margin: 2em auto 0.5em auto;
+}
+
+#post-content .product-item a, #post-content .product-item a:visited {
+    text-decoration: none;
+    color: #000 !important;
+}
+
+.product-item a {
+    font-weight: normal !important;
+}
+
+.product-item a:hover {
+    font-weight: bold !important;
+}
+
+/*************************************************************
+*                                    product-layout
+*************************************************************/
+/* welcome items */
+div #product-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #product-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 35em) {
+    div #product-items {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (min-width: 40em) {
+    .product-layout {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .product-layout-icon {
+        width: 30%;
+    }
+
+    .product-layout-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        padding: 0 2em;
+    }
+
+    .product-layout-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .product-layout-links a:not(first-child) {
+        margin-left: 2em;
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 40em) {
+    .product-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-layout-icon {
+        max-width: 200px;
+        margin-bottom: 1em;
+    }
+
+    .product-layout-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .product-layout-links a:not(first-child) {
+        margin-top: 1.5em;
+    }
+}
+
+/*************************************************************
+*                                    welcome page
+*************************************************************/
+/* welcome items */
+div #welcome-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 50em) {
+    div #welcome-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*************************************** adjusting screen size */
+@media only screen and (max-width: 35em) {
+    div #welcome-items {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+/*************************************************************
+*                                    welcome item
+*************************************************************/
+.welcome-item {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.welcome-item img {
+    margin: 2em auto 0.5em auto;
+}
+
+#post-content .welcome-item a, #post-content .welcome-item a:visited {
+    text-decoration: none;
+    color: #000 !important;
+}
+
+.welcome-item a {
+    font-weight: normal !important;
+}
+
+.welcome-item a:hover {
+    font-weight: bold !important;
+}
+
