@@ -26,7 +26,7 @@ html, body {
 .page {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     margin: 1em 1em;
-    max-width: 1440px;
+    /*max-width: 3440px;*/
     background: #fafafa;
     padding: 0;
 }
