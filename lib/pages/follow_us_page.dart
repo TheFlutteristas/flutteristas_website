@@ -53,5 +53,4 @@ class FollowUsPage extends StatelessComponent {
       ),
     ]);
   }
-  // Testing
 }
