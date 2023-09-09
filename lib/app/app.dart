@@ -1,5 +1,5 @@
 import 'package:flutteristas/layout/page_frame.dart';
-import 'package:flutteristas/pages/flutteristas_conference_cfp.dart';
+import 'package:flutteristas/pages/flutteristas_conference.dart';
 
 import 'package:flutteristas/pages/follow_us_page.dart';
 import 'package:flutteristas/pages/not_found_page.dart';
@@ -12,7 +12,7 @@ import 'package:jaspr_router/jaspr_router.dart';
 
 final routes = [
   WelcomePage.route,
-  FlutteristasConferenceCFPPage.route,
+  FlutteristasConferencePage.route,
   FollowUsPage.route,
   PrivacyPolicyPage.route,
 ];
