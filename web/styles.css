@@ -42,7 +42,9 @@ html, body {
 *                                      top-banner
 *************************************************************/
 #top-banner {
-    background-color: #000;
+    /*background-color: #000;*/
+    /*background-color: #cdbdff; /* light purple */
+    background-color: #370095;
     width: 100%;
     object-fit: cover;
     padding: 1em;
@@ -50,7 +52,8 @@ html, body {
 
 nav, footer {
     position: relative;
-    background-color: #222;
+    /*background-color: #222;*/
+    background-color: #370095;
     color: #fff;
 }
 

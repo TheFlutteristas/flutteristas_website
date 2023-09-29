@@ -52,7 +52,7 @@ class _PageFrameState extends State<PageFrame> {
       [
         img(
           id: 'top-banner',
-          src: '/images/top_banner.png',
+          src: '/images/top_banner_dark_purple.png',
         ),
         TopMenu(),
         article([
