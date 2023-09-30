@@ -1,4 +1,5 @@
 import 'package:flutteristas/layout/page_frame.dart';
+import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:flutteristas/pages/flutteristas_conference.dart';
 
 import 'package:flutteristas/pages/follow_us_page.dart';
@@ -14,6 +15,7 @@ final routes = [
   WelcomePage.route,
   FlutteristasConferencePage.route,
   FollowUsPage.route,
+  CodeOfConduct.route,
   PrivacyPolicyPage.route,
 ];
 
