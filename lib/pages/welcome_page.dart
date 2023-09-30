@@ -20,13 +20,56 @@ class WelcomePage extends StatelessComponent {
     );
     yield br();
     yield br();
-    yield Text(
-      '',
+    // yield Text(
+    //   '',
+    // );
+    yield p(
+      [
+        text(
+          'The Flutteristas is a world-wide community of people whose gender identity is either female or non-binary and '
+          'have an interest in the Flutter SDK.💙',
+        ),
+      ],
     );
+    //yield br();
+    yield ul([
+      li(
+        [
+          text(
+            'Do you identify as a woman or non-binary who has an interest in the Flutter SDK?',
+          ),
+        ],
+      ),
+      li([text('Do you agree to the Flutteristas’ Code of Conduct (see below)?')]),
+      ul(
+        [
+          li([
+            text(
+              'Flutteristas are dedicated to providing a harassment-free and inclusive experience for '
+              'everyone regardless of gender identity and expression, sexual orientation, disabilities, neurodiversity, physical appearance, '
+              'body size, ethnicity, nationality, race, age, religion, or other protected category.',
+            )
+          ]),
+          li(
+            [
+              text(
+                'Flutteristas follow the ',
+              ),
+              a(
+                href: 'https://flutter.dev/culture',
+                target: Target.blank,
+                [text('Google Flutter Culture of Inclusivity policies')],
+              ),
+              text('.'),
+            ],
+          ),
+        ],
+      ),
+    ]);
+    yield br();
 
     yield p([
-      text('The Flutteristas is a world-wide community of people whose gender identity is either female or non-binary and '
-          'have an interest in the Flutter SDK.💙 If you\'re female or non-binary, have in interest in Flutter, and interested '
+      text('If you\'re female or non-binary, have in interest in Flutter, agree with the Flutteristas Code of Conduct, and are interested '
           'in joining, you can apply '),
       a(
         href: 'https://docs.google.com/forms/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
