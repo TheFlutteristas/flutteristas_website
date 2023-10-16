@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:jaspr/html.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 

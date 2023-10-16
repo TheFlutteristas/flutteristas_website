@@ -24,54 +24,54 @@ class PrivacyPolicyPage extends StatelessComponent {
       [text('Our website address is: https://Flutteristas.org')],
     );
     yield Spacer(height: Unit.em(1));
-    yield h2([text('App Data')]);
-    yield p([
-      text(
-        'Our published apps do NOT currently collect any data. '
-        'If in the future we create apps which collect data, '
-        'we will update this Privacy Policy.',
-      )
-    ]);
-    yield p([
-      text(
-        'Our published apps do NOT transmit to or store '
-        'any data to our website or server(s).',
-      )
-    ]);
-    yield p([
-      text(
-        'Any apps in testing may collect usage and/or crash '
-        'data, if you choose to share this data it will be '
-        'transmitted to us.',
-      )
-    ]);
+    // yield h2([text('App Data')]);
+    // yield p([
+    //   text(
+    //     'Our published apps do NOT currently collect any data. '
+    //     'If in the future we create apps which collect data, '
+    //     'we will update this Privacy Policy.',
+    //   )
+    // ]);
+    // yield p([
+    //   text(
+    //     'Our published apps do NOT transmit to or store '
+    //     'any data to our website or server(s).',
+    //   )
+    // ]);
+    // yield p([
+    //   text(
+    //     'Any apps in testing may collect usage and/or crash '
+    //     'data, if you choose to share this data it will be '
+    //     'transmitted to us.',
+    //   )
+    // ]);
     yield Spacer(height: Unit.em(1));
     yield h2([text('Website Data')]);
-    yield p([
-      text(
-        'Data transmitted via our Contact Us page links '
-        'are managed by the respective sites.',
-      ),
-      div(
-        styles: Styles.combine([
-          Styles.flexbox(direction: FlexDirection.column),
-          Styles.text(lineHeight: Unit.em(2.5)),
-          Styles.box(margin: EdgeInsets.only(left: Unit.em(2.0))),
-        ]),
-        [
-          // a(
-          //   href: 'https://www.facebook.com/privacy/explanation',
-          //   target: Target.blank,
-          //   [text('Facebook/Meta')],
-          // ),
-          a(
-            href: 'https://twitter.com/en/privacy',
-            target: Target.blank,
-            [text('Twitter/X')],
-          ),
-        ],
-      ),
-    ]);
+    // yield p([
+    //   text(
+    //     'Data transmitted via our Contact Us page links '
+    //     'are managed by the respective sites.',
+    //   ),
+    //   div(
+    //     styles: Styles.combine([
+    //       Styles.flexbox(direction: FlexDirection.column),
+    //       Styles.text(lineHeight: Unit.em(2.5)),
+    //       Styles.box(margin: EdgeInsets.only(left: Unit.em(2.0))),
+    //     ]),
+    //     [
+    //       // a(
+    //       //   href: 'https://www.facebook.com/privacy/explanation',
+    //       //   target: Target.blank,
+    //       //   [text('Facebook/Meta')],
+    //       // ),
+    //       a(
+    //         href: 'https://twitter.com/en/privacy',
+    //         target: Target.blank,
+    //         [text('Twitter/X')],
+    //       ),
+    //     ],
+    //   ),
+    // ]);
     yield p([
       text('We use '),
       a([text('basic Google Analytics')], href: 'https://analytics.google.com/', target: Target.blank),

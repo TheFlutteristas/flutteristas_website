@@ -99,6 +99,19 @@ class ProductLayout extends StatelessComponent {
                   )
                 ],
               ),
+              Spacer(height: Unit.em(1)),
+              // p(
+              //   styles: Styles.text(
+              //     fontSize: Unit.rem(0.8),
+              //     color: Colors.gray,
+              //   ),
+              //   [
+              //     text(
+              //       agenda,
+              //       rawHtml: true,
+              //     )
+              //   ],
+              // ),
             ],
           ),
       ],

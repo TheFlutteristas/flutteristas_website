@@ -1,13 +1,13 @@
 import 'package:jaspr/html.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-class FollowUsPage extends StatelessComponent {
-  const FollowUsPage._();
+class ContactUsPage extends StatelessComponent {
+  const ContactUsPage._();
 
   static final route = Route(
-    path: '/follow-us',
-    title: 'Follow Us',
-    builder: (context, state) => FollowUsPage._(),
+    path: '/contact-us',
+    title: 'Contact Us',
+    builder: (context, state) => ContactUsPage._(),
   );
 
   @override

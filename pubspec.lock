@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: eb376e9acf6938204f90eb3b1f00b578640d3188b4c8a8ec054f9f479af8d051
+      sha256: ae92f5d747aee634b87f89d9946000c2de774be1d6ac3e58268224348cd0101a
       url: "https://pub.dev"
     source: hosted
-    version: "64.0.0"
+    version: "61.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: "69f54f967773f6c26c7dcb13e93d7ccee8b17a641689da39e878d5cf13b06893"
+      sha256: ea3d8652bda62982addfd92fdc2d0214e5f82e43325104990d4f4c4a2a313562
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "5.13.0"
   archive:
     dependency: transitive
     description:
@@ -125,10 +125,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_web_compilers
-      sha256: "49270bd113959ac061512d2bdf0046cf97395b88b04a6baed2b9b276c88559ec"
+      sha256: "66a068988c1c409021a2fe646f428c362ab49021bbf2380b6965a34fbc90c8f8"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.5"
+    version: "4.0.6"
   built_collection:
     dependency: transitive
     description:
@@ -153,6 +153,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      sha256: cb6d7f03e1de671e34607e909a7213e31d7752be4fb66a86d29fe1eb14bfb5cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   code_builder:
     dependency: transitive
     description:
@@ -258,7 +266,7 @@ packages:
     source: hosted
     version: "0.15.4"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
@@ -281,6 +289,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   io:
     dependency: transitive
     description:
@@ -293,18 +309,26 @@ packages:
     dependency: "direct main"
     description:
       name: jaspr
-      sha256: "35c763b55e7b166615e47cdab87f5dc59eb8bbc11e198cd7bbb26a56444e85b3"
+      sha256: b5c7200229f2a6863105856068771c01760a86455333f60dbf6dc6e66460b814
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.2"
+    version: "0.9.1"
+  jaspr_builder:
+    dependency: "direct dev"
+    description:
+      name: jaspr_builder
+      sha256: "00631c50aca78fc6194ccd1b918948e72053fbc936b04e7b439acf9fd1ee0074"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1"
   jaspr_router:
     dependency: "direct main"
     description:
       name: jaspr_router
-      sha256: "552906bdcff667a8ac20710fd8a686fa084d47c696e31b0377a2cc2910c5980a"
+      sha256: "11d10b7243ab41f2b9c085d27dabbd0a261fde69a6c1f2458634c214d3cfe432"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.3"
+    version: "0.3.0"
   js:
     dependency: transitive
     description:
@@ -465,6 +489,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  source_gen:
+    dependency: transitive
+    description:
+      name: source_gen
+      sha256: fc0da689e5302edb6177fdd964efcb7f58912f43c28c2047a808f5bfff643d16
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   source_maps:
     dependency: transitive
     description:
