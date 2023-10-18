@@ -1,6 +1,8 @@
 import 'dart:html';
 
 import 'package:flutteristas/layout/top_menu.dart';
+import 'package:flutteristas/pages/code_of_conduct.dart';
+import 'package:flutteristas/pages/privacy_page.dart';
 import 'package:jaspr/html.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -32,14 +34,7 @@ class _PageFrameState extends State<PageFrame> {
   }
 
   void _updateTitle() {
-    // NOTE: this should work, bug in Jaspr see https://github.com/schultek/jaspr/pull/110
-    // _title = Router.of(context).matchList.title;
-    // Instead we are fixing it inline here as a workaround
-    final matches = Router.of(context).matchList.matches;
-    _title = matches.reversed.fold(
-      null,
-      (prev, match) => prev ?? (match.route is Route ? (match.route as Route).title : null),
-    );
+    _title = Router.of(context).matchList.title;
     if (_title case String title) {
       document.title = '$title :: Flutteristas';
     }
@@ -50,22 +45,124 @@ class _PageFrameState extends State<PageFrame> {
     yield div(
       classes: ['page'],
       [
-        img(
-          id: 'top-banner',
-          src: '/images/top_banner_dark_purple.png',
-        ),
-        TopMenu(),
+        header([
+          div([
+            div(classes: [
+              'top-bar'
+            ], [
+              followUsSection(),
+              a(
+                classes: ['button'],
+                href:
+                    'https://docs.google.com/forms/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
+                target: Target.blank,
+                [text('Join our community')],
+              )
+            ]),
+          ]),
+          div([
+            a([
+              img(
+                src: '/images/logo_flutterista_OutlinedInWhite.png',
+              )
+            ], href: '/'),
+            TopMenu()
+          ]),
+        ]),
         article([
           div(id: 'post-content', [
             if (_title case String title) //
-              h1([text(title)]),
+              h1(classes: [title], [text(title)]),
             component.child,
           ]),
         ]),
         footer([
-          Text('Copyright © 2023 Flutteristas.org.  All rights reserved. '),
+          followUsSection(),
+          div(classes: [
+            'privacy-section'
+          ], [
+            a(
+              href: PrivacyPolicyPage.route.path,
+              events: {
+                'click': (event) {
+                  Router.of(context).push(PrivacyPolicyPage.route.path);
+                  (event as Event).preventDefault();
+                },
+              },
+              [text('Privacy policy')],
+            ),
+            a(
+              href: CodeOfConduct.route.path,
+              events: {
+                'click': (event) {
+                  Router.of(context).push(CodeOfConduct.route.path);
+                  (event as Event).preventDefault();
+                },
+              },
+              [
+                text('Code of conduct'),
+              ],
+            )
+          ]),
+          p([
+            text('Copyright © 2023 Flutteristas.org.  All rights reserved. ')
+          ]),
         ]),
       ],
     );
+  }
+
+  Component followUsSection() {
+    return div(classes: [
+      'follow-us'
+    ], [
+      p([text('Follow us:')]),
+      div(classes: [
+        'social-media'
+      ], [
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/Linkedin.svg',
+          )
+        ], href: 'https://www.linkedin.com/company/flutteristas/'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/x-logo.svg',
+          )
+        ], href: 'https://twitter.com/flutteristas'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/Mastodon.svg',
+          )
+        ], href: 'https://fluttercommunity.social/@Flutteristas'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/instagram.svg',
+          )
+        ], href: 'https://www.instagram.com/flutteristas/'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/youtube.svg',
+          )
+        ], href: 'https://www.youtube.com/@Flutteristas'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/github-color-svgrepo-com.svg',
+          )
+        ], href: 'https://github.com/TheFlutteristas'),
+        a([
+          img(
+            classes: ['social-icon'],
+            src: '/images/facebook-svgrepo-com.svg',
+          )
+        ], href: 'https://www.facebook.com/people/Flutteristas/61552442970613/')
+      ])
+    ]);
   }
 }
