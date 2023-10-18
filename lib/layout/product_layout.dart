@@ -77,7 +77,10 @@ class ProductLayout extends StatelessComponent {
               ),
             ]),
             [
-              p([text('Made with a single codebase using the Flutter SDK by Google')]),
+              p([
+                text(
+                    'Made with a single codebase using the Flutter SDK by Google')
+              ]),
               div([
                 a(
                   href: 'https://flutter.dev/',

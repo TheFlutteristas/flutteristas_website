@@ -1,27 +1,7 @@
 import 'dart:convert';
-
-import 'package:intl/intl.dart';
 import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
-import 'package:jaspr_router/jaspr_router.dart';
 import 'package:http/http.dart' as http;
-
-// class AgendaPage extends StatelessComponent {
-//   const AgendaPage({super.key});
-//
-//   static final route = Route(
-//     path: '/agenda',
-//     title: 'Agenda',
-//     builder: (context, state) => AgendaPage(),
-//   );
-//
-//   @override
-//   Iterable<Component> build(BuildContext context) sync* {
-//     yield AgendaTalkList(
-//       projectId: 'flutteristas-website-dev-default-rtdb',
-//     );
-//   }
-// }
 
 class SpeakersList extends StatefulComponent {
   const SpeakersList({
@@ -48,7 +28,6 @@ class _SpeakersState extends State<SpeakersList> {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
         "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
-    // https: //flutteristas-website-dev-default-rtdb.firebaseio.com/speakers/conference_year/2023
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     return [
@@ -60,68 +39,112 @@ class _SpeakersState extends State<SpeakersList> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield FutureBuilder<List<SpeakerItem>>(
-      initialData: <SpeakerItem>[],
-      future: _futureSpeakerItems,
-      builder: (BuildContext context,
-          AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
-        for (final (index, item) in snapshot.requireData.indexed) {
-          yield div(
-            id: 'item-$index',
-            styles: Styles.box(
-              border: Border.all(
-                BorderSide(
-                  style: BorderStyle.solid,
-                  color: Colors.purple,
-                  width: Unit.pixels(1),
-                ),
-              ),
-              padding: EdgeInsets.all(Unit.em(0.5)),
-              margin: EdgeInsets.only(bottom: Unit.em(1.0)),
-            ),
-            [
-              p(
-                [
-                  text('Name: '),
-                  // text(item.toString()),
-                  strong([text(item.name)]),
-                  br(),
-                  // text('Bio: '),
-                  // strong([text(item.bio)]),
-                  br(),
-                  text(item.professional_role),
-                  br(),
-                  // text(
-                  //   'at: '
-                  //   //'${DateFormat.yMMMd().format(item.time)} at '
-                  //   '${DateFormat.Hms().format(item.time)} UTC',
-                  // ),
-                ],
-              ),
-            ],
-          );
-        }
-      },
-    );
+    yield Grid(columns: 4, gap: Unit.pixels(30), spread: true, children: [
+      FutureBuilder<List<SpeakerItem>>(
+        initialData: <SpeakerItem>[],
+        future: _futureSpeakerItems,
+        builder: (BuildContext context,
+            AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
+          for (final (index, item) in snapshot.requireData.indexed) {
+            Map<dynamic, dynamic> socialIcons = item.socialMedia;
+
+            yield div(
+              classes: ['SpeakerItem'],
+              id: 'item-$index',
+              [
+                img(classes: ['speaker-photo'], src: item.photoLink),
+                h3(classes: [
+                  'speaker-name'
+                ], [
+                  text(item.name),
+                  div(classes: [
+                    'speaker-bio'
+                  ], [
+                    p([text(item.bio)])
+                  ])
+                ]),
+                p(classes: ['speaker-role'], [text(item.professionalRole)]),
+                div(classes: [
+                  'social-bar'
+                ], [
+                  for (var item in socialIcons.entries) social_icon(item),
+                  // a(
+                  //     href: socialIcons['x'] as String,
+                  //     target: Target.blank,
+                  //     [img(src: '/images/x-logo.svg', width: 16)]),
+                ]),
+                // p(classes: ['speaker-bio'], [text(item.bio)]),
+              ],
+            );
+          }
+        },
+      )
+    ]);
+  }
+
+  Component social_icon(MapEntry<dynamic, dynamic> item) {
+    if (item.value != null) {
+      switch (item.key as String) {
+        case 'x':
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/x-logo.svg')]);
+
+        case 'linkedin':
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/Linkedin.svg')]);
+        case 'github':
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/github-color-svgrepo-com.svg')]);
+        case 'medium':
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/medium-svgrepo-com.svg')]);
+        case 'youtube':
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/youtube.svg')]);
+        default:
+          return span([]);
+      }
+    } else {
+      throw Exception('no social value found');
+    }
   }
 }
 
 class SpeakerItem {
-  const SpeakerItem({
-    // required this.conference_year,
-    required this.name,
-    required this.professional_role,
-  });
+  const SpeakerItem(
+      {
+      // required this.conference_year,
+      required this.name,
+      required this.bio,
+      required this.photoLink,
+      required this.professionalRole,
+      required this.socialMedia});
 
   // final String conference_year;
   final String name;
-  final String professional_role;
+  final String bio;
+  final String photoLink;
+  final String professionalRole;
+  final Map socialMedia;
 
   static SpeakerItem fromJson(Map<String, dynamic> json) {
     return SpeakerItem(
       // conference_year: json['conference_year'] as String,
       name: json['name'] as String,
-      professional_role: json['professional_role'] as String,
+      bio: json['bio'] as String,
+      photoLink: json['photo'] as String,
+      socialMedia: json['socialmedia'] as Map,
+      professionalRole: json['professional_role'] as String,
     );
   }
 

@@ -1,6 +1,5 @@
-import 'package:flutteristas/pages/agenda_page.dart';
+// import 'package:flutteristas/pages/agenda_page.dart';
 import 'package:flutteristas/pages/speakers_page.dart';
-// import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -54,6 +53,19 @@ class FlutteristasConferencePage extends StatelessComponent {
         br(),
       ],
     );
+
+    yield div(classes: [
+      'speakers-section'
+    ], [
+      h2([Text('Speakers')]),
+      div(classes: [
+        'speakers-container'
+      ], [
+        SpeakersList(
+          projectId: 'flutteristas-website-dev-default-rtdb',
+        )
+      ])
+    ]);
 
     // yield AgendaTalkList(
     //   projectId: 'flutteristas-website-dev-default-rtdb',

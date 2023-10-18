@@ -1,5 +1,5 @@
 import 'dart:html';
-
+// import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
@@ -147,8 +147,16 @@ class WelcomePage extends StatelessComponent {
                 'Do you agree with the Flutteristas ',
               ),
               a(
-                href: '#',
-                [text('Code of Conduct')],
+                href: CodeOfConduct.route.path,
+                events: {
+                  'click': (event) {
+                    Router.of(context).push(CodeOfConduct.route.path);
+                    (event as Event).preventDefault();
+                  },
+                },
+                [
+                  text('Code of conduct'),
+                ],
               ),
               text(
                 '?',

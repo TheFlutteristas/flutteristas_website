@@ -41,6 +41,12 @@ header>div {
 .social-icon {
   width: 20px;
   height: 20px;
+  padding:1px;
+  border-radius: 4px;
+}
+
+.social-icon:hover {
+  background-color: #B672EC;
 }
 
 .social-media {
@@ -139,6 +145,15 @@ footer .follow-us {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+footer .privacy-section{
+  display:flex;
+  gap:20px;
+}
+
+footer .privacy-section a{
+  color: #e8ddff;
 }
 
 /*************************************************************
@@ -314,6 +329,11 @@ h2 {
   font-family: "Montserrat", serif;
   border-left: 5px solid #4e29ae;
   padding-left: 5px;
+}
+
+h3 {
+  font-size: 1.375em;
+  font-family: "Montserrat", serif;
 }
 
 p.hero-text {
@@ -737,5 +757,140 @@ div #welcome-items {
 
   .conference-title h2 {
     font-size: 2.25em;
+  }
+}
+
+
+.speakers-container {
+  background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 30px auto;
+}
+
+.speakers-container>div {
+  align-content: center;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: start
+}
+
+.SpeakerItem {
+  width: 250px;
+  /* border: 1px solid #cdbdff;
+  border-radius: 10px; */
+  padding: 1em;
+}
+
+.speaker-photo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  text-align: center;
+  border: 1px solid #CAC4CF;
+  border-radius: 100px;
+  margin: 10px auto;
+  text-align: center;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+}
+
+.SpeakerItem .speaker-name {
+  font-weight: 700;
+  text-align: center;
+}
+
+.SpeakerItem .speaker-role {
+  font-style: italic;
+  text-align: center;
+}
+
+.SpeakerItem .social-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: #8060E2;
+  padding: 1em;
+  gap: 10px;
+}
+
+/* .SpeakerItem .social-bar a{
+  font-size: 20px;
+  color:#6745C7;
+} */
+
+.SpeakerItem .social-bar img {
+  width: 20px;
+  fill: #000;
+}
+
+.SpeakerItem .speaker-bio {
+  width: 250px;
+  background-color: #F2DAFF;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 5px;
+  border: 1px solid #CAC4CF;
+  border-radius: 14px;
+  /* visibility: hidden; */
+  display: none;
+  -webkit-transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  -moz-transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  -o-transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transition-delay: 1s;
+  -moz-transition-delay: 1s;
+  -o-transition-delay: 1s;
+  transition-delay: 1s;
+
+}
+
+h3.speaker-name:hover {
+  cursor: pointer;
+}
+
+h3.speaker-name:hover .speaker-bio {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  z-index: 1000;
+}
+
+.SpeakerItem {
+  padding: 10px;
+}
+
+@media only screen and (max-width:80em) {
+  .speakers-container>div {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media only screen and (max-width:52.5em) {
+  .speakers-container>div {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media only screen and (max-width:30em) {
+  .speakers-container>div {
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }
