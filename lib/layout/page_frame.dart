@@ -120,48 +120,70 @@ class _PageFrameState extends State<PageFrame> {
       div(classes: [
         'social-media'
       ], [
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/Linkedin.svg',
-          )
-        ], href: 'https://www.linkedin.com/company/flutteristas/'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/x-logo.svg',
-          )
-        ], href: 'https://twitter.com/flutteristas'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/Mastodon.svg',
-          )
-        ], href: 'https://fluttercommunity.social/@Flutteristas'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/instagram.svg',
-          )
-        ], href: 'https://www.instagram.com/flutteristas/'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/youtube.svg',
-          )
-        ], href: 'https://www.youtube.com/@Flutteristas'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/github-color-svgrepo-com.svg',
-          )
-        ], href: 'https://github.com/TheFlutteristas'),
-        a([
-          img(
-            classes: ['social-icon'],
-            src: '/images/facebook-svgrepo-com.svg',
-          )
-        ], href: 'https://www.facebook.com/people/Flutteristas/61552442970613/')
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/Linkedin.svg',
+              )
+            ],
+            href: 'https://www.linkedin.com/company/flutteristas/'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/x-logo.svg',
+              )
+            ],
+            href: 'https://twitter.com/flutteristas'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/Mastodon.svg',
+              )
+            ],
+            href: 'https://fluttercommunity.social/@Flutteristas'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/instagram.svg',
+              )
+            ],
+            href: 'https://www.instagram.com/flutteristas/'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/youtube.svg',
+              )
+            ],
+            href: 'https://www.youtube.com/@Flutteristas'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/github-color-svgrepo-com.svg',
+              )
+            ],
+            href: 'https://github.com/TheFlutteristas'),
+        a(
+            target: Target.blank,
+            [
+              img(
+                classes: ['social-icon'],
+                src: '/images/facebook-svgrepo-com.svg',
+              )
+            ],
+            href:
+                'https://www.facebook.com/people/Flutteristas/61552442970613/'),
       ])
     ]);
   }

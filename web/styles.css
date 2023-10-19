@@ -115,6 +115,18 @@ header>div {
 }
 
 /*************************************************************
+*                                          page not found
+*************************************************************/
+
+.not-found{
+  background-image:url("/images/page-not-found.png"); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width:100%;
+}
+
+/*************************************************************
 *                                      top-banner
 *************************************************************/
 /* #top-banner {
@@ -759,7 +771,9 @@ div #welcome-items {
     font-size: 2.25em;
   }
 }
-
+/*************************************************************
+*                                    speaker page 
+*************************************************************/
 
 .speakers-container {
   background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
@@ -816,6 +830,10 @@ div #welcome-items {
   background-color: #8060E2;
   padding: 1em;
   gap: 10px;
+}
+
+.social-bar .empty-span{
+  display:none;
 }
 
 /* .SpeakerItem .social-bar a{
