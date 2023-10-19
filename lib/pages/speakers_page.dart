@@ -68,12 +68,7 @@ class _SpeakersState extends State<SpeakersList> {
                   'social-bar'
                 ], [
                   for (var item in socialIcons.entries) social_icon(item),
-                  // a(
-                  //     href: socialIcons['x'] as String,
-                  //     target: Target.blank,
-                  //     [img(src: '/images/x-logo.svg', width: 16)]),
                 ]),
-                // p(classes: ['speaker-bio'], [text(item.bio)]),
               ],
             );
           }
@@ -83,7 +78,9 @@ class _SpeakersState extends State<SpeakersList> {
   }
 
   Component social_icon(MapEntry<dynamic, dynamic> item) {
-    if (item.value != null) {
+    if (item.value == '') {
+      return span(classes: ['empty-span'], []);
+    } else {
       switch (item.key as String) {
         case 'x':
           return a(
@@ -114,8 +111,6 @@ class _SpeakersState extends State<SpeakersList> {
         default:
           return span([]);
       }
-    } else {
-      throw Exception('no social value found');
     }
   }
 }
