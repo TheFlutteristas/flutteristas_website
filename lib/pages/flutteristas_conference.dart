@@ -62,7 +62,7 @@ class FlutteristasConferencePage extends StatelessComponent {
         'speakers-container'
       ], [
         SpeakersList(
-          projectId: 'flutteristas-website-dev-default-rtdb',
+          projectId: 'flutteristas-website-ffa6d-default-rtdb',
         )
       ])
     ]);

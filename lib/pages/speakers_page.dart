@@ -68,7 +68,12 @@ class _SpeakersState extends State<SpeakersList> {
                   'social-bar'
                 ], [
                   for (var item in socialIcons.entries) social_icon(item),
+                  // a(
+                  //     href: socialIcons['x'] as String,
+                  //     target: Target.blank,
+                  //     [img(src: '/images/x-logo.svg', width: 16)]),
                 ]),
+                // p(classes: ['speaker-bio'], [text(item.bio)]),
               ],
             );
           }

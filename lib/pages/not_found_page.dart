@@ -1,4 +1,3 @@
-import 'package:jaspr/html.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -11,10 +10,6 @@ class NotFoundPage extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: [
-      'not-found'
-    ], [
-      h1([text('Page Not Found')])
-    ]);
+    yield Text('Not Found');
   }
 }
