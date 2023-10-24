@@ -30,10 +30,12 @@ class _SpeakersState extends State<SpeakersList> {
         "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
+    print(data);
+    var dataFiltered = (data as List).nonNulls.toList();
     return [
-      ...(data as List) //
+      ...(dataFiltered) //
           .cast<Map<String, dynamic>>()
-          .map(SpeakerItem.fromJson),
+          .map(SpeakerItem.fromJson)
     ];
   }
 

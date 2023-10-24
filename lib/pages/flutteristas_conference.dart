@@ -85,6 +85,7 @@ class FlutteristasConferencePage extends StatelessComponent {
       ], [
         SpeakersList(
           projectId: 'flutteristas-website-ffa6d-default-rtdb',
+          // projectId: 'flutteristas-website-dev-default-rtdb',
         )
       ]),
       Spacer(height: Unit.pixels(50)),
