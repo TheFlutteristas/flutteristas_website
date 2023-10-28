@@ -795,7 +795,8 @@ div #welcome-items {
   align-content: center;
   justify-content: space-around;
   justify-items: center;
-  align-items: start
+  align-items: stretch;
+  /* grid-auto-rows: 0.5fr; */
 }
 
 .SpeakerItem {
@@ -803,6 +804,8 @@ div #welcome-items {
   /* border: 1px solid #cdbdff;
   border-radius: 10px; */
   padding: 1em;
+  align-self: stretch;
+    height: 100%;
 }
 
 .speaker-photo {
@@ -836,7 +839,7 @@ div #welcome-items {
   align-items: center;
   border-radius: 100px;
   background-color: #8060E2;
-  padding: 1em;
+  padding: 0.5em;
   gap: 10px;
 }
 
@@ -850,7 +853,7 @@ div #welcome-items {
 } */
 
 .SpeakerItem .social-bar img {
-  width: 20px;
+  width: 16px;
   fill: #000;
 }
 
@@ -899,9 +902,21 @@ h3.speaker-name:hover .speaker-bio {
   z-index: 1000;
 }
 
-.SpeakerItem {
-  padding: 10px;
+.SpeakerItem .talk-container img{
+  width:20px;
 }
+.SpeakerItem .talk-container{
+  margin-top: 0.7em;
+}
+.SpeakerItem .talk-lable{
+  /* font-weight: 300; */
+  color: #803DB4;
+}
+
+.SpeakerItem .talk-title{
+  font-weight: bold;
+}
+
 
 @media only screen and (max-width:80em) {
   .speakers-container>div {
