@@ -1,5 +1,4 @@
 import 'dart:html';
-// import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';

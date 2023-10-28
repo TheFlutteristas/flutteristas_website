@@ -1,4 +1,5 @@
 // import 'package:flutteristas/pages/agenda_page.dart';
+import 'package:flutteristas/pages/code_challenge_page.dart';
 import 'package:flutteristas/pages/speakers_page.dart';
 import 'package:flutteristas/pages/sponsors_page.dart';
 import 'package:jaspr/components.dart';
@@ -71,6 +72,9 @@ class FlutteristasConferencePage extends StatelessComponent {
         ]),
         a(href: '#sponsors', [
           p([text('Sponsors')])
+        ]),
+        a(href: '#code-challenge', [
+          p([text('Code Challenge')])
         ])
       ])
     ]);
@@ -103,6 +107,11 @@ class FlutteristasConferencePage extends StatelessComponent {
             category: 'silver_sponsorship'),
         // h3(classes: ['sponsors-bronze'], [text('Bronze')]),
       ]),
+    ]);
+    yield div(id: 'code-challenge', [
+      Spacer(height: Unit.pixels(50)),
+      h2([Text('Flutterista Generate - Code Challenge')]),
+      div(classes: ['code-challenge-container'], [CodeChallenge()]),
     ]);
 
     // yield AgendaTalkList(
