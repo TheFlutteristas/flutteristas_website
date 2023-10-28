@@ -26,8 +26,7 @@ class _SpeakersState extends State<SpeakersList> {
 
   Future<List<SpeakerItem>> fetchSpeaker() async {
     // see: https://firebase.google.com/docs/reference/rest/database
-    final url =
-        "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
+    final url = "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     var dataFiltered = (data as List).nonNulls.toList();
@@ -48,8 +47,7 @@ class _SpeakersState extends State<SpeakersList> {
       FutureBuilder<List<SpeakerItem>>(
         initialData: <SpeakerItem>[],
         future: _futureSpeakerItems,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
+        builder: (BuildContext context, AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
           for (final (index, item) in snapshot.requireData.indexed) {
             Map<dynamic, dynamic> socialIcons = item.socialMedia;
 
@@ -72,7 +70,7 @@ class _SpeakersState extends State<SpeakersList> {
                 div(classes: [
                   'social-bar'
                 ], [
-                  for (var item in socialIcons.entries) social_icon(item),
+                  for (var item in socialIcons.entries) socialIcon(item),
                 ]),
                 div(classes: [
                   'title-talk'
@@ -94,7 +92,7 @@ class _SpeakersState extends State<SpeakersList> {
     ]);
   }
 
-  Component social_icon(MapEntry<dynamic, dynamic> item) {
+  Component socialIcon(MapEntry<dynamic, dynamic> item) {
     if (item.value == '') {
       return span(classes: ['empty-span'], []);
     } else {
