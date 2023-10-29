@@ -32,8 +32,10 @@ class _SponsorsState extends State<SponsorsList> {
         "https://${component.projectId}.firebaseio.com/sponsors/conference_year/2023/${component.category}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
+    var dataFiltered = (data as List).nonNulls.toList();
+
     return [
-      ...(data as List) //
+      ...(dataFiltered) //
           .cast<Map<String, dynamic>>()
           .map(SponsorItem.fromJson),
     ];

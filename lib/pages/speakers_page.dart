@@ -30,13 +30,16 @@ class _SpeakersState extends State<SpeakersList> {
         "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    print(data);
     var dataFiltered = (data as List).nonNulls.toList();
-    return [
-      ...(dataFiltered) //
-          .cast<Map<String, dynamic>>()
-          .map(SpeakerItem.fromJson)
-    ];
+    List<SpeakerItem> speakerList = dataFiltered
+        .cast<Map<String, dynamic>>()
+        .map((d) => SpeakerItem.fromJson(d))
+        .toList();
+    speakerList.sort((a, b) {
+      return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+    });
+
+    return speakerList;
   }
 
   @override
@@ -70,6 +73,18 @@ class _SpeakersState extends State<SpeakersList> {
                   'social-bar'
                 ], [
                   for (var item in socialIcons.entries) social_icon(item),
+                ]),
+                div(classes: [
+                  'title-talk'
+                ], [
+                  p(classes: [
+                    'talk-container'
+                  ], [
+                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
+                    span(classes: ['talk-lable'], [text('Talk title: ')]),
+                    span(classes: ['talk-title'], [text(item.titleTalk)])
+                  ]),
+                  // p(),
                 ]),
               ],
             );
@@ -125,7 +140,8 @@ class SpeakerItem {
       required this.bio,
       required this.photoLink,
       required this.professionalRole,
-      required this.socialMedia});
+      required this.socialMedia,
+      required this.titleTalk});
 
   // final String conference_year;
   final String name;
@@ -133,6 +149,7 @@ class SpeakerItem {
   final String photoLink;
   final String professionalRole;
   final Map socialMedia;
+  final String titleTalk;
 
   static SpeakerItem fromJson(Map<String, dynamic> json) {
     return SpeakerItem(
@@ -142,6 +159,7 @@ class SpeakerItem {
       photoLink: json['photo'] as String,
       socialMedia: json['socialmedia'] as Map,
       professionalRole: json['professional_role'] as String,
+      titleTalk: json['talk_title'] as String,
     );
   }
 
