@@ -23,6 +23,9 @@ class CodeChallenge extends StatelessComponent {
             'and overall execution. Find submission guidelines and the entry form at the link below.'),
       ]),
       p([
+        text('Submissions are due by 10 November at 1:00AM PST.'),
+      ]),
+      p([
         a(
           classes: ['hero-button'],
           href: 'https://docs.google.com/forms/d/e/1FAIpQLSe5pS0_1_lKhskyIQHFgpq2gxNlkSguRn5jPdN7HSVaa3JD_A/viewform',
