@@ -3,8 +3,8 @@ import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
 import 'package:http/http.dart' as http;
 
-class SpeakersList extends StatefulComponent {
-  const SpeakersList({
+class OrganizersList extends StatefulComponent {
+  const OrganizersList({
     super.key,
     required this.projectId,
   });
@@ -12,31 +12,31 @@ class SpeakersList extends StatefulComponent {
   final String projectId;
 
   @override
-  State<SpeakersList> createState() => _SpeakersState();
+  State<OrganizersList> createState() => _OrganizersState();
 }
 
-class _SpeakersState extends State<SpeakersList> {
-  late Future<List<SpeakerItem>> _futureSpeakerItems;
+class _OrganizersState extends State<OrganizersList> {
+  late Future<List<OrganizerItem>> _futureOrganizerItems;
 
   @override
   void initState() {
     super.initState();
-    _futureSpeakerItems = fetchSpeaker();
+    _futureOrganizerItems = fetchOrganizer();
   }
 
-  Future<List<SpeakerItem>> fetchSpeaker() async {
+  Future<List<OrganizerItem>> fetchOrganizer() async {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
-        "https://${component.projectId}.firebaseio.com/speakers/conference_year/2023.json";
+        "https://${component.projectId}.firebaseio.com/organiser_team/conference_year/2023.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     var dataFiltered = (data as List).nonNulls.toList();
-    List<SpeakerItem> speakerList = dataFiltered
+    List<OrganizerItem> speakerList = dataFiltered
         .cast<Map<String, dynamic>>()
-        .map((d) => SpeakerItem.fromJson(d))
+        .map((d) => OrganizerItem.fromJson(d))
         .toList();
     speakerList.sort((a, b) {
-      return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      return a.first_name.toLowerCase().compareTo(b.first_name.toLowerCase());
     });
 
     return speakerList;
@@ -45,47 +45,47 @@ class _SpeakersState extends State<SpeakersList> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield Grid(columns: 4, gap: Unit.pixels(30), spread: true, children: [
-      FutureBuilder<List<SpeakerItem>>(
-        initialData: <SpeakerItem>[],
-        future: _futureSpeakerItems,
+      FutureBuilder<List<OrganizerItem>>(
+        initialData: <OrganizerItem>[],
+        future: _futureOrganizerItems,
         builder: (BuildContext context,
-            AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
+            AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
           for (final (index, item) in snapshot.requireData.indexed) {
             Map<dynamic, dynamic> socialIcons = item.socialMedia;
-
+            print(socialIcons);
             yield div(
-              classes: ['SpeakerItem'],
+              classes: ['OrganizerItem'],
               id: 'item-$index',
               [
-                img(classes: ['speaker-photo'], src: item.photoLink),
+                img(classes: ['Organizer-photo'], src: item.photoLink),
                 div(classes: [
                   'social-bar'
                 ], [
-                  for (var item in socialIcons.entries) socialIcon(item),
+                  for (var item in socialIcons.entries) social_icon(item),
                 ]),
                 h3(classes: [
-                  'speaker-name'
+                  'Organizer-name'
                 ], [
-                  text(item.name),
+                  text(item.first_name),
+                  text(' '),
+                  text(item.last_name),
                   div(classes: [
-                    'speaker-bio'
+                    'Organizer-bio'
                   ], [
                     p([text(item.bio)])
                   ])
                 ]),
-                p(classes: ['speaker-role'], [text(item.professionalRole)]),
-                div(classes: [
-                  'title-talk'
-                ], [
-                  p(classes: [
-                    'talk-container'
-                  ], [
-                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
-                    span(classes: ['talk-lable'], [text('Talk title: ')]),
-                    span(classes: ['talk-title'], [text(item.titleTalk)])
-                  ]),
-                  // p(),
-                ]),
+                item.company != ''
+                    ? div(classes: [
+                        'company'
+                      ], [
+                        img(
+                            classes: ['company-icon'],
+                            src: '/images/company-svgrepo-com.svg'),
+                        text(item.company)
+                      ])
+                    : span([]),
+                p(classes: ['Organizer-role'], [text(item.professionalRole)]),
               ],
             );
           }
@@ -94,7 +94,7 @@ class _SpeakersState extends State<SpeakersList> {
     ]);
   }
 
-  Component socialIcon(MapEntry<dynamic, dynamic> item) {
+  Component social_icon(MapEntry<dynamic, dynamic> item) {
     if (item.value == '') {
       return span(classes: ['empty-span'], []);
     } else {
@@ -132,34 +132,37 @@ class _SpeakersState extends State<SpeakersList> {
   }
 }
 
-class SpeakerItem {
-  const SpeakerItem(
+class OrganizerItem {
+  const OrganizerItem(
       {
       // required this.conference_year,
-      required this.name,
+      required this.first_name,
+      required this.last_name,
       required this.bio,
       required this.photoLink,
       required this.professionalRole,
-      required this.socialMedia,
-      required this.titleTalk});
+      required this.company,
+      required this.socialMedia});
 
   // final String conference_year;
-  final String name;
+  final String first_name;
+  final String last_name;
   final String bio;
   final String photoLink;
   final String professionalRole;
   final Map socialMedia;
-  final String titleTalk;
+  final String company;
 
-  static SpeakerItem fromJson(Map<String, dynamic> json) {
-    return SpeakerItem(
+  static OrganizerItem fromJson(Map<String, dynamic> json) {
+    return OrganizerItem(
       // conference_year: json['conference_year'] as String,
-      name: json['name'] as String,
+      first_name: json['first_name'] as String,
+      last_name: json['last_name'] as String,
       bio: json['bio'] as String,
       photoLink: json['photo'] as String,
       socialMedia: json['socialmedia'] as Map,
-      professionalRole: json['professional_role'] as String,
-      titleTalk: json['talk_title'] as String,
+      professionalRole: json['role'] as String,
+      company: json['company_name'] as String,
     );
   }
 
