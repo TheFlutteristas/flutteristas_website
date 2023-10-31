@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
-import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
-import 'package:jaspr_router/jaspr_router.dart';
+//import 'package:jaspr_router/jaspr_router.dart';
 import 'package:http/http.dart' as http;
 
 // class AgendaPage extends StatelessComponent {

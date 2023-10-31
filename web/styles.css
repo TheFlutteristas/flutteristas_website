@@ -1027,3 +1027,28 @@ h3.sponsors-bronze {
     width:100%
   }
 }
+
+/*************************************************************
+*   code challenge page
+*************************************************************/
+
+.code-challenge-container {
+    background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    padding: 30px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.code-challenge-image img {
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 45em) {
+    .code-challenge-container {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
