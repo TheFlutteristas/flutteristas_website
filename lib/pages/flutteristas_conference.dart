@@ -37,11 +37,35 @@ class FlutteristasConferencePage extends StatelessComponent {
         ]),
         p([
           img(src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg'),
-          Text('Location: Live Stream on YouTube')
+          Text('Location: '),
+          a([Text('Live Stream on YouTube')],
+              target: Target.blank,
+              href: 'https://www.youtube.com/@FlutterCommunity'),
+          a([img(src: '/images/external-link-svgrepo-com.svg')],
+              target: Target.blank,
+              href: 'https://www.youtube.com/@FlutterCommunity')
         ]),
         p([
           img(src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg'),
-          Text('FlutteristasConf2023')
+          Text('FlutteristasConf2023 - '),
+          a([
+            img(
+              classes: ['social-icon'],
+              src: '/images/x-logo-conf.svg',
+            )
+          ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
+          a([
+            img(
+              classes: ['social-icon'],
+              src: '/images/Mastodon-conf.svg',
+            )
+          ],
+              target: Target.blank,
+              href: 'https://fluttercommunity.social/@FlutteristasCon'),
+          a(
+              classes: ['hero-button'],
+              href: 'https://www.meetup.com/flutterista/events/297091400/',
+              [text('Meetup page')])
         ])
       ]),
     ]);
@@ -65,7 +89,8 @@ class FlutteristasConferencePage extends StatelessComponent {
         'conference-tab',
       ], [
         button(id: 'default', type: ButtonType.button, classes: [
-          'tab-link'
+          'tab-link',
+          'active'
         ], [
           text('Speakers')
         ], events: {

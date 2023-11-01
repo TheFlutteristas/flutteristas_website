@@ -730,6 +730,36 @@ div #welcome-items {
 }
 
 /*************************************************************
+*                                          Activities section
+*************************************************************/
+.activities-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 15px;
+    flex-wrap: wrap;
+}
+
+.activities-item {
+  width: 33.33%;
+  /* height: 325px; */
+  background-color: #F1ECF1;
+  padding: 15px;
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+  border-radius: 16px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.activities-item img {
+  width: 60%;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/*************************************************************
 *                                    conference page hero
 *************************************************************/
 .conference-hero {
@@ -770,6 +800,9 @@ div #welcome-items {
 }
 
 @media only screen and (max-width:37.5em) {
+  h3{
+    font-size: 1.125em;
+  }
   .conference-hero {
     flex-direction: column;
   }
@@ -777,27 +810,37 @@ div #welcome-items {
   .conference-title h2 {
     font-size: 2.25em;
   }
+
+  .activities-item {
+    width: 50%;
+  }
 }
 
 /*************************************************************
 *                                    speaker page 
 *************************************************************/
+#Speakers {
+  display: block;
+}
 
-.speakers-container{
+.speakers-container {
   background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
   border: 1px solid #ccc;
   border-radius: 14px;
   padding: 10px;
   margin: 30px auto;
 }
-.organizers-container{
-background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 240, 1) 84%);    border: 1px solid #ccc;
-    border-radius: 14px;
-    padding: 10px;
-    margin: 30px auto;
+
+.organizers-container {
+  background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 240, 1) 84%);
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 30px auto;
 }
 
-.speakers-container>div, .organizers-container>div {
+.speakers-container>div,
+.organizers-container>div {
   align-content: center;
   justify-content: space-around;
   justify-items: center;
@@ -805,16 +848,18 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
   /* grid-auto-rows: 0.5fr; */
 }
 
-.SpeakerItem, .OrganizerItem {
+.SpeakerItem,
+.OrganizerItem {
   width: 250px;
   /* border: 1px solid #cdbdff;
   border-radius: 10px; */
   padding: 1em;
   align-self: stretch;
-    height: 100%;
+  height: 100%;
 }
 
-.speaker-photo, .Organizer-photo {
+.speaker-photo,
+.Organizer-photo {
   display: block;
   width: 200px;
   height: 200px;
@@ -827,17 +872,21 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
 }
 
-.SpeakerItem .speaker-name, .OrganizerItem .Organizer-name {
+.SpeakerItem .speaker-name,
+.OrganizerItem .Organizer-name {
   font-weight: 700;
   text-align: center;
 }
 
-.SpeakerItem .speaker-role, .OrganizerItem .Organizer-role, .OrganizerItem .company {
+.SpeakerItem .speaker-role,
+.OrganizerItem .Organizer-role,
+.OrganizerItem .company {
   font-style: italic;
   text-align: center;
 }
 
-.SpeakerItem .social-bar, .OrganizerItem .social-bar {
+.SpeakerItem .social-bar,
+.OrganizerItem .social-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -858,12 +907,15 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
   color:#6745C7;
 } */
 
-.SpeakerItem .social-bar img, .OrganizerItem .social-bar img, .OrganizerItem .company img {
+.SpeakerItem .social-bar img,
+.OrganizerItem .social-bar img,
+.OrganizerItem .company img {
   width: 16px;
-  
+
 }
 
-.SpeakerItem .speaker-bio, .OrganizerItem .Organizer-bio {
+.SpeakerItem .speaker-bio,
+.OrganizerItem .Organizer-bio {
   width: 250px;
   background-color: #F2DAFF;
   text-align: center;
@@ -889,11 +941,13 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 
 }
 
-h3.speaker-name:hover, h3.Organizer-name:hover {
+h3.speaker-name:hover,
+h3.Organizer-name:hover {
   cursor: pointer;
 }
 
-h3.speaker-name:hover .speaker-bio, h3.Organizer-name:hover .Organizer-bio {
+h3.speaker-name:hover .speaker-bio,
+h3.Organizer-name:hover .Organizer-bio {
   display: block;
   position: absolute;
   z-index: 100;
@@ -908,37 +962,51 @@ h3.speaker-name:hover .speaker-bio, h3.Organizer-name:hover .Organizer-bio {
   z-index: 1000;
 }
 
-.SpeakerItem .talk-container img{
-  width:20px;
+.SpeakerItem .talk-container img {
+  width: 20px;
 }
-.SpeakerItem .talk-container{
+
+.SpeakerItem .talk-container {
   margin-top: 0.7em;
 }
-.SpeakerItem .talk-lable{
+
+.SpeakerItem .talk-lable {
   /* font-weight: 300; */
   color: #803DB4;
 }
 
-.SpeakerItem .talk-title{
+.SpeakerItem .talk-title {
   font-weight: bold;
 }
 
 
 @media only screen and (max-width:80em) {
-  .speakers-container>div, .organizers-container>div {
+
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:52.5em) {
-  .speakers-container>div, .organizers-container>div {
+
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:30em) {
-  .speakers-container>div, .organizers-container>div {
+
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(1, 1fr) !important;
+  }
+.activities-section{
+  flex-direction: column;
+}
+  .activities-item{
+    width: 100%
   }
 }
 
@@ -1029,8 +1097,8 @@ h3.sponsors-bronze {
   }
 
 
-  .quick-links{
-    width:100%
+  .quick-links {
+    width: 100%
   }
 }
 
@@ -1039,24 +1107,24 @@ h3.sponsors-bronze {
 *************************************************************/
 
 .code-challenge-container {
-    background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
-    border: 1px solid #ccc;
-    border-radius: 14px;
-    padding: 30px;
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+  background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 30px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
 }
 
 .code-challenge-image img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 45em) {
-    .code-challenge-container {
-        grid-template-columns: repeat(1, 1fr) !important;
-    }
+  .code-challenge-container {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
 }
 
 
@@ -1098,7 +1166,7 @@ h3.sponsors-bronze {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
-  border-radius:0 0 14px 14px;
+  border-radius: 0 0 14px 14px;
   border-top: none;
   animation: fadeEffect 1s;
 }
