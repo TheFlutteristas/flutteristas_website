@@ -783,15 +783,21 @@ div #welcome-items {
 *                                    speaker page 
 *************************************************************/
 
-.speakers-container {
+.speakers-container{
   background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
   border: 1px solid #ccc;
   border-radius: 14px;
   padding: 10px;
   margin: 30px auto;
 }
+.organizers-container{
+background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 240, 1) 84%);    border: 1px solid #ccc;
+    border-radius: 14px;
+    padding: 10px;
+    margin: 30px auto;
+}
 
-.speakers-container>div {
+.speakers-container>div, .organizers-container>div {
   align-content: center;
   justify-content: space-around;
   justify-items: center;
@@ -799,7 +805,7 @@ div #welcome-items {
   /* grid-auto-rows: 0.5fr; */
 }
 
-.SpeakerItem {
+.SpeakerItem, .OrganizerItem {
   width: 250px;
   /* border: 1px solid #cdbdff;
   border-radius: 10px; */
@@ -808,7 +814,7 @@ div #welcome-items {
     height: 100%;
 }
 
-.speaker-photo {
+.speaker-photo, .Organizer-photo {
   display: block;
   width: 200px;
   height: 200px;
@@ -821,17 +827,17 @@ div #welcome-items {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
 }
 
-.SpeakerItem .speaker-name {
+.SpeakerItem .speaker-name, .OrganizerItem .Organizer-name {
   font-weight: 700;
   text-align: center;
 }
 
-.SpeakerItem .speaker-role {
+.SpeakerItem .speaker-role, .OrganizerItem .Organizer-role, .OrganizerItem .company {
   font-style: italic;
   text-align: center;
 }
 
-.SpeakerItem .social-bar {
+.SpeakerItem .social-bar, .OrganizerItem .social-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -852,12 +858,12 @@ div #welcome-items {
   color:#6745C7;
 } */
 
-.SpeakerItem .social-bar img {
+.SpeakerItem .social-bar img, .OrganizerItem .social-bar img, .OrganizerItem .company img {
   width: 16px;
-  fill: #000;
+  
 }
 
-.SpeakerItem .speaker-bio {
+.SpeakerItem .speaker-bio, .OrganizerItem .Organizer-bio {
   width: 250px;
   background-color: #F2DAFF;
   text-align: center;
@@ -883,11 +889,11 @@ div #welcome-items {
 
 }
 
-h3.speaker-name:hover {
+h3.speaker-name:hover, h3.Organizer-name:hover {
   cursor: pointer;
 }
 
-h3.speaker-name:hover .speaker-bio {
+h3.speaker-name:hover .speaker-bio, h3.Organizer-name:hover .Organizer-bio {
   display: block;
   position: absolute;
   z-index: 100;
@@ -919,19 +925,19 @@ h3.speaker-name:hover .speaker-bio {
 
 
 @media only screen and (max-width:80em) {
-  .speakers-container>div {
+  .speakers-container>div, .organizers-container>div {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:52.5em) {
-  .speakers-container>div {
+  .speakers-container>div, .organizers-container>div {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:30em) {
-  .speakers-container>div {
+  .speakers-container>div, .organizers-container>div {
     grid-template-columns: repeat(1, 1fr) !important;
   }
 }
@@ -1051,4 +1057,58 @@ h3.sponsors-bronze {
     .code-challenge-container {
         grid-template-columns: repeat(1, 1fr) !important;
     }
+}
+
+
+/*************************************************************
+*   conference page tabs
+*************************************************************/
+
+/* Style the tab */
+.conference-tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.conference-tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.conference-tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.conference-tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tab-content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius:0 0 14px 14px;
+  border-top: none;
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
