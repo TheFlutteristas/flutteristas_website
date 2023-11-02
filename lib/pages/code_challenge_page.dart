@@ -23,7 +23,7 @@ class CodeChallenge extends StatelessComponent {
             'and overall execution. Find submission guidelines and the entry form at the link below.'),
       ]),
       p([
-        text('Submissions are due by 10 November at 1:00AM PST.'),
+        text('Submissions are due by 10 November at 3:00AM GMT.'),
       ]),
       p([
         a(
