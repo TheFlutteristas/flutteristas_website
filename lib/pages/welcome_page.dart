@@ -61,6 +61,63 @@ class WelcomePage extends StatelessComponent {
     yield Spacer(height: Unit.pixels(100));
     yield h2(
       [
+        text('Why join?'),
+      ],
+    );
+    yield div(classes: [
+      'activities-section'
+    ], [
+      div(classes: [
+        'activities-item'
+      ], [
+        img(classes: ['activities-icon'], src: '/images/4857010.png'),
+        h3([text('Meetings')]),
+        p(classes: [
+          'activities-text'
+        ], [
+          text('Monthly meetings to connect and share news and achievements')
+        ])
+      ]),
+      div(classes: [
+        'activities-item'
+      ], [
+        img(classes: ['activities-icon'], src: '/images/6491438.png'),
+        h3([text('Meet the Flutter Team')]),
+        p(classes: [
+          'activities-text'
+        ], [
+          text(
+              'Guests from Google\'s Flutter team come and meet with us occasionally to share news, tips and answer questions.')
+        ])
+      ]),
+      div(classes: [
+        'activities-item'
+      ], [
+        img(classes: ['activities-icon'], src: '/images/4892807.png'),
+        h3([text('Volunteering & Experiences')]),
+        p(classes: [
+          'activities-text'
+        ], [
+          text(
+              'Flutteristas volunteer their time and talents in producing outstanding Flutterista conference experiences that reflect our members\' core competencies.')
+        ])
+      ]),
+      div(classes: [
+        'activities-item'
+      ], [
+        img(classes: ['activities-icon'], src: '/images/7037084.png'),
+        h3([text('Speaker\'s training')]),
+        p(classes: [
+          'activities-text'
+        ], [
+          text(
+              'Part of the conference experience is training conducted for the speakers by professionals to let them shine in their talk and gain attention.')
+        ])
+      ]),
+    ]);
+    yield Spacer(height: Unit.pixels(100));
+    yield h2(
+      [
         text('How to join?'),
       ],
     );
