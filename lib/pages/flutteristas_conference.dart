@@ -90,7 +90,6 @@ class FlutteristasConferencePage extends StatelessComponent {
       ], [
         button(id: 'default', type: ButtonType.button, classes: [
           'tab-link',
-          'active'
         ], [
           text('Speakers')
         ], events: {

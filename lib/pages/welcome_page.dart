@@ -82,12 +82,12 @@ class WelcomePage extends StatelessComponent {
         'activities-item'
       ], [
         img(classes: ['activities-icon'], src: '/images/6491438.png'),
-        h3([text('Meet Flutter team')]),
+        h3([text('Meet the Flutter Team')]),
         p(classes: [
           'activities-text'
         ], [
           text(
-              'A guest from the Flutter team come and meet with us occasionally to share news, tips and answer questions.')
+              'Guests from Google\'s Flutter team come and meet with us occasionally to share news, tips and answer questions.')
         ])
       ]),
       div(classes: [
@@ -99,7 +99,7 @@ class WelcomePage extends StatelessComponent {
           'activities-text'
         ], [
           text(
-              'Conference planning where Flutteristas volunteers with their talent and knowledge to produce an outstanding experience that reflect the member\'s core competent.')
+              'Flutteristas volunteer their time and talents in producing outstanding Flutterista conference experiences that reflect our members\' core competencies.')
         ])
       ]),
       div(classes: [
