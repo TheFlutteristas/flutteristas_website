@@ -62,11 +62,11 @@ class FlutteristasConferencePage extends StatelessComponent {
           ],
               target: Target.blank,
               href: 'https://fluttercommunity.social/@FlutteristasCon'),
-          a(
-              classes: ['hero-button'],
-              href: 'https://www.meetup.com/flutterista/events/297091400/',
-              [text('Meetup page')])
-        ])
+        ]),
+        a(
+            classes: ['hero-button'],
+            href: 'https://www.meetup.com/flutterista/events/297091400/',
+            [text('Meetup page')])
       ]),
     ]);
     yield div(classes: [

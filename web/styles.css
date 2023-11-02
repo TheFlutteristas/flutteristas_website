@@ -306,14 +306,11 @@ div #post-content {
 .hero-button {
   padding: 10px 24px;
   display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  text-align: center;
   border: none;
   border-radius: 100px;
   background: var(--m-3-sys-light-primary, #6745C7);
-  font-size: 18px;
+  font-size: 16px;
   color: #FFFFFF;
   font-weight: 400 !important;
 }
