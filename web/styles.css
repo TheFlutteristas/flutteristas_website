@@ -1107,7 +1107,27 @@ h3.sponsors-bronze {
 }
 
 .code-challenge-image img {
-  max-width: 100%;
+    max-width: 100%;
+    margin-top: -30px;
+    position: relative;
+    z-index: 0;
+}
+
+.code-challenge-sponsor {
+    background: #fff;
+    border-radius: 7px;
+    padding: 15px 25px;
+    position: relative;
+    width: 350px;
+    z-index: 1;
+    margin: 0 auto;
+    line-height: 30px;
+}
+
+.code-challenge-sponsor .sponsor-logo {
+    width: 150px;
+    float: right;
+    margin: 0;
 }
 
 @media only screen and (max-width: 45em) {
