@@ -1108,7 +1108,7 @@ h3.sponsors-bronze {
 
 .code-challenge-image img {
     max-width: 100%;
-    margin-top: -30px;
+    margin-top: -40px;
     position: relative;
     z-index: 0;
 }
@@ -1116,12 +1116,12 @@ h3.sponsors-bronze {
 .code-challenge-sponsor {
     background: #fff;
     border-radius: 7px;
-    padding: 15px 25px;
     position: relative;
-    width: 350px;
     z-index: 1;
     margin: 0 auto;
     line-height: 30px;
+    padding: 5px 15px 42px;
+    width: 180px;
 }
 
 .code-challenge-sponsor .sponsor-logo {
@@ -1134,6 +1134,18 @@ h3.sponsors-bronze {
 
     .code-challenge-container {
         grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+
+    .code-challenge-sponsor {
+        padding: 15px 25px;
+        width: 350px;
+    }
+
+    .code-challenge-image img {
+        margin-top: -30px;
     }
 }
 
