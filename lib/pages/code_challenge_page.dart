@@ -23,7 +23,7 @@ class CodeChallenge extends StatelessComponent {
             'and overall execution. Find submission guidelines and the entry form at the link below.'),
       ]),
       p([
-        text('Submissions are due by 10 November at 1:00AM PST.'),
+        text('Submissions are due by 10 November at 3:00AM GMT.'),
       ]),
       p([
         a(
@@ -34,6 +34,21 @@ class CodeChallenge extends StatelessComponent {
         ),
       ])
     ]);
-    yield div(classes: ['code-challenge-image'], [img(src: '/images/code_challenge_art.jpg')]);
+    yield div(classes: [
+      'code-challenge-image'
+    ], [
+      div(classes: [
+        'code-challenge-sponsor'
+      ], [
+        span([text('Brought to you by ')]),
+        a(href: 'https://invertase.io/', target: Target.blank, [
+          img(
+            classes: ['sponsor-logo'],
+            src: '/images/invertase_logo.png',
+          )
+        ]),
+      ]),
+      img(src: '/images/code_challenge_art.jpg'),
+    ]);
   }
 }

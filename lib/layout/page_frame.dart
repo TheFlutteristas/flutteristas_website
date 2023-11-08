@@ -104,9 +104,7 @@ class _PageFrameState extends State<PageFrame> {
               ],
             )
           ]),
-          p([
-            text('Copyright © 2023 Flutteristas.org.  All rights reserved. ')
-          ]),
+          p([text('Copyright © 2023 Flutteristas.org.  All rights reserved.')]),
         ]),
       ],
     );
