@@ -52,12 +52,14 @@ class _OrganizersState extends State<OrganizersList> {
             AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
           for (final (index, item) in snapshot.requireData.indexed) {
             Map<dynamic, dynamic> socialIcons = item.socialMedia;
-            print(socialIcons);
             yield div(
               classes: ['OrganizerItem'],
               id: 'item-$index',
               [
-                img(classes: ['Organizer-photo'], src: item.photoLink),
+                img(
+                    classes: ['Organizer-photo'],
+                    src: item.photoLink,
+                    alt: 'Organizer-photo'),
                 div(classes: [
                   'social-bar'
                 ], [
@@ -81,7 +83,8 @@ class _OrganizersState extends State<OrganizersList> {
                       ], [
                         img(
                             classes: ['company-icon'],
-                            src: '/images/company-svgrepo-com.svg'),
+                            src: '/images/company-svgrepo-com.svg',
+                            alt: 'company-icon'),
                         text(item.company)
                       ])
                     : span([]),
@@ -103,28 +106,27 @@ class _OrganizersState extends State<OrganizersList> {
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/x-logo.svg')]);
+              [img(src: '/images/x-logo.svg', alt: 'twitter-icon')]);
 
         case 'linkedin':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/Linkedin.svg')]);
+              [img(src: '/images/Linkedin.svg', alt: 'linkedin-icon')]);
         case 'github':
-          return a(
-              href: item.value as String,
-              target: Target.blank,
-              [img(src: '/images/github-color-svgrepo-com.svg')]);
+          return a(href: item.value as String, target: Target.blank, [
+            img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')
+          ]);
         case 'medium':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/medium-svgrepo-com.svg')]);
+              [img(src: '/images/medium-svgrepo-com.svg', alt: 'medium-icon')]);
         case 'youtube':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/youtube.svg')]);
+              [img(src: '/images/youtube.svg', alt: 'youtube-icon')]);
         default:
           return span([]);
       }

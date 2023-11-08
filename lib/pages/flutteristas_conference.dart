@@ -32,33 +32,43 @@ class FlutteristasConferencePage extends StatelessComponent {
         'conference-details'
       ], [
         p([
-          img(src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg'),
+          img(
+              src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'date-icon'),
           Text('Date: 11 November 2023 ')
         ]),
         p([
-          img(src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg'),
+          img(
+              src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'location-icon'),
           Text('Location: '),
           a([Text('Live Stream on YouTube')],
               target: Target.blank,
               href: 'https://www.youtube.com/@FlutterCommunity'),
-          a([img(src: '/images/external-link-svgrepo-com.svg')],
+          a([
+            img(
+                src: '/images/external-link-svgrepo-com.svg',
+                alt: 'external-link-icon')
+          ],
               target: Target.blank,
               href: 'https://www.youtube.com/@FlutterCommunity')
         ]),
         p([
-          img(src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg'),
+          img(
+              src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'hash-tag-icon'),
           Text('FlutteristasConf2023 - '),
           a([
             img(
-              classes: ['social-icon'],
-              src: '/images/x-logo-conf.svg',
-            )
+                classes: ['social-icon'],
+                src: '/images/x-logo-conf.svg',
+                alt: 'twitter-icon')
           ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
           a([
             img(
-              classes: ['social-icon'],
-              src: '/images/Mastodon-conf.svg',
-            )
+                classes: ['social-icon'],
+                src: '/images/Mastodon-conf.svg',
+                alt: 'mastodon-icon')
           ],
               target: Target.blank,
               href: 'https://fluttercommunity.social/@FlutteristasCon'),
@@ -66,7 +76,7 @@ class FlutteristasConferencePage extends StatelessComponent {
         a(
             classes: ['hero-button'],
             href: 'https://www.meetup.com/flutterista/events/297091400/',
-            [text('Meetup page')])
+            [text('RSVP Now')])
       ]),
     ]);
     yield div(classes: [
@@ -154,9 +164,7 @@ class FlutteristasConferencePage extends StatelessComponent {
 
             // Get all elements with class="tablinks" and remove the class "active"
             tablinks = document.getElementsByClassName("tab-link");
-            print(tablinks);
             for (i = 0; i < tablinks.length; i++) {
-              // print(tablinks[i]);
               tablinks[i].className = "tab-link";
             }
 
