@@ -66,7 +66,7 @@ class FlutteristasConferencePage extends StatelessComponent {
         a(
             classes: ['hero-button'],
             href: 'https://www.meetup.com/flutterista/events/297091400/',
-            [text('Meetup page')])
+            [text('RSVP Now')])
       ]),
     ]);
     yield div(classes: [
