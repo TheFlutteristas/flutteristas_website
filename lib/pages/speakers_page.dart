@@ -57,7 +57,10 @@ class _SpeakersState extends State<SpeakersList> {
               classes: ['SpeakerItem'],
               id: 'item-$index',
               [
-                img(classes: ['speaker-photo'], src: item.photoLink),
+                img(
+                    classes: ['speaker-photo'],
+                    src: item.photoLink,
+                    alt: 'speaker-photo'),
                 div(classes: [
                   'social-bar'
                 ], [
@@ -80,23 +83,12 @@ class _SpeakersState extends State<SpeakersList> {
                   p(classes: [
                     'talk-container'
                   ], [
-                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
+                    img(
+                        src: '/images/female-user-talk-chat-svgrepo-com.svg',
+                        alt: 'speaker-icon'),
                     span(classes: ['talk-lable'], [text('Talk title: ')]),
                     span(classes: ['talk-title'], [text(item.titleTalk)])
                   ]),
-                  // p(),
-                ]),
-                div(classes: [
-                  'title-talk'
-                ], [
-                  p(classes: [
-                    'talk-container'
-                  ], [
-                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
-                    span(classes: ['talk-lable'], [text('Talk title: ')]),
-                    span(classes: ['talk-title'], [text(item.titleTalk)])
-                  ]),
-                  // p(),
                 ]),
               ],
             );
@@ -115,28 +107,27 @@ class _SpeakersState extends State<SpeakersList> {
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/x-logo.svg')]);
+              [img(src: '/images/x-logo.svg', alt: 'twitter-icon')]);
 
         case 'linkedin':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/Linkedin.svg')]);
+              [img(src: '/images/Linkedin.svg', alt: 'linkedin-icon')]);
         case 'github':
-          return a(
-              href: item.value as String,
-              target: Target.blank,
-              [img(src: '/images/github-color-svgrepo-com.svg')]);
+          return a(href: item.value as String, target: Target.blank, [
+            img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')
+          ]);
         case 'medium':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/medium-svgrepo-com.svg')]);
+              [img(src: '/images/medium-svgrepo-com.svg', alt: 'medium-icon')]);
         case 'youtube':
           return a(
               href: item.value as String,
               target: Target.blank,
-              [img(src: '/images/youtube.svg')]);
+              [img(src: '/images/youtube.svg', alt: 'youtube-icon')]);
         default:
           return span([]);
       }
