@@ -91,30 +91,6 @@ class _SpeakersState extends State<SpeakersList> {
                     span(classes: ['talk-title'], [text(item.titleTalk)])
                   ]),
                 ]),
-                div(classes: [
-                  'title-talk'
-                ], [
-                  p(classes: [
-                    'talk-container'
-                  ], [
-                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
-                    span(classes: ['talk-lable'], [text('Talk title: ')]),
-                    span(classes: ['talk-title'], [text(item.titleTalk)])
-                  ]),
-                  // p(),
-                ]),
-                div(classes: [
-                  'title-talk'
-                ], [
-                  p(classes: [
-                    'talk-container'
-                  ], [
-                    img(src: '/images/female-user-talk-chat-svgrepo-com.svg'),
-                    span(classes: ['talk-lable'], [text('Talk title: ')]),
-                    span(classes: ['talk-title'], [text(item.titleTalk)])
-                  ]),
-                  // p(),
-                ]),
               ],
             );
           }
