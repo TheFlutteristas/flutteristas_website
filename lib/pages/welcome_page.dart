@@ -51,6 +51,7 @@ class WelcomePage extends StatelessComponent {
       div([
         img(
           src: '/images/FlutterInteract-2019.jpg',
+          alt: 'flutteristas-image',
           styles: Styles.box(
             width: Unit.percent(100),
             radius: BorderRadius.circular(Unit.pixels(14.0)),
@@ -70,7 +71,10 @@ class WelcomePage extends StatelessComponent {
       div(classes: [
         'activities-item'
       ], [
-        img(classes: ['activities-icon'], src: '/images/4857010.png'),
+        img(
+            classes: ['activities-icon'],
+            src: '/images/4857010.png',
+            alt: 'activities-icon'),
         h3([text('Meetings')]),
         p(classes: [
           'activities-text'
@@ -81,7 +85,10 @@ class WelcomePage extends StatelessComponent {
       div(classes: [
         'activities-item'
       ], [
-        img(classes: ['activities-icon'], src: '/images/6491438.png'),
+        img(
+            classes: ['activities-icon'],
+            src: '/images/6491438.png',
+            alt: 'activities-icon'),
         h3([text('Meet the Flutter Team')]),
         p(classes: [
           'activities-text'
@@ -93,7 +100,10 @@ class WelcomePage extends StatelessComponent {
       div(classes: [
         'activities-item'
       ], [
-        img(classes: ['activities-icon'], src: '/images/4892807.png'),
+        img(
+            classes: ['activities-icon'],
+            src: '/images/4892807.png',
+            alt: 'activities-icon'),
         h3([text('Volunteering & Experiences')]),
         p(classes: [
           'activities-text'
@@ -105,7 +115,10 @@ class WelcomePage extends StatelessComponent {
       div(classes: [
         'activities-item'
       ], [
-        img(classes: ['activities-icon'], src: '/images/7037084.png'),
+        img(
+            classes: ['activities-icon'],
+            src: '/images/7037084.png',
+            alt: 'activities-icon'),
         h3([text('Speaker\'s training')]),
         p(classes: [
           'activities-text'
@@ -133,11 +146,11 @@ class WelcomePage extends StatelessComponent {
         ], [
           div([
             img(
-              src: '/images/number-1-svgrepo-com.svg',
-              styles: Styles.box(
-                width: Unit.pixels(100),
-              ),
-            )
+                src: '/images/number-1-svgrepo-com.svg',
+                styles: Styles.box(
+                  width: Unit.pixels(100),
+                ),
+                alt: 'number-1-image')
           ]),
           div([
             p([
@@ -153,20 +166,20 @@ class WelcomePage extends StatelessComponent {
         ], [
           div([
             img(
-              classes: ['arrow-1'],
-              src: '/images/Arrow15.png',
-              styles: Styles.box(
-                height: Unit.pixels(100),
-              ),
-            )
+                classes: ['arrow-1'],
+                src: '/images/Arrow15.png',
+                styles: Styles.box(
+                  height: Unit.pixels(100),
+                ),
+                alt: 'arrow-image')
           ]),
           div([
             img(
-              src: '/images/number-2-svgrepo-com.svg',
-              styles: Styles.box(
-                width: Unit.pixels(100),
-              ),
-            )
+                src: '/images/number-2-svgrepo-com.svg',
+                styles: Styles.box(
+                  width: Unit.pixels(100),
+                ),
+                alt: 'number-2-image')
           ]),
           div([
             p([
@@ -177,12 +190,12 @@ class WelcomePage extends StatelessComponent {
           ]),
           div([
             img(
-              classes: ['arrow-2'],
-              src: '/images/Arrow07.png',
-              styles: Styles.box(
-                height: Unit.pixels(100),
-              ),
-            )
+                classes: ['arrow-2'],
+                src: '/images/Arrow07.png',
+                styles: Styles.box(
+                  height: Unit.pixels(100),
+                ),
+                alt: 'arrow-image')
           ])
         ]),
         div(classes: [
@@ -191,11 +204,11 @@ class WelcomePage extends StatelessComponent {
         ], [
           div([
             img(
-              src: '/images/number-3-svgrepo-com.svg',
-              styles: Styles.box(
-                width: Unit.pixels(100),
-              ),
-            )
+                src: '/images/number-3-svgrepo-com.svg',
+                styles: Styles.box(
+                  width: Unit.pixels(100),
+                ),
+                alt: 'number-3-image')
           ]),
           div([
             p([
@@ -224,7 +237,7 @@ class WelcomePage extends StatelessComponent {
       div(
         classes: ['join-section'],
         [
-          img(src: '/images/flutteristas-dash.png'),
+          img(src: '/images/flutteristas-dash.png', alt: 'dash'),
           a(
             classes: ['hero-button'],
             href:

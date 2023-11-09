@@ -19,7 +19,8 @@ class CodeChallenge extends StatelessComponent {
         text('.'),
       ]),
       p([
-        text('The winning entry will be selected based on creativity, aesthetics, code organization, code quality, '
+        text(
+            'The winning entry will be selected based on creativity, aesthetics, code organization, code quality, '
             'and overall execution. Find submission guidelines and the entry form at the link below.'),
       ]),
       p([
@@ -28,7 +29,8 @@ class CodeChallenge extends StatelessComponent {
       p([
         a(
           classes: ['hero-button'],
-          href: 'https://docs.google.com/forms/d/e/1FAIpQLSe5pS0_1_lKhskyIQHFgpq2gxNlkSguRn5jPdN7HSVaa3JD_A/viewform',
+          href:
+              'https://docs.google.com/forms/d/e/1FAIpQLSe5pS0_1_lKhskyIQHFgpq2gxNlkSguRn5jPdN7HSVaa3JD_A/viewform',
           target: Target.blank,
           [text('Get started!')],
         ),
@@ -43,12 +45,12 @@ class CodeChallenge extends StatelessComponent {
         span([text('Brought to you by ')]),
         a(href: 'https://invertase.io/', target: Target.blank, [
           img(
-            classes: ['sponsor-logo'],
-            src: '/images/invertase_logo.png',
-          )
+              classes: ['sponsor-logo'],
+              src: '/images/invertase_logo.png',
+              alt: 'sponsor-logo')
         ]),
       ]),
-      img(src: '/images/code_challenge_art.jpg'),
+      img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
     ]);
   }
 }

@@ -55,7 +55,10 @@ class _SponsorsState extends State<SponsorsList> {
               id: 'item-$index',
               [
                 a(target: Target.blank, href: item.website, [
-                  img(classes: ['sponsor-photo'], src: item.logoLink)
+                  img(
+                      classes: ['sponsor-photo'],
+                      src: item.logoLink,
+                      alt: 'sponsor-photo')
                 ]),
                 h4(classes: [
                   'sponsor-name'
