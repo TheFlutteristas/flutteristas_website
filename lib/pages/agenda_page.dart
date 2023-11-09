@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:intl/intl.dart';
 import 'package:jaspr/html.dart';
 //import 'package:jaspr_router/jaspr_router.dart';
@@ -46,85 +45,136 @@ class _AgendaState extends State<AgendaTalkList> {
   Future<List<AgendaItem>> fetchAgenda() async {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
-        "https://${component.projectId}.firebaseio.com/conference_agenda.json";
+        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/2023.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    return [
-      ...(data as List) //
-          .cast<Map<String, dynamic>>()
-          .map(AgendaItem.fromJson),
-    ];
+    var dataFiltered = (data as List).nonNulls.toList();
+    List<AgendaItem> speakerList = dataFiltered
+        .cast<Map<String, dynamic>>()
+        .map((d) => AgendaItem.fromJson(d))
+        .toList();
+    speakerList.sort((a, b) {
+      return a.time.compareTo(b.time);
+    });
+
+    return speakerList;
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield FutureBuilder<List<AgendaItem>>(
-      initialData: <AgendaItem>[],
-      future: _futureAgendaItems,
-      builder: (BuildContext context,
-          AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
-        for (final (index, item) in snapshot.requireData.indexed) {
-          yield div(
-            id: 'item-$index',
-            styles: Styles.box(
-              border: Border.all(
-                BorderSide(
-                  style: BorderStyle.solid,
-                  color: Colors.purple,
-                  width: Unit.pixels(1),
-                ),
-              ),
-              padding: EdgeInsets.all(Unit.em(0.5)),
-              margin: EdgeInsets.only(bottom: Unit.em(1.0)),
-            ),
-            [
-              p(
-                [
-                  text('Title: '),
-                  strong([text(item.title)]),
-                  br(),
-                  text('Speaker: '),
-                  strong([text(item.speaker)]),
-                  br(),
-                  text(item.description),
-                  br(),
-                  text(
-                    'at: '
-                    //'${DateFormat.yMMMd().format(item.time)} at '
-                    '${DateFormat.Hms().format(item.time)} UTC',
+    yield div([
+      p(classes: ['tune-in'], [text('Tune-in on')]),
+      h3(classes: ['conf-date'], [text('11 November 2023')]),
+      FutureBuilder<List<AgendaItem>>(
+        initialData: <AgendaItem>[],
+        future: _futureAgendaItems,
+        builder: (BuildContext context,
+            AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
+          for (final (index, item) in snapshot.requireData.indexed) {
+            List<dynamic> speakersList = item.speakers;
+            var fourty_index = item.description.length / 2;
+            yield div(
+              classes: ['agenda-item'],
+              id: 'item-$index',
+              [
+                div(classes: [
+                  'date-container'
+                ], [
+                  p(classes: [
+                    'agenda-date'
+                  ], [
+                    //convert time from PTS to UTC then convert it to local timing
+                    text(DateFormat.jm().format(DateTime.parse('${item.time}')
+                        .add(Duration(hours: 7))
+                        .toLocal()))
+                  ]),
+                  p(classes: [
+                    'date-zone'
+                  ], [
+                    //show the time zone for the current user
+                    text(DateTime.parse('${item.time}').toLocal().timeZoneName)
+                  ])
+                ]),
+                div(classes: [
+                  'talk-info'
+                ], [
+                  p(
+                    classes: ['talk-title'],
+                    [
+                      item.type == 'talk'
+                          ? img(
+                              classes: ['type-icon'],
+                              src:
+                                  'images/female-user-talk-chat-svgrepo-com.svg',
+                            )
+                          : img(
+                              classes: ['type-icon'],
+                              src:
+                                  'images/activity-community-group-svgrepo-com.svg'),
+                      strong([text(item.title)]),
+                      item.description != ''
+                          ? img(
+                              classes: ['type-icon'],
+                              src: 'images/arrow-down-svgrepo-com.svg')
+                          : span([]),
+                      p(classes: ['talk-description'], [text(item.description)])
+                    ],
                   ),
-                ],
-              ),
-            ],
-          );
-        }
-      },
-    );
+                  div(classes: [
+                    'speaker-container'
+                  ], [
+                    for (var item in speakersList)
+                      item['name'] != ''
+                          ? div(classes: [
+                              'speaker-profile'
+                            ], [
+                              img(classes: ['speaker-img'], src: item['photo']),
+                              div([
+                                p(
+                                    classes: ['speaker-name'],
+                                    [text(item['name'])]),
+                                p(
+                                    classes: ['speaker-role'],
+                                    [text(item['company'])])
+                              ])
+                            ])
+                          : span([]),
+                  ])
+                ])
+              ],
+            );
+          }
+        },
+      )
+    ]);
   }
 }
 
 class AgendaItem {
   const AgendaItem({
     required this.title,
-    required this.speaker,
+    required this.speakers,
     required this.description,
     required this.time,
+    required this.type,
   });
 
   final String title;
-  final String speaker;
+  final List speakers;
   final String description;
+  final String type;
   final DateTime time;
 
   static AgendaItem fromJson(Map<String, dynamic> json) {
     return AgendaItem(
       title: json['title'] as String,
-      speaker: json['speaker'] as String,
+      speakers: json['speaker'] as List,
       description: json['description'] as String,
-      time: DateTime.parse(json['time'] as String),
+      time: DateTime.parse('2023-11-11 ' + json['start_time'] + 'z'),
+      type: json['schedule_type'] as String,
     );
   }
 
   @override
-  String toString() => 'AgendaItem{$title, $time}';
+  String toString() => 'AgendaItem{$title}';
 }

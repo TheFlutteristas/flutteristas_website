@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutteristas/modules/SpeakerItem.dart';
 import 'package:jaspr/components.dart';
 import 'package:jaspr/html.dart';
 import 'package:http/http.dart' as http;
@@ -142,39 +143,4 @@ class _SpeakersState extends State<SpeakersList> {
       }
     }
   }
-}
-
-class SpeakerItem {
-  const SpeakerItem(
-      {
-      // required this.conference_year,
-      required this.name,
-      required this.bio,
-      required this.photoLink,
-      required this.professionalRole,
-      required this.socialMedia,
-      required this.titleTalk});
-
-  // final String conference_year;
-  final String name;
-  final String bio;
-  final String photoLink;
-  final String professionalRole;
-  final Map socialMedia;
-  final String titleTalk;
-
-  static SpeakerItem fromJson(Map<String, dynamic> json) {
-    return SpeakerItem(
-      // conference_year: json['conference_year'] as String,
-      name: json['name'] as String,
-      bio: json['bio'] as String,
-      photoLink: json['photo'] as String,
-      socialMedia: json['socialmedia'] as Map,
-      professionalRole: json['professional_role'] as String,
-      titleTalk: json['talk_title'] as String,
-    );
-  }
-
-  @override
-  String toString() => 'SpeakerItem{}';
 }
