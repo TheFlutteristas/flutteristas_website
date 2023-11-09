@@ -44,7 +44,7 @@ class FlutteristasConferencePage extends StatelessComponent {
               alt: 'location-icon'),
           Text('Location: '),
           a([Text('Live Stream on YouTube')],
-              target: Target.blank
+              target: Target.blank,
               href: 'https://www.youtube.com/watch?v=9UAOMzl7Nuo'),
           a([
             img(
