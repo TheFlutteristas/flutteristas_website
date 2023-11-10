@@ -72,7 +72,6 @@ class _AgendaState extends State<AgendaTalkList> {
             AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
           for (final (index, item) in snapshot.requireData.indexed) {
             List<dynamic> speakersList = item.speakers;
-            var fourty_index = item.description.length / 2;
             yield div(
               classes: ['agenda-item'],
               id: 'item-$index',
@@ -85,7 +84,7 @@ class _AgendaState extends State<AgendaTalkList> {
                   ], [
                     //convert time from PTS to UTC then convert it to local timing
                     text(DateFormat.jm().format(DateTime.parse('${item.time}')
-                        .add(Duration(hours: 7))
+                        .add(Duration(hours: 8))
                         .toLocal()))
                   ]),
                   p(classes: [
