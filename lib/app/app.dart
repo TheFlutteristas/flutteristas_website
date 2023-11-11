@@ -5,6 +5,7 @@ import 'package:flutteristas/pages/code_of_conduct.dart';
 // import 'package:flutteristas/pages/column3_page.dart';
 //import 'package:flutteristas/pages/contact_us_page.dart';
 import 'package:flutteristas/pages/flutteristas_conference.dart';
+import 'package:flutteristas/pages/flutteristas_map.dart';
 // import 'package:flutteristas/pages/follow_us_page.dart';
 import 'package:flutteristas/pages/not_found_page.dart';
 import 'package:flutteristas/pages/privacy_page.dart';
@@ -29,6 +30,7 @@ final routes = [
   // ProductPageWithNote.route,
   // FollowUsPage.route,
   // ContactUsPage.route,
+  FlutteristasMap.route,
   CodeOfConduct.route,
   PrivacyPolicyPage.route,
 ];
