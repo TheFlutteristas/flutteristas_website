@@ -197,6 +197,31 @@ class FlutteristasConferencePage extends StatelessComponent {
             document.getElementById('challenge')?.style.display = "block";
             event.currentTarget.className += " active";
           }
+        }),
+        button(type: ButtonType.button, classes: [
+          'tab-link'
+        ], [
+          text('Flutteristas Map')
+        ], events: {
+          'click': (dynamic event) {
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = "tab-link";
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById('map')?.style.display = "block";
+            event.currentTarget.className += " active";
+          }
         })
       ]),
       div(id: 'Speakers', classes: [
@@ -269,6 +294,27 @@ class FlutteristasConferencePage extends StatelessComponent {
               Spacer(height: Unit.pixels(50)),
               h2([Text('Flutterista Generate - Code Challenge')]),
               div(classes: ['code-challenge-container'], [CodeChallenge()]),
+            ])
+          ])
+        ])
+      ]),
+      div(id: 'map', classes: [
+        'tab-content'
+      ], [
+        div(classes: [
+          'map-section'
+        ], [
+          div(classes: [
+            'map-container'
+          ], [
+            div(id: 'map', [
+              Spacer(height: Unit.pixels(50)),
+              h2([Text('Flutteristas in the world')]),
+              iframe(
+                  classes: ['map-frame'],
+                  [],
+                  src:
+                      'https://www.google.com/maps/d/u/0/embed?mid=1RU8SFU9MbegyUAnX8p9DvuinxsbgQBA&ehbc=2E312F&noprof=1')
             ])
           ])
         ])
