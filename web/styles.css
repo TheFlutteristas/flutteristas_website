@@ -735,7 +735,7 @@ div #welcome-items {
   justify-content: space-evenly;
   align-items: stretch;
   gap: 15px;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .activities-item {
@@ -797,9 +797,10 @@ div #welcome-items {
 }
 
 @media only screen and (max-width:37.5em) {
-  h3{
+  h3 {
     font-size: 1.125em;
   }
+
   .conference-hero {
     flex-direction: column;
   }
@@ -816,22 +817,24 @@ div #welcome-items {
 /*************************************************************
 *                                    speaker page 
 *************************************************************/
-#Speakers {
+#Agenda {
   display: block;
 }
 
-.speakers-container{
+.speakers-container {
   background: linear-gradient(94deg, rgba(205, 189, 255, 1) 24%, rgba(225, 182, 255, 1) 70%);
   border: 1px solid #ccc;
   border-radius: 14px;
   padding: 10px;
   margin: 30px auto;
 }
-.organizers-container{
-background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 240, 1) 84%);    border: 1px solid #ccc;
-    border-radius: 14px;
-    padding: 10px;
-    margin: 30px auto;
+
+.organizers-container {
+  background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 240, 1) 84%);
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 30px auto;
 }
 
 
@@ -846,7 +849,8 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 }
 
 
-.SpeakerItem, .OrganizerItem {
+.SpeakerItem,
+.OrganizerItem {
   width: 250px;
   /* border: 1px solid #cdbdff;
   border-radius: 10px; */
@@ -856,7 +860,8 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 }
 
 
-.speaker-photo, .Organizer-photo {
+.speaker-photo,
+.Organizer-photo {
   display: block;
   width: 200px;
   height: 200px;
@@ -870,19 +875,23 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 }
 
 
-.SpeakerItem .speaker-name, .OrganizerItem .Organizer-name {
+.SpeakerItem .speaker-name,
+.OrganizerItem .Organizer-name {
   font-weight: 700;
   text-align: center;
 }
 
 
-.SpeakerItem .speaker-role, .OrganizerItem .Organizer-role, .OrganizerItem .company {
+.SpeakerItem .speaker-role,
+.OrganizerItem .Organizer-role,
+.OrganizerItem .company {
   font-style: italic;
   text-align: center;
 }
 
 
-.SpeakerItem .social-bar, .OrganizerItem .social-bar {
+.SpeakerItem .social-bar,
+.OrganizerItem .social-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -904,12 +913,15 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 } */
 
 
-.SpeakerItem .social-bar img, .OrganizerItem .social-bar img, .OrganizerItem .company img {
+.SpeakerItem .social-bar img,
+.OrganizerItem .social-bar img,
+.OrganizerItem .company img {
   width: 16px;
-  
+
 }
 
-.SpeakerItem .speaker-bio, .OrganizerItem .Organizer-bio {
+.SpeakerItem .speaker-bio,
+.OrganizerItem .Organizer-bio {
   width: 250px;
   background-color: #F2DAFF;
   text-align: center;
@@ -936,11 +948,14 @@ background: linear-gradient(94deg, rgba(245, 238, 255, 1) 39%, rgba(255, 236, 24
 }
 
 
-h3.speaker-name:hover, h3.Organizer-name:hover {
+h3.speaker-name:hover,
+h3.Organizer-name:hover,
+.talk-info .talk-title:hover {
   cursor: pointer;
 }
 
-h3.speaker-name:hover .speaker-bio, h3.Organizer-name:hover .Organizer-bio {
+h3.speaker-name:hover .speaker-bio,
+h3.Organizer-name:hover .Organizer-bio {
   display: block;
   position: absolute;
   z-index: 100;
@@ -975,26 +990,32 @@ h3.speaker-name:hover .speaker-bio, h3.Organizer-name:hover .Organizer-bio {
 
 @media only screen and (max-width:80em) {
 
-  .speakers-container>div, .organizers-container>div {
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:52.5em) {
-  .speakers-container>div, .organizers-container>div {
+
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media only screen and (max-width:30em) {
 
-  .speakers-container>div, .organizers-container>div {
+  .speakers-container>div,
+  .organizers-container>div {
     grid-template-columns: repeat(1, 1fr) !important;
   }
-.activities-section{
-  flex-direction: column;
-}
-  .activities-item{
+
+  .activities-section {
+    flex-direction: column;
+  }
+
+  .activities-item {
     width: 100%
   }
 }
@@ -1107,46 +1128,46 @@ h3.sponsors-bronze {
 }
 
 .code-challenge-image img {
-    max-width: 100%;
-    margin-top: -40px;
-    position: relative;
-    z-index: 0;
+  max-width: 100%;
+  margin-top: -40px;
+  position: relative;
+  z-index: 0;
 }
 
 .code-challenge-sponsor {
-    background: #fff;
-    border-radius: 7px;
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    line-height: 30px;
-    padding: 5px 15px 42px;
-    width: 180px;
+  background: #fff;
+  border-radius: 7px;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  line-height: 30px;
+  padding: 5px 15px 42px;
+  width: 180px;
 }
 
 .code-challenge-sponsor .sponsor-logo {
-    width: 150px;
-    float: right;
-    margin: 0;
+  width: 150px;
+  float: right;
+  margin: 0;
 }
 
 @media only screen and (max-width: 45em) {
 
-    .code-challenge-container {
-        grid-template-columns: repeat(1, 1fr) !important;
-    }
+  .code-challenge-container {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
 }
 
 @media only screen and (min-width: 500px) {
 
-    .code-challenge-sponsor {
-        padding: 15px 25px;
-        width: 350px;
-    }
+  .code-challenge-sponsor {
+    padding: 15px 25px;
+    width: 350px;
+  }
 
-    .code-challenge-image img {
-        margin-top: -30px;
-    }
+  .code-challenge-image img {
+    margin-top: -30px;
+  }
 }
 
 
@@ -1188,7 +1209,7 @@ h3.sponsors-bronze {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
-  border-radius:0 0 14px 14px;
+  border-radius: 0 0 14px 14px;
   border-top: none;
   animation: fadeEffect 1s;
 }
@@ -1200,5 +1221,138 @@ h3.sponsors-bronze {
 
   to {
     opacity: 1;
+  }
+}
+
+/*************************************************************
+*   Agenda page 
+*************************************************************/
+.conf-date {
+  font-size: 2.25em;
+  font-weight: 800;
+  color: #8060E2;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.tune-in {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: #BDBDBD;
+}
+
+.agenda-item {
+  display: flex;
+  justify-content: center;
+}
+
+.date-container {
+  background-color: #6745C7;
+  width: 30%;
+  padding: 10px;
+}
+
+.talk-info {
+  width: 70%;
+  /* height: 300px; */
+  padding: 10px;
+}
+
+.date-container .agenda-date {
+  font-size: 1.7em;
+  font-weight: 700;
+  color: #F1ECF1;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.date-container .date-zone {
+  font-size: 0.7em;
+  font-weight: 300;
+  color: #F1ECF1;
+  text-align: right;
+  margin-top: 0;
+}
+
+.talk-info .talk-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4e29ae;
+  margin-bottom: 10px;
+  /* width: 600px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; */
+}
+
+.talk-info .talk-description {
+  color: #48454E;
+  padding-left: 40px;
+  display: none;
+  font-size: 14px;
+  /* width: 600px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; */
+  /* height: 300px; */
+  /* overflow: scroll; */
+}
+
+.talk-info .arrow-icon {
+  width: 20px;
+}
+
+.talk-info .talk-title:hover .talk-description {
+  display: block;
+}
+
+.speaker-container {
+  display: flex;
+  gap: 30px;
+}
+
+.speaker-profile {
+  display: flex;
+  gap: 5px;
+}
+
+.speaker-profile .speaker-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+}
+
+.speaker-profile .speaker-name {
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.speaker-profile .speaker-role {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.type-icon {
+  width: 30px;
+  margin: 0.25em;
+  ;
+}
+
+@media only screen and (max-width:30em) {
+  .date-container .agenda-date {
+    font-size: 1.2em;
+  }
+
+  .talk-info .talk-title {
+    font-size: 1.2em;
+  }
+
+  .speaker-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .talk-description{
+    padding-left: 5px;
   }
 }
