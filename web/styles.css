@@ -83,7 +83,7 @@ header>div {
 
 .follow-us {
   color: #dfd5ec;
-  width: 300px;
+  width: 350px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -763,11 +763,11 @@ div #welcome-items {
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
   gap: 30px;
   padding: 20px;
-  background-image: url('/images/bg-conference.png');
+  background-image: url('/images/background-hero.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -776,13 +776,6 @@ div #welcome-items {
   border-radius: 14px;
 }
 
-.conference-details {
-  color: #20005E;
-  background-color: #e8ddffeb;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 14px;
-}
 
 .conference-title h2 {
   font-size: 3.5625em;
@@ -813,6 +806,54 @@ div #welcome-items {
     width: 50%;
   }
 }
+
+/*************************************************************
+*                                    coming soon banner
+*************************************************************/
+.coming-soon-banner {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-image: url('/images/background-hero.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 360px;
+  border: 1px solid #CAC4CF;
+  border-radius: 14px;
+}
+
+.coming-soon-banner .conference-details {
+  color: #20005E;
+  background-color: #c9b0feeb;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.coming-soon-banner .conference-title h2 {
+  font-size: 3.5625em;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+p.conference-coming-soon{
+  font-size: 1.125em;
+  text-transform: uppercase;
+  font-weight: 800;
+  background-color: #F1ECF1;
+  border: 1px solid #afaab4;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 10px;
+}
+
+
+
 
 /*************************************************************
 *                                    speaker page 

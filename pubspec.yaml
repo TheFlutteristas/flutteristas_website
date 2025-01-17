@@ -1,6 +1,6 @@
 name: flutteristas
 description: flutteristas.com site
-repository: https://github.com/TheFlutteristas/flutteristas_website
+repository: https://github.com/TheFlutteristas/flutteristas_website_dev
 version: 1.0.0
 
 environment:
