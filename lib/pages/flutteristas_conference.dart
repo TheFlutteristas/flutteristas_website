@@ -26,59 +26,7 @@ class FlutteristasConferencePage extends StatelessComponent {
       div(classes: [
         'conference-title'
       ], [
-        h2(classes: ['conference-text'], [Text('Flutteristas')]),
-        h2(classes: ['conference-text'], [Text('2023 Conference')])
-      ]),
-      div(classes: [
-        'conference-details'
-      ], [
-        p([
-          img(
-              src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
-              alt: 'date-icon'),
-          Text('Date: 11 November 2023 ')
-        ]),
-        p([
-          img(
-              src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg',
-              alt: 'location-icon'),
-          Text('Location: '),
-          a([Text('Live Stream on YouTube')],
-              target: Target.blank,
-              href: 'https://www.youtube.com/watch?v=9UAOMzl7Nuo'),
-          a([
-            img(
-                src: '/images/external-link-svgrepo-com.svg',
-                alt: 'external-link-icon')
-          ],
-              target: Target.blank,
-              href: ' https://www.youtube.com/watch?v=9UAOMzl7Nuo')
-        ]),
-        p([
-          img(
-              src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg',
-              alt: 'hash-tag-icon'),
-          Text('FlutteristasConf2023 - '),
-          a([
-            img(
-                classes: ['social-icon'],
-                src: '/images/x-logo-conf.svg',
-                alt: 'twitter-icon')
-          ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
-          a([
-            img(
-                classes: ['social-icon'],
-                src: '/images/Mastodon-conf.svg',
-                alt: 'mastodon-icon')
-          ],
-              target: Target.blank,
-              href: 'https://fluttercommunity.social/@FlutteristasCon'),
-        ]),
-        a(
-            classes: ['hero-button'],
-            target: Target.blank,
-            href: 'https://www.meetup.com/flutterista/events/297091400/',
-            [text('RSVP Now')])
+        h2(classes: ['conference-text'], [Text('Flutteristas'), br(),Text('Conference 2023')]),
       ]),
     ]);
     yield div(classes: [

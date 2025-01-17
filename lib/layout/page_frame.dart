@@ -168,7 +168,17 @@ class _PageFrameState extends State<PageFrame> {
         ],
             target: Target.blank,
             href:
-                'https://www.facebook.com/people/Flutteristas/61552442970613/')
+                'https://www.facebook.com/people/Flutteristas/61552442970613/'),
+                a([
+          img(
+              classes: ['social-icon'],
+              src: '/images/bluesky-icon.svg',
+              alt: 'facebook-icon')
+        ],
+            target: Target.blank,
+            href:
+                'https://bsky.app/profile/flutteristas.org')
+      
       ])
     ]);
   }

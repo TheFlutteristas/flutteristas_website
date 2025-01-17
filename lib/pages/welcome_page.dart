@@ -16,6 +16,77 @@ class WelcomePage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: [
+      'coming-soon-banner'
+    ], [
+      div(classes: [
+        'conference-title'
+      ], [
+        p(classes: ['conference-coming-soon'], [Text('Coming Soon!')]),
+        h2(classes: ['conference-text'], [Text('Flutteristas'), br(),Text('Conference 2025')]),
+      ]),
+      div(classes: [
+        'conference-details'
+      ], [
+        p([
+          img(
+              src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'date-icon'),
+          Text('Date: 5 April 2025 ')
+        ]),
+        p([
+          img(
+              src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'location-icon'),
+          Text('Location: '),
+          a([Text('coming soon')],
+              href: '#'),
+          a([
+            img(
+                src: '/images/external-link-svgrepo-com.svg',
+                alt: 'external-link-icon')
+          ],
+              target: Target.blank,
+              href: '#')
+        ]),
+        p([
+          img(
+              src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'hash-tag-icon'),
+          Text('FlutteristasConf2025 - '),
+          a([
+            img(
+                classes: ['social-icon'],
+                src: '/images/x-logo-conf.svg',
+                alt: 'twitter-icon')
+          ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
+          a([
+            img(
+                classes: ['social-icon'],
+                src: '/images/Mastodon-conf.svg',
+                alt: 'mastodon-icon')
+          ],
+              target: Target.blank,
+              href: 'https://fluttercommunity.social/@FlutteristasCon'),
+              a([
+          img(
+              classes: ['social-icon'],
+              src: '/images/bluesky-icon-conf.svg',
+              alt: 'facebook-icon')
+        ],
+            target: Target.blank,
+            href:
+                'https://bsky.app/profile/flutteristascon.flutter.community')
+              
+        ]),
+        // a(
+        //     classes: ['hero-button'],
+        //     target: Target.blank,
+        //     href: '#',
+        //     [text('RSVP Now')])
+            
+      ]),
+    ]);
+    yield div(classes: [
       'product-layout',
       'hero-section'
     ], [
