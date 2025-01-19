@@ -852,6 +852,28 @@ p.conference-coming-soon{
   padding: 10px;
 }
 
+@media only screen and (max-width:52.5em) {
+  .conference-title h2 {
+    font-size: 2.8125em;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  h3 {
+    font-size: 1.125em;
+  }
+
+  .coming-soon-banner {
+    flex-direction: column;
+  }
+
+  .conference-title h2 {
+    font-size: 2.25em;
+  }
+
+  .activities-item {
+    width: 50%;
+  }
 
 
 
