@@ -63,8 +63,16 @@ class _PageFrameState extends State<PageFrame> {
           div([
             a([
               img(
-                  src: '/images/logo_flutterista_OutlinedInWhite.png',
-                  alt: 'flutteristas-logo')
+                alt: 'Flutteristas',
+                src: '/images/flutterista_logo_white_outline_600.png',
+                attributes: {
+                  'srcset': //
+                      '/images/flutterista_logo_white_outline_150.png, '
+                      '/images/flutterista_logo_white_outline_225.png 1.5x, '
+                      '/images/flutterista_logo_white_outline_300.png 2x, '
+                      '/images/flutterista_logo_white_outline_600.png 3x',
+                },
+              )
             ], href: '/'),
             TopMenu()
           ]),
@@ -169,16 +177,14 @@ class _PageFrameState extends State<PageFrame> {
             target: Target.blank,
             href:
                 'https://www.facebook.com/people/Flutteristas/61552442970613/'),
-                a([
+        a([
           img(
               classes: ['social-icon'],
               src: '/images/bluesky-icon.svg',
               alt: 'facebook-icon')
         ],
             target: Target.blank,
-            href:
-                'https://bsky.app/profile/flutteristas.org')
-      
+            href: 'https://bsky.app/profile/flutteristas.org')
       ])
     ]);
   }
