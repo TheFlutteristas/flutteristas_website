@@ -25,9 +25,11 @@ class AgendaTalkList extends StatefulComponent {
   const AgendaTalkList({
     super.key,
     required this.projectId,
+    required this.conferenceYear,
   });
 
   final String projectId;
+  final String conferenceYear;
 
   @override
   State<AgendaTalkList> createState() => _AgendaState();
@@ -45,7 +47,7 @@ class _AgendaState extends State<AgendaTalkList> {
   Future<List<AgendaItem>> fetchAgenda() async {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
-        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/2023.json";
+        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/${component.conferenceYear}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     var dataFiltered = (data as List).nonNulls.toList();

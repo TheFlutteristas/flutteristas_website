@@ -1,6 +1,7 @@
 import 'package:jaspr/html.dart';
 
 class CodeChallenge extends StatelessComponent {
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div([
