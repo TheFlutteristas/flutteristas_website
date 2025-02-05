@@ -757,6 +757,54 @@ div #welcome-items {
 }
 
 /*************************************************************
+*                                    conference page wrapper
+*************************************************************/
+.conference-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+
+}
+
+@media only screen and (max-width:37.5em) {
+  .conference-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*************************************************************
+*                                    conference sidebar
+*************************************************************/
+
+.conference-sidebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 10px;
+  overflow-y: auto;
+  white-space: nowrap;
+  margin-bottom: 0;;
+}
+
+.conference-sidebar .years-list {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style-type: none;
+  margin-bottom: 0;;
+
+}
+
+.conference-sidebar .years-list .year-item {
+  text-decoration: none;
+}
+
+/*************************************************************
 *                                    conference page hero
 *************************************************************/
 .conference-hero {
@@ -841,7 +889,7 @@ div #welcome-items {
   letter-spacing: -1px;
 }
 
-p.conference-coming-soon{
+p.conference-coming-soon {
   font-size: 1.125em;
   text-transform: uppercase;
   font-weight: 800;
@@ -1415,7 +1463,8 @@ h3.sponsors-bronze {
     display: flex;
     flex-direction: column;
   }
-  .talk-description{
+
+  .talk-description {
     padding-left: 5px;
   }
 }
@@ -1424,7 +1473,7 @@ h3.sponsors-bronze {
 *   Map page 
 *************************************************************/
 
-.map-iframe{
+.map-iframe {
   width: 100%;
   height: 560px;
 }

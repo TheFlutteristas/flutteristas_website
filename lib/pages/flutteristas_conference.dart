@@ -20,7 +20,17 @@ class FlutteristasConferencePage extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: [
+    yield div(classes:['conference-wrapper'],[
+      div(classes:['conference-sidebar'],[
+        h3( [Text('Archive:')]),
+        // ToDo: fetch years list here, just be sure to keep the same classes
+        ul(classes:['years-list'],[
+          li(classes:['year-item'],[a(href: '#', classes:['year-link'],[Text('Conference 2025')])]),
+          li(classes:['year-item'],[a(href: '#', classes:['year-link'],[Text('Conference 2023')])]),
+          ])
+      ]),
+      div(classes:['conference-main'],[
+ div(classes: [
       'conference-hero'
     ], [
       div(classes: [
@@ -28,8 +38,8 @@ class FlutteristasConferencePage extends StatelessComponent {
       ], [
         h2(classes: ['conference-text'], [Text('Flutteristas'), br(),Text('Conference 2023')]),
       ]),
-    ]);
-    yield div(classes: [
+    ]),
+    div(classes: [
       'conference-container'
     ], [
       p(
@@ -188,7 +198,7 @@ class FlutteristasConferencePage extends StatelessComponent {
             AgendaTalkList(
               projectId: 'flutteristas-website-ffa6d-default-rtdb',
             )
-          ])
+          ])  
         ])
       ]),
       div(id: 'Speakers', classes: [
@@ -264,6 +274,8 @@ class FlutteristasConferencePage extends StatelessComponent {
             ])
           ])
         ])
+      ])
+    ])
       ])
     ]);
   }
