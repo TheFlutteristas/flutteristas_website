@@ -106,17 +106,17 @@ class _AgendaState extends State<AgendaTalkList> {
                           ? img(
                               classes: ['type-icon'],
                               src:
-                                  'images/female-user-talk-chat-svgrepo-com.svg',
+                                  '/images/female-user-talk-chat-svgrepo-com.svg',
                             )
                           : img(
                               classes: ['type-icon'],
                               src:
-                                  'images/activity-community-group-svgrepo-com.svg'),
+                                  '/images/activity-community-group-svgrepo-com.svg'),
                       strong([text(item.title)]),
                       item.description != ''
                           ? img(
                               classes: ['type-icon'],
-                              src: 'images/arrow-down-svgrepo-com.svg')
+                              src: '/images/arrow-down-svgrepo-com.svg')
                           : span([]),
                       p(classes: ['talk-description'], [text(item.description)])
                     ],
