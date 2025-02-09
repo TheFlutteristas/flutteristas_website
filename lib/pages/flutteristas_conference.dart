@@ -106,7 +106,7 @@ class FlutteristasConferencePage extends StatelessComponent {
                   alt: 'external-link-icon')
             ],
                 target: Target.blank,
-                href: '#')
+                href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM')
           ]),
           p([
             img(
