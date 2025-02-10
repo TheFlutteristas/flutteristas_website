@@ -34,7 +34,7 @@ class FlutteristasConferenceCFPPage extends StatelessComponent {
         ]),
         p([
           img(
-            src: 'images/cfp_post.png',
+            src: '/images/cfp_post.png',
             styles: Styles.box(
               width: Unit.percent(280),
             ),

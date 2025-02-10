@@ -8,10 +8,12 @@ class SponsorsList extends StatefulComponent {
     super.key,
     required this.projectId,
     required this.category,
+    required this.conferenceYear,
   });
 
   final String projectId;
   final String category;
+  final String conferenceYear;
 
   @override
   State<SponsorsList> createState() => _SponsorsState();
@@ -29,7 +31,7 @@ class _SponsorsState extends State<SponsorsList> {
   Future<List<SponsorItem>> fetchSponsor() async {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
-        "https://${component.projectId}.firebaseio.com/sponsors/conference_year/2023/${component.category}.json";
+        "https://${component.projectId}.firebaseio.com/sponsors/conference_year/${component.conferenceYear}/${component.category}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     var dataFiltered = (data as List).nonNulls.toList();

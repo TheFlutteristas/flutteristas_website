@@ -25,9 +25,11 @@ class AgendaTalkList extends StatefulComponent {
   const AgendaTalkList({
     super.key,
     required this.projectId,
+    required this.conferenceYear,
   });
 
   final String projectId;
+  final String conferenceYear;
 
   @override
   State<AgendaTalkList> createState() => _AgendaState();
@@ -45,7 +47,7 @@ class _AgendaState extends State<AgendaTalkList> {
   Future<List<AgendaItem>> fetchAgenda() async {
     // see: https://firebase.google.com/docs/reference/rest/database
     final url =
-        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/2023.json";
+        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/${component.conferenceYear}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
     var dataFiltered = (data as List).nonNulls.toList();
@@ -104,17 +106,17 @@ class _AgendaState extends State<AgendaTalkList> {
                           ? img(
                               classes: ['type-icon'],
                               src:
-                                  'images/female-user-talk-chat-svgrepo-com.svg',
+                                  '/images/female-user-talk-chat-svgrepo-com.svg',
                             )
                           : img(
                               classes: ['type-icon'],
                               src:
-                                  'images/activity-community-group-svgrepo-com.svg'),
+                                  '/images/activity-community-group-svgrepo-com.svg'),
                       strong([text(item.title)]),
                       item.description != ''
                           ? img(
                               classes: ['type-icon'],
-                              src: 'images/arrow-down-svgrepo-com.svg')
+                              src: '/images/arrow-down-svgrepo-com.svg')
                           : span([]),
                       p(classes: ['talk-description'], [text(item.description)])
                     ],

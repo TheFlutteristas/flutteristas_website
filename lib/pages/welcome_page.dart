@@ -38,15 +38,15 @@ class WelcomePage extends StatelessComponent {
               src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg',
               alt: 'location-icon'),
           Text('Location: '),
-          a([Text('coming soon')],
-              href: '#'),
+          a([Text('Youtube Live Stream')],
+              href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM'),
           a([
             img(
                 src: '/images/external-link-svgrepo-com.svg',
                 alt: 'external-link-icon')
           ],
               target: Target.blank,
-              href: '#')
+              href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM')
         ]),
         p([
           img(
@@ -78,11 +78,11 @@ class WelcomePage extends StatelessComponent {
                 'https://bsky.app/profile/flutteristascon.flutter.community')
               
         ]),
-        // a(
-        //     classes: ['hero-button'],
-        //     target: Target.blank,
-        //     href: '#',
-        //     [text('RSVP Now')])
+        a(
+            classes: ['hero-button'],
+            target: Target.blank,
+            href: 'https://www.meetup.com/flutterista/events/305942245/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
+            [text('RSVP Now')])
             
       ]),
     ]);
