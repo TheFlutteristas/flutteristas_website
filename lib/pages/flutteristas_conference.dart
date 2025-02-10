@@ -72,6 +72,7 @@ class FlutteristasConferencePage extends StatelessComponent {
         ]),
       ])
     ]);
+    yield Spacer(height: Unit.pixels(10));
     //TODO VeraCheck::  currently the content is not yet loading dynamically. Only the switch between holding page and 2023 conference works.
     if(conferenceYear == "2025") {
       yield div(classes: [

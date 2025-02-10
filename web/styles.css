@@ -786,9 +786,10 @@ div #welcome-items {
   border: 1px solid #ccc;
   border-radius: 14px;
   padding: 10px;
+  margin-bottom: 10px;
   overflow-y: auto;
   white-space: nowrap;
-  margin-bottom: 0;;
+  margin-bottom: 0;
 }
 
 .conference-sidebar .years-list {
@@ -796,7 +797,7 @@ div #welcome-items {
   flex-direction: row;
   gap: 20px;
   list-style-type: none;
-  margin-bottom: 0;;
+  margin-bottom: 0;
 
 }
 
