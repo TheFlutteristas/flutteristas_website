@@ -32,16 +32,22 @@ class _OrganizersState extends State<OrganizersList> {
         "https://${component.projectId}.firebaseio.com/organiser_team/conference_year/${component.conferenceYear}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    var dataFiltered = (data as List).nonNulls.toList();
-    List<OrganizerItem> speakerList = dataFiltered
-        .cast<Map<String, dynamic>>()
-        .map((d) => OrganizerItem.fromJson(d))
-        .toList();
-    speakerList.sort((a, b) {
-      return a.first_name.toLowerCase().compareTo(b.first_name.toLowerCase());
-    });
 
-    return speakerList;
+    if (data == null) {
+      return [];
+    } else {
+      var dataFiltered = (data as List).nonNulls.toList();
+      List<OrganizerItem> speakerList = dataFiltered
+          .cast<Map<String, dynamic>>()
+          .map((d) => OrganizerItem.fromJson(d))
+          .toList();
+      speakerList.sort((a, b) {
+        return a.first_name.toLowerCase().compareTo(b.first_name.toLowerCase());
+      });
+
+      return speakerList;
+    }
+  
   }
 
   @override
@@ -52,11 +58,16 @@ class _OrganizersState extends State<OrganizersList> {
         future: _futureOrganizerItems,
         builder: (BuildContext context,
             AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
+              if (snapshot.data!.isEmpty) {
+            yield div([
+              p([text('Organaizers Coming Soon ...')])
+            ]);
+          } else {
           for (final (index, item) in snapshot.requireData.indexed) {
             Map<dynamic, dynamic> socialIcons = item.socialMedia;
             yield div(
               classes: ['OrganizerItem'],
-              id: 'item-$index',
+              id: 'organizer-$index',
               [
                 img(
                     classes: ['Organizer-photo'],
@@ -93,6 +104,7 @@ class _OrganizersState extends State<OrganizersList> {
                 p(classes: ['Organizer-role'], [text(item.professionalRole)]),
               ],
             );
+          }
           }
         },
       )
