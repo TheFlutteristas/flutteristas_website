@@ -50,100 +50,116 @@ class _AgendaState extends State<AgendaTalkList> {
         "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/${component.conferenceYear}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    var dataFiltered = (data as List).nonNulls.toList();
-    List<AgendaItem> speakerList = dataFiltered
-        .cast<Map<String, dynamic>>()
-        .map((d) => AgendaItem.fromJson(d))
-        .toList();
-    speakerList.sort((a, b) {
-      return a.time.compareTo(b.time);
-    });
-
-    return speakerList;
+    if (data == null) {
+      return [];
+    } else {
+      var dataFiltered = (data as List).nonNulls.toList();
+      List<AgendaItem> speakerList = dataFiltered
+          .cast<Map<String, dynamic>>()
+          .map((d) => AgendaItem.fromJson(d))
+          .toList();
+      speakerList.sort((a, b) {
+        return a.time.compareTo(b.time);
+      });
+      return speakerList;
+    }
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div([
       p(classes: ['tune-in'], [text('Tune-in on')]),
-      h3(classes: ['conf-date'], [text('11 November 2023')]),
+      //TODO we need to add the conference date as a record in the database to fetch it here
+      h3(classes: ['conf-date'], [component.conferenceYear=="2025"? text('5 April 2025'):text('11 November 2023')]),
       FutureBuilder<List<AgendaItem>>(
         initialData: <AgendaItem>[],
         future: _futureAgendaItems,
         builder: (BuildContext context,
             AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
-          for (final (index, item) in snapshot.requireData.indexed) {
-            List<dynamic> speakersList = item.speakers;
-            yield div(
-              classes: ['agenda-item'],
-              id: 'item-$index',
-              [
-                div(classes: [
-                  'date-container'
-                ], [
-                  p(classes: [
-                    'agenda-date'
-                  ], [
-                    //convert time from PTS to UTC then convert it to local timing
-                    text(DateFormat.jm().format(DateTime.parse('${item.time}')
-                        .add(Duration(hours: 8))
-                        .toLocal()))
-                  ]),
-                  p(classes: [
-                    'date-zone'
-                  ], [
-                    //show the time zone for the current user
-                    text(DateTime.parse('${item.time}').toLocal().timeZoneName)
-                  ])
-                ]),
-                div(classes: [
-                  'talk-info'
-                ], [
-                  p(
-                    classes: ['talk-title'],
-                    [
-                      item.type == 'talk'
-                          ? img(
-                              classes: ['type-icon'],
-                              src:
-                                  '/images/female-user-talk-chat-svgrepo-com.svg',
-                            )
-                          : img(
-                              classes: ['type-icon'],
-                              src:
-                                  '/images/activity-community-group-svgrepo-com.svg'),
-                      strong([text(item.title)]),
-                      item.description != ''
-                          ? img(
-                              classes: ['type-icon'],
-                              src: '/images/arrow-down-svgrepo-com.svg')
-                          : span([]),
-                      p(classes: ['talk-description'], [text(item.description)])
-                    ],
-                  ),
+          if (snapshot.data!.isEmpty) {
+            yield div([
+              p([text('Agenda Coming Soon ...')])
+            ]);
+          } else {
+            for (final (index, item) in snapshot.requireData.indexed) {
+              List<dynamic> speakersList = item.speakers;
+
+              yield div(
+                classes: ['agenda-item'],
+                id: 'agenda-item-$index',
+                [
                   div(classes: [
-                    'speaker-container'
+                    'date-container'
                   ], [
-                    for (var item in speakersList)
-                      item['name'] != ''
-                          ? div(classes: [
-                              'speaker-profile'
-                            ], [
-                              img(classes: ['speaker-img'], src: item['photo']),
-                              div([
-                                p(
-                                    classes: ['speaker-name'],
-                                    [text(item['name'])]),
-                                p(
-                                    classes: ['speaker-role'],
-                                    [text(item['company'])])
+                    p(classes: [
+                      'agenda-date'
+                    ], [
+                      //convert time from PTS to UTC then convert it to local timing
+                      text(DateFormat.jm().format(DateTime.parse('${item.time}')
+                          .add(Duration(hours: 8))
+                          .toLocal()))
+                    ]),
+                    p(classes: [
+                      'date-zone'
+                    ], [
+                      //show the time zone for the current user
+                      text(
+                          DateTime.parse('${item.time}').toLocal().timeZoneName)
+                    ])
+                  ]),
+                  div(classes: [
+                    'talk-info'
+                  ], [
+                    p(
+                      classes: ['talk-title'],
+                      [
+                        item.type == 'talk'
+                            ? img(
+                                classes: ['type-icon'],
+                                src:
+                                    '/images/female-user-talk-chat-svgrepo-com.svg',
+                              )
+                            : img(
+                                classes: ['type-icon'],
+                                src:
+                                    '/images/activity-community-group-svgrepo-com.svg'),
+                        strong([text(item.title)]),
+                        item.description != ''
+                            ? img(
+                                classes: ['type-icon'],
+                                src: '/images/arrow-down-svgrepo-com.svg')
+                            : span([]),
+                        p(
+                            classes: ['talk-description'],
+                            [text(item.description)])
+                      ],
+                    ),
+                    div(classes: [
+                      'speaker-container'
+                    ], [
+                      for (var item in speakersList)
+                        item['name'] != ''
+                            ? div(classes: [
+                                'speaker-profile'
+                              ], [
+                                img(
+                                    classes: ['speaker-img'],
+                                    src: item['photo']),
+                                div([
+                                  p(
+                                      classes: ['speaker-name'],
+                                      [text(item['name'])]),
+                                  p(
+                                      classes: ['speaker-role'],
+                                      [text(item['company'])])
+                                ])
                               ])
-                            ])
-                          : span([]),
+                            : span([]),
+                    ])
                   ])
-                ])
-              ],
-            );
+                ],
+              );
+            }
           }
         },
       )

@@ -810,7 +810,7 @@ div #welcome-items {
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: left;
+  justify-content: space-around;
   align-items: center;
   gap: 30px;
   padding: 20px;
@@ -824,10 +824,30 @@ div #welcome-items {
 }
 
 
+.conference-hero .conference-details, .coming-soon-banner .conference-details {
+  color: #20005E;
+  background-color: #c9b0feeb;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+
 .conference-title h2 {
   font-size: 3.5625em;
   font-weight: 800;
   letter-spacing: -1px;
+}
+
+p.conference-coming-soon {
+  font-size: 1.125em;
+  text-transform: uppercase;
+  font-weight: 800;
+  background-color: #F1ECF1;
+  border: 1px solid #afaab4;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 10px;
 }
 
 @media only screen and (max-width:52.5em) {
@@ -857,7 +877,7 @@ div #welcome-items {
 /*************************************************************
 *                                    coming soon banner
 *************************************************************/
-.coming-soon-banner {
+/* .conference-hero {
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -874,7 +894,7 @@ div #welcome-items {
   border-radius: 14px;
 }
 
-.coming-soon-banner .conference-details {
+.conference-hero .conference-details, .coming-soon-banner .conference-details {
   color: #20005E;
   background-color: #c9b0feeb;
   border: 1px solid #ccc;
@@ -921,7 +941,7 @@ p.conference-coming-soon {
   .activities-item {
     width: 50%;
   }
-}
+} */
 
 
 /*************************************************************

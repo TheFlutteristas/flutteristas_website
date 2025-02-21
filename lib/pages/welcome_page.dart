@@ -16,7 +16,7 @@ class WelcomePage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: [
-      'coming-soon-banner'
+      'conference-hero'
     ], [
       div(classes: [
         'conference-title'

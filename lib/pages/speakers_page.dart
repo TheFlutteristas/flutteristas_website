@@ -33,71 +33,92 @@ class _SpeakersState extends State<SpeakersList> {
         "https://${component.projectId}.firebaseio.com/speakers/conference_year/${component.conferenceYear}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    var dataFiltered = (data as List).nonNulls.toList();
-    List<SpeakerItem> speakerList = dataFiltered
-        .cast<Map<String, dynamic>>()
-        .map((d) => SpeakerItem.fromJson(d))
-        .toList();
-    speakerList.sort((a, b) {
-      return a.name.toLowerCase().compareTo(b.name.toLowerCase());
-    });
 
-    return speakerList;
+    if (data == null) {
+      return [];
+    } else {
+      var dataFiltered = (data as List).nonNulls.toList();
+      List<SpeakerItem> speakerList = dataFiltered
+          .cast<Map<String, dynamic>>()
+          .map((d) => SpeakerItem.fromJson(d))
+          .toList();
+          if(component.conferenceYear == '2025'){
+ List<SpeakerItem> trimedList=  speakerList.sublist(0, 3);
+      trimedList.sort((a, b) {
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
+      return trimedList;
+          }else{
+            speakerList.sort((a, b) {
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
+      return speakerList;
+          }
+      
+
+      
+    }
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield Grid(columns: 4, gap: Unit.pixels(30), spread: true, children: [
       FutureBuilder<List<SpeakerItem>>(
-        initialData: <SpeakerItem>[],
-        future: _futureSpeakerItems,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
-          for (final (index, item) in snapshot.requireData.indexed) {
-            Map<dynamic, dynamic> socialIcons = item.socialMedia;
+          initialData: <SpeakerItem>[],
+          future: _futureSpeakerItems,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
+            if (snapshot.data!.isEmpty) {
+              yield div([
+                p([text('Speakers Coming Soon ...')])
+              ]);
+            } else {
+              for (final (index, item) in snapshot.requireData.indexed) {
+                Map<dynamic, dynamic> socialIcons = item.socialMedia;
 
-            yield div(
-              classes: ['SpeakerItem'],
-              id: 'item-$index',
-              [
-                img(
-                    classes: ['speaker-photo'],
-                    src: item.photoLink,
-                    alt: 'speaker-photo'),
-                div(classes: [
-                  'social-bar'
-                ], [
-                  for (var item in socialIcons.entries) socialIcon(item),
-                ]),
-                h3(classes: [
-                  'speaker-name'
-                ], [
-                  text(item.name),
-                  div(classes: [
-                    'speaker-bio'
-                  ], [
-                    p([text(item.bio)])
-                  ])
-                ]),
-                p(classes: ['speaker-role'], [text(item.professionalRole)]),
-                div(classes: [
-                  'title-talk'
-                ], [
-                  p(classes: [
-                    'talk-container'
-                  ], [
+                yield div(
+                  classes: ['SpeakerItem'],
+                  id: 'speaker-$index',
+                  [
                     img(
-                        src: '/images/female-user-talk-chat-svgrepo-com.svg',
-                        alt: 'speaker-icon'),
-                    span(classes: ['talk-lable'], [text('Talk title: ')]),
-                    span(classes: ['talk-title'], [text(item.titleTalk)])
-                  ]),
-                ]),
-              ],
-            );
-          }
-        },
-      )
+                        classes: ['speaker-photo'],
+                        src: item.photoLink,
+                        alt: 'speaker-photo'),
+                    div(classes: [
+                      'social-bar'
+                    ], [
+                      for (var item in socialIcons.entries) socialIcon(item),
+                    ]),
+                    h3(classes: [
+                      'speaker-name'
+                    ], [
+                      text(item.name),
+                      div(classes: [
+                        'speaker-bio'
+                      ], [
+                        p([text(item.bio)])
+                      ])
+                    ]),
+                    p(classes: ['speaker-role'], [text(item.professionalRole)]),
+                    div(classes: [
+                      'title-talk'
+                    ], [
+                      p(classes: [
+                        'talk-container'
+                      ], [
+                        img(
+                            src:
+                                '/images/female-user-talk-chat-svgrepo-com.svg',
+                            alt: 'speaker-icon'),
+                        span(classes: ['talk-lable'], [text('Talk title: ')]),
+                        span(classes: ['talk-title'], [text(item.titleTalk)])
+                      ]),
+                    ]),
+                  ],
+                );
+              }
+            }
+          })
     ]);
   }
 

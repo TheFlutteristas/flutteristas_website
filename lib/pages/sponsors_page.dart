@@ -34,44 +34,54 @@ class _SponsorsState extends State<SponsorsList> {
         "https://${component.projectId}.firebaseio.com/sponsors/conference_year/${component.conferenceYear}/${component.category}.json";
     final resp = await http.get(Uri.parse(url));
     final data = json.decode(resp.body);
-    var dataFiltered = (data as List).nonNulls.toList();
 
-    return [
-      ...(dataFiltered) //
-          .cast<Map<String, dynamic>>()
-          .map(SponsorItem.fromJson),
-    ];
+    if (data == null) {
+      return [];
+    } else {
+      var dataFiltered = (data as List).nonNulls.toList();
+
+      return [
+        ...(dataFiltered) //
+            .cast<Map<String, dynamic>>()
+            .map(SponsorItem.fromJson),
+      ];
+    }
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield Row(children: [
       FutureBuilder<List<SponsorItem>>(
-        initialData: <SponsorItem>[],
-        future: _futureSponsorItems,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<SponsorItem>> snapshot) sync* {
-          for (final (index, item) in snapshot.requireData.indexed) {
-            yield div(
-              classes: ['sponsorItem'],
-              id: 'item-$index',
-              [
-                a(target: Target.blank, href: item.website, [
-                  img(
-                      classes: ['sponsor-photo'],
-                      src: item.logoLink,
-                      alt: 'sponsor-photo')
-                ]),
-                h4(classes: [
-                  'sponsor-name'
-                ], [
-                  text(item.name),
-                ]),
-              ],
-            );
-          }
-        },
-      )
+          initialData: <SponsorItem>[],
+          future: _futureSponsorItems,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<SponsorItem>> snapshot) sync* {
+            if (snapshot.data!.isEmpty) {
+              yield div([
+                p([text('Sponsors Coming Soon ...')])
+              ]);
+            } else {
+              for (final (index, item) in snapshot.requireData.indexed) {
+                yield div(
+                  classes: ['sponsorItem'],
+                  id: 'sponsors-$index',
+                  [
+                    a(target: Target.blank, href: item.website, [
+                      img(
+                          classes: ['sponsor-photo'],
+                          src: item.logoLink,
+                          alt: 'sponsor-photo')
+                    ]),
+                    h4(classes: [
+                      'sponsor-name'
+                    ], [
+                      text(item.name),
+                    ]),
+                  ],
+                );
+              }
+            }
+          })
     ]);
   }
 }
