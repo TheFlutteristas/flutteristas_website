@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutteristas/modules/SpeakerItem.dart';
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
 import 'package:http/http.dart' as http;
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 
 class SpeakersList extends StatefulComponent {
   const SpeakersList({
@@ -42,21 +42,11 @@ class _SpeakersState extends State<SpeakersList> {
           .cast<Map<String, dynamic>>()
           .map((d) => SpeakerItem.fromJson(d))
           .toList();
-          if(component.conferenceYear == '2025'){
- List<SpeakerItem> trimedList=  speakerList.sublist(0, 3);
-      trimedList.sort((a, b) {
-        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
-      });
-      return trimedList;
-          }else{
+          
             speakerList.sort((a, b) {
         return a.name.toLowerCase().compareTo(b.name.toLowerCase());
       });
       return speakerList;
-          }
-      
-
-      
     }
   }
 
@@ -77,41 +67,31 @@ class _SpeakersState extends State<SpeakersList> {
                 Map<dynamic, dynamic> socialIcons = item.socialMedia;
 
                 yield div(
-                  classes: ['SpeakerItem'],
+                  classes: 'SpeakerItem',
                   id: 'speaker-$index',
                   [
                     img(
-                        classes: ['speaker-photo'],
+                        classes: 'speaker-photo',
                         src: item.photoLink,
                         alt: 'speaker-photo'),
-                    div(classes: [
-                      'social-bar'
-                    ], [
+                    div(classes: 'social-bar', [
                       for (var item in socialIcons.entries) socialIcon(item),
                     ]),
-                    h3(classes: [
-                      'speaker-name'
-                    ], [
+                    h3(classes: 'speaker-name', [
                       text(item.name),
-                      div(classes: [
-                        'speaker-bio'
-                      ], [
+                      div(classes: 'speaker-bio', [
                         p([text(item.bio)])
                       ])
                     ]),
-                    p(classes: ['speaker-role'], [text(item.professionalRole)]),
-                    div(classes: [
-                      'title-talk'
-                    ], [
-                      p(classes: [
-                        'talk-container'
-                      ], [
+                    p(classes: 'speaker-role', [text(item.professionalRole)]),
+                    div(classes: 'title-talk', [
+                      p(classes: 'talk-container', [
                         img(
                             src:
                                 '/images/female-user-talk-chat-svgrepo-com.svg',
                             alt: 'speaker-icon'),
-                        span(classes: ['talk-lable'], [text('Talk title: ')]),
-                        span(classes: ['talk-title'], [text(item.titleTalk)])
+                        span(classes: 'talk-lable', [text('Talk title: ')]),
+                        span(classes: 'talk-title', [text(item.titleTalk)])
                       ]),
                     ]),
                   ],
@@ -124,7 +104,7 @@ class _SpeakersState extends State<SpeakersList> {
 
   Component socialIcon(MapEntry<dynamic, dynamic> item) {
     if (item.value == '') {
-      return span(classes: ['empty-span'], []);
+      return span(classes: 'empty-span', []);
     } else {
       switch (item.key as String) {
         case 'x':

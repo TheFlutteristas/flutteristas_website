@@ -1,7 +1,6 @@
 import 'dart:html';
-
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class CodeOfConduct extends StatelessComponent {
@@ -56,7 +55,7 @@ class _ProductItemState extends State<_ProductItem> {
   Iterable<Component> build(BuildContext context) sync* {
     Unit.em(1);
     yield div(
-      classes: ['welcome-item'],
+      classes: 'welcome-item',
       [
         a(
           href: component.route.path,

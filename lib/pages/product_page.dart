@@ -2,8 +2,8 @@ import 'dart:html';
 
 import 'package:flutteristas/pages/product_page_1.dart';
 import 'package:flutteristas/pages/product_page_note.dart';
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class ProductSummaryPage extends StatelessComponent {
@@ -61,7 +61,7 @@ class _WelcomeItemState extends State<_ProductItem> {
   Iterable<Component> build(BuildContext context) sync* {
     Unit.em(1);
     yield div(
-      classes: ['product-item'],
+      classes: 'product-item',
       [
         a(
           href: component.route.path,

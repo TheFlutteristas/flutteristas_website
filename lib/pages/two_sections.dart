@@ -1,7 +1,6 @@
 import 'dart:html';
-
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class TwoSectionPage extends StatelessComponent {
@@ -90,7 +89,7 @@ class _TwoSectionItemState extends State<_TwoSection> {
   Iterable<Component> build(BuildContext context) sync* {
     Unit.em(1);
     yield div(
-      classes: ['two-section-item'],
+      classes: 'two-section-item',
       [
         a(
           href: component.route.path,

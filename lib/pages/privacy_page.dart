@@ -1,5 +1,5 @@
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class PrivacyPolicyPage extends StatelessComponent {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
-import 'package:jaspr/html.dart';
 //import 'package:jaspr_router/jaspr_router.dart';
 import 'package:http/http.dart' as http;
+import 'package:jaspr/jaspr.dart';
 
 // class AgendaPage extends StatelessComponent {
 //   const AgendaPage({super.key});
@@ -68,9 +68,9 @@ class _AgendaState extends State<AgendaTalkList> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div([
-      p(classes: ['tune-in'], [text('Tune-in on')]),
+      p(classes: 'tune-in', [text('Tune-in on')]),
       //TODO we need to add the conference date as a record in the database to fetch it here
-      h3(classes: ['conf-date'], [component.conferenceYear=="2025"? text('5 April 2025'):text('11 November 2023')]),
+      h3(classes: 'conf-date', [component.conferenceYear=="2025"? text('5 April 2025'):text('11 November 2023')]),
       FutureBuilder<List<AgendaItem>>(
         initialData: <AgendaItem>[],
         future: _futureAgendaItems,
@@ -85,72 +85,60 @@ class _AgendaState extends State<AgendaTalkList> {
               List<dynamic> speakersList = item.speakers;
 
               yield div(
-                classes: ['agenda-item'],
+                classes: 'agenda-item',
                 id: 'agenda-item-$index',
                 [
-                  div(classes: [
-                    'date-container'
-                  ], [
-                    p(classes: [
-                      'agenda-date'
-                    ], [
+                  div(classes: 'date-container', [
+                    p(classes: 'agenda-date', [
                       //convert time from PTS to UTC then convert it to local timing
                       text(DateFormat.jm().format(DateTime.parse('${item.time}')
                           .add(Duration(hours: 8))
                           .toLocal()))
                     ]),
-                    p(classes: [
-                      'date-zone'
-                    ], [
+                    p(classes: 'date-zone', [
                       //show the time zone for the current user
                       text(
                           DateTime.parse('${item.time}').toLocal().timeZoneName)
                     ])
                   ]),
-                  div(classes: [
-                    'talk-info'
-                  ], [
+                  div(classes: 'talk-info', [
                     p(
-                      classes: ['talk-title'],
+                      classes: 'talk-title',
                       [
                         item.type == 'talk'
                             ? img(
-                                classes: ['type-icon'],
+                                classes: 'type-icon',
                                 src:
                                     '/images/female-user-talk-chat-svgrepo-com.svg',
                               )
                             : img(
-                                classes: ['type-icon'],
+                                classes: 'type-icon',
                                 src:
                                     '/images/activity-community-group-svgrepo-com.svg'),
                         strong([text(item.title)]),
                         item.description != ''
                             ? img(
-                                classes: ['type-icon'],
+                                classes: 'type-icon',
                                 src: '/images/arrow-down-svgrepo-com.svg')
                             : span([]),
                         p(
-                            classes: ['talk-description'],
+                            classes: 'talk-description',
                             [text(item.description)])
                       ],
                     ),
-                    div(classes: [
-                      'speaker-container'
-                    ], [
+                    div(classes: 'speaker-container', [
                       for (var item in speakersList)
                         item['name'] != ''
-                            ? div(classes: [
-                                'speaker-profile'
-                              ], [
+                            ? div(classes: 'speaker-profile', [
                                 img(
-                                    classes: ['speaker-img'],
+                                    classes: 'speaker-img',
                                     src: item['photo']),
                                 div([
                                   p(
-                                      classes: ['speaker-name'],
+                                      classes: 'speaker-name',
                                       [text(item['name'])]),
                                   p(
-                                      classes: ['speaker-role'],
+                                      classes: 'speaker-role',
                                       [text(item['company'])])
                                 ])
                               ])

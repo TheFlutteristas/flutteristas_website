@@ -1,5 +1,7 @@
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+
+
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 
 class ProductLayout extends StatelessComponent {
   const ProductLayout({
@@ -17,107 +19,106 @@ class ProductLayout extends StatelessComponent {
   final bool withFlutter;
   final List<Component> children;
 
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield Column(
-      children: [
-        Spacer(height: Unit.em(0.5)),
-        div(
-          classes: ['product-layout'],
-          [
-            div(
-              classes: ['product-layout-icon'],
-              [
-                img(
-                  src: image,
-                  styles: Styles.box(
-                    width: Unit.percent(100),
-                  ),
-                ),
-              ],
-            ),
-            div(
-              classes: ['product-layout-content'],
-              children,
-            ),
-          ],
-        ),
-        Spacer(height: Unit.em(2)),
-        div(
-          classes: ['product-layout-links'],
-          [
-            if (appStoreUrl.isNotEmpty) //
-              a(
-                href: appStoreUrl,
-                target: Target.blank,
-                [
-                  img(src: '/images/ios_app_store.png', height: 54),
-                ],
-              ),
-            if (playStoreUrl.isNotEmpty) //
-              a(
-                href: playStoreUrl,
-                target: Target.blank,
-                [
-                  img(src: '/images/google_play_store.png', height: 54),
-                ],
-              ),
-          ],
-        ),
-        Spacer(height: Unit.em(2)),
-        if (withFlutter)
+   @override
+    Iterable<Component> build(BuildContext context) sync* {
+      yield Column(
+        children: [
+          Spacer(height: Unit.em(0.5)),
           div(
-            styles: Styles.combine([
-              Styles.flexbox(
-                direction: FlexDirection.column,
-                justifyContent: JustifyContent.center,
-              ),
-              Styles.text(
-                align: TextAlign.center,
-              ),
-            ]),
+            classes: 'product-layout',
             [
-              p([
-                text(
-                    'Made with a single codebase using the Flutter SDK by Google')
-              ]),
-              div([
-                a(
-                  href: 'https://flutter.dev/',
-                  target: Target.blank,
-                  [img(src: '/images/flutter.png', height: 54)],
-                )
-              ]),
-              Spacer(height: Unit.em(1)),
-              p(
-                styles: Styles.text(
-                  fontSize: Unit.rem(0.8),
-                  color: Colors.gray,
-                ),
+              div(
+                classes: 'product-layout-icon',
                 [
-                  text(
-                    'Flutter and the related logo are trademarks of Google LLC.<br>'
-                    'We are not endorsed by or affiliated with Google LLC.',
-                    rawHtml: true,
-                  )
+                  img(
+                    src: image,
+                    styles: Styles.box(
+                      width: Unit.percent(100),
+                    ),
+                  ),
                 ],
               ),
-              Spacer(height: Unit.em(1)),
-              // p(
-              //   styles: Styles.text(
-              //     fontSize: Unit.rem(0.8),
-              //     color: Colors.gray,
-              //   ),
-              //   [
-              //     text(
-              //       agenda,
-              //       rawHtml: true,
-              //     )
-              //   ],
-              // ),
+              div(
+                classes: 'product-layout-content',
+                children,
+              ),
             ],
           ),
-      ],
-    );
+          Spacer(height: Unit.em(2)),
+          div(
+            classes: 'product-layout-links',
+            [
+              if (appStoreUrl.isNotEmpty) //
+                a(
+                  href: appStoreUrl,
+                  target: Target.blank,
+                  [
+                    img(src: '/images/ios_app_store.png', height: 54),
+                  ],
+                ),
+              if (playStoreUrl.isNotEmpty) //
+                a(
+                  href: playStoreUrl,
+                  target: Target.blank,
+                  [
+                    img(src: '/images/google_play_store.png', height: 54),
+                  ],
+                ),
+            ],
+          ),
+          Spacer(height: Unit.em(2)),
+          if (withFlutter)
+            div(
+              styles: Styles.combine([
+                Styles.flexbox(
+                  direction: FlexDirection.column,
+                  justifyContent: JustifyContent.center,
+                ),
+                Styles.text(
+                  align: TextAlign.center,
+                ),
+              ]),
+              [
+                p([
+                  text(
+                      'Made with a single codebase using the Flutter SDK by Google')
+                ]),
+                div([
+                  a(
+                    href: 'https://flutter.dev/',
+                    target: Target.blank,
+                    [img(src: '/images/flutter.png', height: 54)],
+                  )
+                ]),
+                Spacer(height: Unit.em(1)),
+                p(
+                  styles: Styles.text(
+                    fontSize: Unit.rem(0.8),
+                    color: Colors.gray,
+                  ),
+                  [
+                    text(
+                      'Flutter and the related logo are trademarks of Google LLC.<br>'
+                      'We are not endorsed by or affiliated with Google LLC.',
+                    )
+                  ],
+                ),
+                Spacer(height: Unit.em(1)),
+                // p(
+                //   styles: Styles.text(
+                //     fontSize: Unit.rem(0.8),
+                //     color: Colors.gray,
+                //   ),
+                //   [
+                //     text(
+                //       agenda,
+                //       rawHtml: true,
+                //     )
+                //   ],
+                // ),
+              ],
+            ),
+        ],
+      );
+    }
   }
-}

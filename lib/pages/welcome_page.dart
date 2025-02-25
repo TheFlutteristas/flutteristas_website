@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'package:flutteristas/pages/code_of_conduct.dart';
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class WelcomePage extends StatelessComponent {
@@ -15,18 +15,12 @@ class WelcomePage extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: [
-      'conference-hero'
-    ], [
-      div(classes: [
-        'conference-title'
-      ], [
-        p(classes: ['conference-coming-soon'], [Text('Coming Soon!')]),
-        h2(classes: ['conference-text'], [Text('Flutteristas'), br(),Text('Conference 2025')]),
+    yield div(classes: 'conference-hero', [
+      div(classes: 'conference-title', [
+        p(classes: 'conference-coming-soon', [Text('Coming Soon!')]),
+        h2(classes: 'conference-text', [Text('Flutteristas'), br(), Text('Conference 2025')]),
       ]),
-      div(classes: [
-        'conference-details'
-      ], [
+      div(classes: 'conference-details', [
         p([
           img(
               src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
@@ -55,148 +49,144 @@ class WelcomePage extends StatelessComponent {
           Text('FlutteristasConf2025 - '),
           a([
             img(
-                classes: ['social-icon'],
+                classes: 'social-icon',
                 src: '/images/x-logo-conf.svg',
                 alt: 'twitter-icon')
           ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
           a([
             img(
-                classes: ['social-icon'],
+                classes: 'social-icon',
                 src: '/images/Mastodon-conf.svg',
                 alt: 'mastodon-icon')
           ],
               target: Target.blank,
               href: 'https://fluttercommunity.social/@FlutteristasCon'),
-              a([
-          img(
-              classes: ['social-icon'],
-              src: '/images/bluesky-icon-conf.svg',
-              alt: 'facebook-icon')
-        ],
-            target: Target.blank,
-            href:
-                'https://bsky.app/profile/flutteristascon.flutter.community')
-              
+          a([
+            img(
+                classes: 'social-icon',
+                src: '/images/bluesky-icon-conf.svg',
+                alt: 'facebook-icon')
+          ],
+              target: Target.blank,
+              href: 'https://bsky.app/profile/flutteristascon.flutter.community')
         ]),
         a(
-            classes: ['hero-button'],
+            classes: 'hero-button',
             target: Target.blank,
             href: 'https://www.meetup.com/flutterista/events/305942245/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
             [text('RSVP Now')])
-            
       ]),
     ]);
-    yield div(classes: [
-      'product-layout',
-      'hero-section'
-    ], [
+    yield div(classes: 
+      'product-layout hero-section'
+    , [
       div([
-        // Text(
-        //   'Thanks for stopping by! 💙💜',
-        // ),
-        // yield Text(
-        //   '',
-        // );
+      // Text(
+      //   'Thanks for stopping by! 💙💜',
+      // ),
+      // yield Text(
+      //   '',
+      // );
 
-        h2(
-          [
-            text('Who we are?'),
-          ],
+      h2(
+        [
+        text('Who we are?'),
+        ],
+      ),
+      p(
+        classes: 'hero-text',
+        [
+        Text(
+          'The Flutteristas is a world-wide community of people whose gender identity is either female or non-binary and '
+          'have an interest in the Flutter SDK.💙',
         ),
-        p(
-          classes: ['hero-text'],
-          [
-            Text(
-              'The Flutteristas is a world-wide community of people whose gender identity is either female or non-binary and '
-              'have an interest in the Flutter SDK.💙',
-            ),
-          ],
-        ),
-        a(
-          classes: ['hero-button'],
-          href: '#join-layout',
-          target: Target.self,
-          [text('Apply now')],
-        )
+        ],
+      ),
+      a(
+        classes: 'hero-button',
+        href: '#join-layout',
+        target: Target.self,
+        [text('Apply now')],
+      )
       ]),
       div([
-        img(
-          src: '/images/FlutterInteract-2019.jpg',
-          alt: 'flutteristas-image',
-          styles: Styles.box(
-            width: Unit.percent(100),
-            radius: BorderRadius.circular(Unit.pixels(14.0)),
-          ),
-        )
+      img(
+        src: '/images/FlutterInteract-2019.jpg',
+        alt: 'flutteristas-image',
+        styles: Styles.box(
+        width: Unit.percent(100),
+        radius: BorderRadius.circular(Unit.pixels(14.0)),
+        ),
+      )
       ])
     ]);
     yield Spacer(height: Unit.pixels(100));
     yield h2(
       [
-        text('Why join?'),
+      text('Why join?'),
       ],
     );
-    yield div(classes: [
+    yield div(classes: 
       'activities-section'
-    ], [
-      div(classes: [
-        'activities-item'
-      ], [
-        img(
-            classes: ['activities-icon'],
-            src: '/images/4857010.png',
-            alt: 'activities-icon'),
-        h3([text('Meetings')]),
-        p(classes: [
-          'activities-text'
-        ], [
-          text('Monthly meetings to connect and share news and achievements')
-        ])
+    , [
+      div(classes: 
+      'activities-item'
+      , [
+      img(
+        classes: 'activities-icon',
+        src: '/images/4857010.png',
+        alt: 'activities-icon'),
+      h3([text('Meetings')]),
+      p(classes: 
+        'activities-text'
+      , [
+        text('Monthly meetings to connect and share news and achievements')
+      ])
       ]),
-      div(classes: [
-        'activities-item'
-      ], [
-        img(
-            classes: ['activities-icon'],
-            src: '/images/6491438.png',
-            alt: 'activities-icon'),
-        h3([text('Meet the Flutter Team')]),
-        p(classes: [
-          'activities-text'
-        ], [
-          text(
-              'Guests from Google\'s Flutter team come and meet with us occasionally to share news, tips and answer questions.')
-        ])
+      div(classes: 
+      'activities-item'
+      , [
+      img(
+        classes: 'activities-icon',
+        src: '/images/6491438.png',
+        alt: 'activities-icon'),
+      h3([text('Meet the Flutter Team')]),
+      p(classes: 
+        'activities-text'
+      , [
+        text(
+          'Guests from Google\'s Flutter team come and meet with us occasionally to share news, tips and answer questions.')
+      ])
       ]),
-      div(classes: [
-        'activities-item'
-      ], [
-        img(
-            classes: ['activities-icon'],
-            src: '/images/4892807.png',
-            alt: 'activities-icon'),
-        h3([text('Volunteering & Experiences')]),
-        p(classes: [
-          'activities-text'
-        ], [
-          text(
-              'Flutteristas volunteer their time and talents in producing outstanding Flutterista conference experiences that reflect our members\' core competencies.')
-        ])
+      div(classes: 
+      'activities-item'
+      , [
+      img(
+        classes: 'activities-icon',
+        src: '/images/4892807.png',
+        alt: 'activities-icon'),
+      h3([text('Volunteering & Experiences')]),
+      p(classes: 
+        'activities-text'
+      , [
+        text(
+          'Flutteristas volunteer their time and talents in producing outstanding Flutterista conference experiences that reflect our members\' core competencies.')
+      ])
       ]),
-      div(classes: [
-        'activities-item'
-      ], [
-        img(
-            classes: ['activities-icon'],
-            src: '/images/7037084.png',
-            alt: 'activities-icon'),
-        h3([text('Speaker\'s training')]),
-        p(classes: [
-          'activities-text'
-        ], [
-          text(
-              'Part of the conference experience is training conducted for the speakers by professionals to let them shine in their talk and gain attention.')
-        ])
+      div(classes: 
+      'activities-item'
+      , [
+      img(
+        classes: 'activities-icon',
+        src: '/images/7037084.png',
+        alt: 'activities-icon'),
+      h3([text('Speaker\'s training')]),
+      p(classes: 
+        'activities-text'
+      , [
+        text(
+          'Part of the conference experience is training conducted for the speakers by professionals to let them shine in their talk and gain attention.')
+      ])
       ]),
     ]);
     yield Spacer(height: Unit.pixels(100));
@@ -206,15 +196,13 @@ class WelcomePage extends StatelessComponent {
       ],
     );
     //yield br();
-    yield div(id: 'join-layout', classes: [
-      'join-layout',
-      'product-layout'
-    ], [
+    yield div(id: 'join-layout', classes: 
+      'join-layout product-layout'
+    , [
       div([
-        div(classes: [
-          'product-layout',
-          'join-item'
-        ], [
+        div(classes: 
+          'product-layout join-item'
+        , [
           div([
             img(
                 src: '/images/number-1-svgrepo-com.svg',
@@ -231,13 +219,12 @@ class WelcomePage extends StatelessComponent {
             ]),
           ])
         ]),
-        div(classes: [
-          'product-layout',
-          'join-item'
-        ], [
+        div(classes: 
+          'product-layout join-item'
+        , [
           div([
             img(
-                classes: ['arrow-1'],
+                classes: 'arrow-1',
                 src: '/images/Arrow15.png',
                 styles: Styles.box(
                   height: Unit.pixels(100),
@@ -261,7 +248,7 @@ class WelcomePage extends StatelessComponent {
           ]),
           div([
             img(
-                classes: ['arrow-2'],
+                classes: 'arrow-2',
                 src: '/images/Arrow07.png',
                 styles: Styles.box(
                   height: Unit.pixels(100),
@@ -269,10 +256,9 @@ class WelcomePage extends StatelessComponent {
                 alt: 'arrow-image')
           ])
         ]),
-        div(classes: [
-          'product-layout',
-          'join-item'
-        ], [
+        div(classes: 
+          'product-layout join-item'
+        , [
           div([
             img(
                 src: '/images/number-3-svgrepo-com.svg',
@@ -306,11 +292,11 @@ class WelcomePage extends StatelessComponent {
         ])
       ]),
       div(
-        classes: ['join-section'],
+        classes: 'join-section',
         [
           img(src: '/images/flutteristas-dash.png', alt: 'dash'),
           a(
-            classes: ['hero-button'],
+            classes: 'hero-button',
             href:
                 'https://docs.google.com/forms/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
             target: Target.blank,
@@ -340,7 +326,7 @@ class _ProductItemState extends State<_ProductItem> {
   Iterable<Component> build(BuildContext context) sync* {
     Unit.em(1);
     yield div(
-      classes: ['welcome-item'],
+      classes: 'welcome-item',
       [
         a(
           href: component.route.path,

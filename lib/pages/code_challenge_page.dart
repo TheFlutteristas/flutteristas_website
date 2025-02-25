@@ -1,4 +1,5 @@
-import 'package:jaspr/html.dart';
+
+import 'package:jaspr/jaspr.dart';
 
 class CodeChallenge extends StatelessComponent {
 
@@ -27,31 +28,27 @@ class CodeChallenge extends StatelessComponent {
       p([
         text('Submissions are due by 10 November at 3:00AM GMT.'),
       ]),
-      p([
+       p([
         a(
-          classes: ['hero-button'],
+          classes: 'hero-button',
           href:
               'https://docs.google.com/forms/d/e/1FAIpQLSe5pS0_1_lKhskyIQHFgpq2gxNlkSguRn5jPdN7HSVaa3JD_A/viewform',
           target: Target.blank,
           [text('Get started!')],
         ),
-      ])
-    ]);
-    yield div(classes: [
-      'code-challenge-image'
-    ], [
-      div(classes: [
-        'code-challenge-sponsor'
-      ], [
+            ])
+          ]);
+          yield div(classes: 'code-challenge-image', [
+            div(classes: 'code-challenge-sponsor', [
         span([text('Brought to you by ')]),
         a(href: 'https://invertase.io/', target: Target.blank, [
           img(
-              classes: ['sponsor-logo'],
+              classes: 'sponsor-logo',
               src: '/images/invertase_logo.png',
               alt: 'sponsor-logo')
         ]),
-      ]),
-      img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
-    ]);
-  }
-}
+            ]),
+            img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
+          ]);
+        }
+      }

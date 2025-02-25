@@ -1,7 +1,5 @@
-// import 'dart:html';
-
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class FlutteristasMap extends StatelessComponent {
@@ -15,12 +13,10 @@ class FlutteristasMap extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: [
-      'map'
-    ], [
+    yield div(classes: 'map', [
       Spacer(height: Unit.pixels(50)),
       iframe(
-          classes: ['map-iframe'],
+          classes: 'map-iframe',
           [],
           src:
               'https://www.google.com/maps/d/u/0/embed?mid=1RU8SFU9MbegyUAnX8p9DvuinxsbgQBA&ehbc=2E312F&noprof=1'),
