@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
 import 'package:http/http.dart' as http;
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 
 class OrganizersList extends StatefulComponent {
   const OrganizersList({
@@ -58,53 +58,45 @@ class _OrganizersState extends State<OrganizersList> {
         future: _futureOrganizerItems,
         builder: (BuildContext context,
             AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
-              if (snapshot.data!.isEmpty) {
+          if (snapshot.data!.isEmpty) {
             yield div([
               p([text('Organaizers Coming Soon ...')])
             ]);
           } else {
-          for (final (index, item) in snapshot.requireData.indexed) {
-            Map<dynamic, dynamic> socialIcons = item.socialMedia;
-            yield div(
-              classes: ['OrganizerItem'],
-              id: 'organizer-$index',
-              [
-                img(
-                    classes: ['Organizer-photo'],
-                    src: item.photoLink,
-                    alt: 'Organizer-photo'),
-                div(classes: [
-                  'social-bar'
-                ], [
-                  for (var item in socialIcons.entries) social_icon(item),
-                ]),
-                h3(classes: [
-                  'Organizer-name'
-                ], [
-                  text(item.first_name),
-                  text(' '),
-                  text(item.last_name),
-                  div(classes: [
-                    'Organizer-bio'
-                  ], [
-                    p([text(item.bio)])
-                  ])
-                ]),
-                item.company != ''
-                    ? div(classes: [
-                        'company'
-                      ], [
-                        img(
-                            classes: ['company-icon'],
-                            src: '/images/company-svgrepo-com.svg',
-                            alt: 'company-icon'),
-                        text(item.company)
-                      ])
-                    : span([]),
-                p(classes: ['Organizer-role'], [text(item.professionalRole)]),
-              ],
-            );
-          }
+            for (final (index, item) in snapshot.requireData.indexed) {
+              Map<dynamic, dynamic> socialIcons = item.socialMedia;
+              yield div(
+                classes: 'OrganizerItem',
+                id: 'organizer-$index',
+                [
+                  img(
+                      classes: 'Organizer-photo',
+                      src: item.photoLink,
+                      alt: 'Organizer-photo'),
+                  div(classes: 'social-bar', [
+                    for (var item in socialIcons.entries) social_icon(item),
+                  ]),
+                  h3(classes: 'Organizer-name', [
+                    text(item.first_name),
+                    text(' '),
+                    text(item.last_name),
+                    div(classes: 'Organizer-bio', [
+                      p([text(item.bio)])
+                    ])
+                  ]),
+                  item.company != ''
+                      ? div(classes: 'company', [
+                          img(
+                              classes: 'company-icon',
+                              src: '/images/company-svgrepo-com.svg',
+                              alt: 'company-icon'),
+                          text(item.company)
+                        ])
+                      : span([]),
+                  p(classes: 'Organizer-role', [text(item.professionalRole)]),
+                ],
+              );
+            }
           }
         },
       )
@@ -113,7 +105,7 @@ class _OrganizersState extends State<OrganizersList> {
 
   Component social_icon(MapEntry<dynamic, dynamic> item) {
     if (item.value == '') {
-      return span(classes: ['empty-span'], []);
+      return span(classes: 'empty-span', []);
     } else {
       switch (item.key as String) {
         case 'x':

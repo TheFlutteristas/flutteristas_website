@@ -1,7 +1,6 @@
 import 'dart:html';
-
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class Column3Page extends StatelessComponent {
@@ -79,7 +78,7 @@ class _ColumnItemState extends State<_ColumnItem> {
   Iterable<Component> build(BuildContext context) sync* {
     Unit.em(1);
     yield div(
-      classes: ['column-item'],
+      classes: 'column-item',
       [
         a(
           href: component.route.path,

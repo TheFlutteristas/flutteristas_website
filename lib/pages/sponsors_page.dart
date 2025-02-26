@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:jaspr/components.dart';
-import 'package:jaspr/html.dart';
 import 'package:http/http.dart' as http;
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 
 class SponsorsList extends StatefulComponent {
   const SponsorsList({
@@ -63,18 +63,16 @@ class _SponsorsState extends State<SponsorsList> {
             } else {
               for (final (index, item) in snapshot.requireData.indexed) {
                 yield div(
-                  classes: ['sponsorItem'],
+                  classes: 'sponsorItem',
                   id: 'sponsors-$index',
                   [
                     a(target: Target.blank, href: item.website, [
                       img(
-                          classes: ['sponsor-photo'],
+                          classes: 'sponsor-photo',
                           src: item.logoLink,
                           alt: 'sponsor-photo')
                     ]),
-                    h4(classes: [
-                      'sponsor-name'
-                    ], [
+                    h4(classes: 'sponsor-name', [
                       text(item.name),
                     ]),
                   ],

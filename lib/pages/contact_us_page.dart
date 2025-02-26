@@ -1,4 +1,4 @@
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class ContactUsPage extends StatelessComponent {

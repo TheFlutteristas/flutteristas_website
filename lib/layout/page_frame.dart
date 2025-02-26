@@ -3,8 +3,9 @@ import 'dart:html';
 import 'package:flutteristas/layout/top_menu.dart';
 import 'package:flutteristas/pages/code_of_conduct.dart';
 import 'package:flutteristas/pages/privacy_page.dart';
-import 'package:jaspr/html.dart';
 import 'package:jaspr_router/jaspr_router.dart';
+import 'package:jaspr/jaspr.dart';
+
 
 class PageFrame extends StatefulComponent {
   const PageFrame({
@@ -43,16 +44,14 @@ class _PageFrameState extends State<PageFrame> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
-      classes: ['page'],
+      classes: 'page',
       [
         header([
           div([
-            div(classes: [
-              'top-bar'
-            ], [
+            div(classes: 'top-bar', [
               followUsSection(),
               a(
-                classes: ['button'],
+                classes: 'button',
                 href:
                     'https://docs.google.com/forms/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
                 target: Target.blank,
@@ -80,15 +79,13 @@ class _PageFrameState extends State<PageFrame> {
         article([
           div(id: 'post-content', [
             if (_title case String title) //
-              h1(classes: [title], [text(title)]),
+              h1(classes: title, [text(title)]),
             component.child,
           ]),
         ]),
         footer([
           followUsSection(),
-          div(classes: [
-            'privacy-section'
-          ], [
+          div(classes: 'privacy-section', [
             a(
               href: PrivacyPolicyPage.route.path,
               events: {
@@ -119,16 +116,12 @@ class _PageFrameState extends State<PageFrame> {
   }
 
   Component followUsSection() {
-    return div(classes: [
-      'follow-us'
-    ], [
+    return div(classes: 'follow-us', [
       p([text('Follow us:')]),
-      div(classes: [
-        'social-media'
-      ], [
+      div(classes: 'social-media', [
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/Linkedin.svg',
               alt: 'linkedin-icon')
         ],
@@ -136,13 +129,13 @@ class _PageFrameState extends State<PageFrame> {
             href: 'https://www.linkedin.com/company/flutteristas/'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/x-logo.svg',
               alt: 'twitter-icon')
         ], target: Target.blank, href: 'https://twitter.com/flutteristas'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/Mastodon.svg',
               alt: 'mastodon-icon')
         ],
@@ -150,7 +143,7 @@ class _PageFrameState extends State<PageFrame> {
             href: 'https://fluttercommunity.social/@Flutteristas'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/instagram.svg',
               alt: 'instagram-icon')
         ],
@@ -158,19 +151,19 @@ class _PageFrameState extends State<PageFrame> {
             href: 'https://www.instagram.com/flutteristas/'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/youtube.svg',
               alt: 'youtube-icon')
         ], target: Target.blank, href: 'https://www.youtube.com/@Flutteristas'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/github-color-svgrepo-com.svg',
               alt: 'github-icon')
         ], target: Target.blank, href: 'https://github.com/TheFlutteristas'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/facebook-svgrepo-com.svg',
               alt: 'facebook-icon')
         ],
@@ -179,7 +172,7 @@ class _PageFrameState extends State<PageFrame> {
                 'https://www.facebook.com/people/Flutteristas/61552442970613/'),
         a([
           img(
-              classes: ['social-icon'],
+              classes: 'social-icon',
               src: '/images/bluesky-icon.svg',
               alt: 'facebook-icon')
         ],

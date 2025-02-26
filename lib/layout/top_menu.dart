@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:flutteristas/app/app.dart';
-import 'package:jaspr/html.dart';
+import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class TopMenu extends StatefulComponent {
@@ -41,15 +41,15 @@ class TopMenuState extends State {
     yield nav([
       input(
         id: 'menu-state',
-        classes: ['toggle'],
+        classes: 'toggle',
         type: InputType.checkbox,
         [],
       ),
       label(
         htmlFor: 'menu-state',
-        classes: ['menu-toggle'],
+        classes: 'menu-toggle',
         [
-          i([], classes: ['icon', 'fa', 'fa-solid', 'fa-bars']),
+          i([], classes: 'icon fa fa-solid fa-bars'),
           text('Menu'),
         ],
       ),
@@ -64,9 +64,7 @@ class TopMenuState extends State {
                   (event as Event).preventDefault();
                 },
               },
-              classes: [
-                if (index == _selected) 'current',
-              ],
+              classes: index == _selected ? 'current' : null,
               [Text(route.title!)],
             ),
           ]),
