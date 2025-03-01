@@ -6,7 +6,6 @@ import 'package:flutteristas/pages/privacy_page.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:jaspr/jaspr.dart';
 
-
 class PageFrame extends StatefulComponent {
   const PageFrame({
     super.key,
@@ -67,9 +66,9 @@ class _PageFrameState extends State<PageFrame> {
                 attributes: {
                   'srcset': //
                       '/images/flutterista_logo_white_outline_150.png, '
-                      '/images/flutterista_logo_white_outline_225.png 1.5x, '
-                      '/images/flutterista_logo_white_outline_300.png 2x, '
-                      '/images/flutterista_logo_white_outline_600.png 3x',
+                          '/images/flutterista_logo_white_outline_225.png 1.5x, '
+                          '/images/flutterista_logo_white_outline_300.png 2x, '
+                          '/images/flutterista_logo_white_outline_600.png 3x',
                 },
               )
             ], href: '/'),
@@ -119,42 +118,16 @@ class _PageFrameState extends State<PageFrame> {
     return div(classes: 'follow-us', [
       p([text('Follow us:')]),
       div(classes: 'social-media', [
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/Linkedin.svg',
-              alt: 'linkedin-icon')
-        ],
-            target: Target.blank,
-            href: 'https://www.linkedin.com/company/flutteristas/'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/x-logo.svg',
-              alt: 'twitter-icon')
-        ], target: Target.blank, href: 'https://twitter.com/flutteristas'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/Mastodon.svg',
-              alt: 'mastodon-icon')
-        ],
-            target: Target.blank,
-            href: 'https://fluttercommunity.social/@Flutteristas'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/instagram.svg',
-              alt: 'instagram-icon')
-        ],
-            target: Target.blank,
-            href: 'https://www.instagram.com/flutteristas/'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/youtube.svg',
-              alt: 'youtube-icon')
-        ], target: Target.blank, href: 'https://www.youtube.com/@Flutteristas'),
+        a([img(classes: 'social-icon', src: '/images/Linkedin.svg', alt: 'linkedin-icon')],
+            target: Target.blank, href: 'https://www.linkedin.com/company/flutteristas/'),
+        a([img(classes: 'social-icon', src: '/images/x-logo.svg', alt: 'twitter-icon')],
+            target: Target.blank, href: 'https://twitter.com/flutteristas'),
+        a([img(classes: 'social-icon', src: '/images/Mastodon.svg', alt: 'mastodon-icon')],
+            target: Target.blank, href: 'https://fluttercommunity.social/@Flutteristas'),
+        a([img(classes: 'social-icon', src: '/images/instagram.svg', alt: 'instagram-icon')],
+            target: Target.blank, href: 'https://www.instagram.com/flutteristas/'),
+        a([img(classes: 'social-icon', src: '/images/youtube.svg', alt: 'youtube-icon')],
+            target: Target.blank, href: 'https://www.youtube.com/@Flutteristas'),
         a([
           img(
               classes: 'social-icon',
@@ -162,22 +135,12 @@ class _PageFrameState extends State<PageFrame> {
               alt: 'github-icon')
         ], target: Target.blank, href: 'https://github.com/TheFlutteristas'),
         a([
-          img(
-              classes: 'social-icon',
-              src: '/images/facebook-svgrepo-com.svg',
-              alt: 'facebook-icon')
+          img(classes: 'social-icon', src: '/images/facebook-svgrepo-com.svg', alt: 'facebook-icon')
         ],
             target: Target.blank,
-            href:
-                'https://www.facebook.com/people/Flutteristas/61552442970613/'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/bluesky-icon.svg',
-              alt: 'facebook-icon')
-        ],
-            target: Target.blank,
-            href: 'https://bsky.app/profile/flutteristas.org')
+            href: 'https://www.facebook.com/people/Flutteristas/61552442970613/'),
+        a([img(classes: 'social-icon', src: '/images/bluesky-icon.svg', alt: 'facebook-icon')],
+            target: Target.blank, href: 'https://bsky.app/profile/flutteristas.org')
       ])
     ]);
   }

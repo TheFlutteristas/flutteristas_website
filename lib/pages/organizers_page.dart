@@ -37,17 +37,14 @@ class _OrganizersState extends State<OrganizersList> {
       return [];
     } else {
       var dataFiltered = (data as List).nonNulls.toList();
-      List<OrganizerItem> speakerList = dataFiltered
-          .cast<Map<String, dynamic>>()
-          .map((d) => OrganizerItem.fromJson(d))
-          .toList();
+      List<OrganizerItem> speakerList =
+          dataFiltered.cast<Map<String, dynamic>>().map((d) => OrganizerItem.fromJson(d)).toList();
       speakerList.sort((a, b) {
         return a.first_name.toLowerCase().compareTo(b.first_name.toLowerCase());
       });
 
       return speakerList;
     }
-  
   }
 
   @override
@@ -56,8 +53,7 @@ class _OrganizersState extends State<OrganizersList> {
       FutureBuilder<List<OrganizerItem>>(
         initialData: <OrganizerItem>[],
         future: _futureOrganizerItems,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
+        builder: (BuildContext context, AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
           if (snapshot.data!.isEmpty) {
             yield div([
               p([text('Organaizers Coming Soon ...')])
@@ -69,10 +65,7 @@ class _OrganizersState extends State<OrganizersList> {
                 classes: 'OrganizerItem',
                 id: 'organizer-$index',
                 [
-                  img(
-                      classes: 'Organizer-photo',
-                      src: item.photoLink,
-                      alt: 'Organizer-photo'),
+                  img(classes: 'Organizer-photo', src: item.photoLink, alt: 'Organizer-photo'),
                   div(classes: 'social-bar', [
                     for (var item in socialIcons.entries) social_icon(item),
                   ]),
@@ -120,9 +113,10 @@ class _OrganizersState extends State<OrganizersList> {
               target: Target.blank,
               [img(src: '/images/Linkedin.svg', alt: 'linkedin-icon')]);
         case 'github':
-          return a(href: item.value as String, target: Target.blank, [
-            img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')
-          ]);
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')]);
         case 'medium':
           return a(
               href: item.value as String,

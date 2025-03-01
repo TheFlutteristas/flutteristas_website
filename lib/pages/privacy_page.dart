@@ -74,9 +74,11 @@ class PrivacyPolicyPage extends StatelessComponent {
     ]);
     yield p([
       text('We use '),
-      a([text('basic Google Analytics')], href: 'https://analytics.google.com/', target: Target.blank),
+      a([text('basic Google Analytics')],
+          href: 'https://analytics.google.com/', target: Target.blank),
       text(' on our website to understand how our site is used. You can see '),
-      a([text('Google’s privacy policy')], href: 'https://policies.google.com/privacy', target: Target.blank),
+      a([text('Google’s privacy policy')],
+          href: 'https://policies.google.com/privacy', target: Target.blank),
       text(
         ' for more details. The lowest level of detail we see is, '
         'if the data is available:',
