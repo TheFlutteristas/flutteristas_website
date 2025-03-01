@@ -21,16 +21,11 @@ class FlutteristasConferencePage extends StatefulComponent {
   static final route = Route(
     path: '/flutteristas-conference/:conferenceYear',
     title: 'Flutteristas Conference',
-    builder: (context, state) => FlutteristasConferencePage(conferenceYear: '2023'),
-    //TODO VeraCheck::  can't seem to call pathParams here as noted under "Child Routes" here: https://docs.page/schultek/jaspr/components/router#child-routes
-    //TODO VeraCheck:: using state.params['conferenceYear']! instead
-    routes: [
-      Route(
-        path: ':conferenceYear',
-        builder: (context, state) =>
-            FlutteristasConferencePage(conferenceYear: state.params['conferenceYear']!),
-      ),
-    ],
+    builder: (context, state) {
+      final conferenceYear = state.params['conferenceYear']!;
+      print('loading conferenceYear: $conferenceYear');
+      return FlutteristasConferencePage(conferenceYear: conferenceYear);
+    },
   );
 
   @override

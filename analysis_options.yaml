@@ -15,6 +15,9 @@ include: package:lints/recommended.yaml
 
 # Uncomment the following section to specify additional rules.
 
+formatter:
+  page_width: 100
+
 linter:
   rules:
     - prefer_single_quotes
