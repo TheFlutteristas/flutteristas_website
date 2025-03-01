@@ -38,12 +38,10 @@ class _SpeakersState extends State<SpeakersList> {
       return [];
     } else {
       var dataFiltered = (data as List).nonNulls.toList();
-      List<SpeakerItem> speakerList = dataFiltered
-          .cast<Map<String, dynamic>>()
-          .map((d) => SpeakerItem.fromJson(d))
-          .toList();
-          
-            speakerList.sort((a, b) {
+      List<SpeakerItem> speakerList =
+          dataFiltered.cast<Map<String, dynamic>>().map((d) => SpeakerItem.fromJson(d)).toList();
+
+      speakerList.sort((a, b) {
         return a.name.toLowerCase().compareTo(b.name.toLowerCase());
       });
       return speakerList;
@@ -56,8 +54,7 @@ class _SpeakersState extends State<SpeakersList> {
       FutureBuilder<List<SpeakerItem>>(
           initialData: <SpeakerItem>[],
           future: _futureSpeakerItems,
-          builder: (BuildContext context,
-              AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
+          builder: (BuildContext context, AsyncSnapshot<List<SpeakerItem>> snapshot) sync* {
             if (snapshot.data!.isEmpty) {
               yield div([
                 p([text('Speakers Coming Soon ...')])
@@ -70,10 +67,7 @@ class _SpeakersState extends State<SpeakersList> {
                   classes: 'SpeakerItem',
                   id: 'speaker-$index',
                   [
-                    img(
-                        classes: 'speaker-photo',
-                        src: item.photoLink,
-                        alt: 'speaker-photo'),
+                    img(classes: 'speaker-photo', src: item.photoLink, alt: 'speaker-photo'),
                     div(classes: 'social-bar', [
                       for (var item in socialIcons.entries) socialIcon(item),
                     ]),
@@ -87,8 +81,7 @@ class _SpeakersState extends State<SpeakersList> {
                     div(classes: 'title-talk', [
                       p(classes: 'talk-container', [
                         img(
-                            src:
-                                '/images/female-user-talk-chat-svgrepo-com.svg',
+                            src: '/images/female-user-talk-chat-svgrepo-com.svg',
                             alt: 'speaker-icon'),
                         span(classes: 'talk-lable', [text('Talk title: ')]),
                         span(classes: 'talk-title', [text(item.titleTalk)])
@@ -119,9 +112,10 @@ class _SpeakersState extends State<SpeakersList> {
               target: Target.blank,
               [img(src: '/images/Linkedin.svg', alt: 'linkedin-icon')]);
         case 'github':
-          return a(href: item.value as String, target: Target.blank, [
-            img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')
-          ]);
+          return a(
+              href: item.value as String,
+              target: Target.blank,
+              [img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')]);
         case 'medium':
           return a(
               href: item.value as String,

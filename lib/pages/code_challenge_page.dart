@@ -1,8 +1,6 @@
-
 import 'package:jaspr/jaspr.dart';
 
 class CodeChallenge extends StatelessComponent {
-
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div([
@@ -28,7 +26,7 @@ class CodeChallenge extends StatelessComponent {
       p([
         text('Submissions are due by 10 November at 3:00AM GMT.'),
       ]),
-       p([
+      p([
         a(
           classes: 'hero-button',
           href:
@@ -36,19 +34,17 @@ class CodeChallenge extends StatelessComponent {
           target: Target.blank,
           [text('Get started!')],
         ),
-            ])
-          ]);
-          yield div(classes: 'code-challenge-image', [
-            div(classes: 'code-challenge-sponsor', [
+      ])
+    ]);
+    yield div(classes: 'code-challenge-image', [
+      div(classes: 'code-challenge-sponsor', [
         span([text('Brought to you by ')]),
-        a(href: 'https://invertase.io/', target: Target.blank, [
-          img(
-              classes: 'sponsor-logo',
-              src: '/images/invertase_logo.png',
-              alt: 'sponsor-logo')
-        ]),
-            ]),
-            img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
-          ]);
-        }
-      }
+        a(
+            href: 'https://invertase.io/',
+            target: Target.blank,
+            [img(classes: 'sponsor-logo', src: '/images/invertase_logo.png', alt: 'sponsor-logo')]),
+      ]),
+      img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
+    ]);
+  }
+}
