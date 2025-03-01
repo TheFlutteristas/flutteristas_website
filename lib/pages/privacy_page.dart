@@ -1,9 +1,10 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class PrivacyPolicyPage extends StatelessComponent {
   const PrivacyPolicyPage._();
+
+  static final path = '/privacy-policy';
 
   static final route = Route(
     path: '/privacy-policy',
@@ -16,11 +17,11 @@ class PrivacyPolicyPage extends StatelessComponent {
     yield p([text('Effective Date: 29-Aug-2023')]);
     yield h2([text('Who we are')]);
     yield div(
-      styles: Styles.combine([
-        Styles.box(padding: EdgeInsets.all(Unit.em(1))),
-        Styles.text(color: Colors.white),
-        Styles.background(color: Color.value(0x555555)),
-      ]),
+      styles: Styles(
+        padding: Spacing.all(Unit.em(1)),
+        color: Colors.white,
+        backgroundColor: Color.value(0x555555),
+      ),
       [text('Our website address is: https://Flutteristas.org')],
     );
     yield Spacer(height: Unit.em(1));
@@ -53,11 +54,11 @@ class PrivacyPolicyPage extends StatelessComponent {
         'are managed by the respective sites.',
       ),
       div(
-        styles: Styles.combine([
-          Styles.flexbox(direction: FlexDirection.column),
-          Styles.text(lineHeight: Unit.em(2.5)),
-          Styles.box(margin: EdgeInsets.only(left: Unit.em(2.0))),
-        ]),
+        styles: Styles(
+          flexDirection: FlexDirection.column,
+          lineHeight: Unit.em(2.5),
+          margin: Spacing.only(left: Unit.em(2.0)),
+        ),
         [
           // a(
           //   href: 'https://www.facebook.com/privacy/explanation',
@@ -74,11 +75,17 @@ class PrivacyPolicyPage extends StatelessComponent {
     ]);
     yield p([
       text('We use '),
-      a([text('basic Google Analytics')],
-          href: 'https://analytics.google.com/', target: Target.blank),
+      a(
+        [text('basic Google Analytics')],
+        href: 'https://analytics.google.com/',
+        target: Target.blank,
+      ),
       text(' on our website to understand how our site is used. You can see '),
-      a([text('Google’s privacy policy')],
-          href: 'https://policies.google.com/privacy', target: Target.blank),
+      a(
+        [text('Google’s privacy policy')],
+        href: 'https://policies.google.com/privacy',
+        target: Target.blank,
+      ),
       text(
         ' for more details. The lowest level of detail we see is, '
         'if the data is available:',

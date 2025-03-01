@@ -1,4 +1,3 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/ui.dart';
 
 class ProductLayout extends StatelessComponent {
@@ -30,7 +29,7 @@ class ProductLayout extends StatelessComponent {
               [
                 img(
                   src: image,
-                  styles: Styles.box(
+                  styles: Styles(
                     width: Unit.percent(100),
                   ),
                 ),
@@ -67,15 +66,11 @@ class ProductLayout extends StatelessComponent {
         Spacer(height: Unit.em(2)),
         if (withFlutter)
           div(
-            styles: Styles.combine([
-              Styles.flexbox(
-                direction: FlexDirection.column,
-                justifyContent: JustifyContent.center,
-              ),
-              Styles.text(
-                align: TextAlign.center,
-              ),
-            ]),
+            styles: Styles(
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.center,
+              textAlign: TextAlign.center,
+            ),
             [
               p([text('Made with a single codebase using the Flutter SDK by Google')]),
               div([
@@ -87,7 +82,7 @@ class ProductLayout extends StatelessComponent {
               ]),
               Spacer(height: Unit.em(1)),
               p(
-                styles: Styles.text(
+                styles: Styles(
                   fontSize: Unit.rem(0.8),
                   color: Colors.gray,
                 ),

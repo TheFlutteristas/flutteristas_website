@@ -1,24 +1,26 @@
-import 'dart:html';
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
+import 'package:web/web.dart';
 
-class CodeOfConduct extends StatelessComponent {
-  const CodeOfConduct({super.key});
+class CodeOfConductPage extends StatelessComponent {
+  const CodeOfConductPage({super.key});
+
+  static final path = '/code-of-conducts';
 
   static final route = Route(
     path: '/code-of-conducts',
     title: 'Code of Conduct',
-    builder: (context, state) => CodeOfConduct(),
+    builder: (context, state) => CodeOfConductPage(),
   );
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield p([
       text(
-        'Flutteristas are dedicated to providing a harassment-free and inclusive experience for '
-        'everyone regardless of gender identity and expression, sexual orientation, disabilities, neurodiversity, physical appearance, '
-        'body size, ethnicity, nationality, race, age, religion, or other protected category.',
+        'Flutteristas are dedicated to providing a harassment-free and inclusive experience '
+        'for everyone regardless of gender identity and expression, sexual orientation, '
+        'disabilities, neurodiversity, physical appearance, body size, ethnicity, '
+        'nationality, race, age, religion, or other protected category.',
       )
     ]);
     yield p(
@@ -60,9 +62,9 @@ class _ProductItemState extends State<_ProductItem> {
         a(
           href: component.route.path,
           events: {
-            'click': (event) {
+            'click': (Event event) {
+              event.preventDefault();
               Router.of(context).push(component.route.path);
-              (event as Event).preventDefault();
             },
           },
           [

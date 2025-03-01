@@ -1,11 +1,11 @@
-import 'dart:html';
-import 'package:flutteristas/pages/code_of_conduct.dart';
-import 'package:jaspr/jaspr.dart';
+import 'package:flutteristas/pages/code_of_conduct_page.dart';
 import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class WelcomePage extends StatelessComponent {
   const WelcomePage({super.key});
+
+  static final path = '/';
 
   static final route = Route(
     path: '/',
@@ -48,8 +48,8 @@ class WelcomePage extends StatelessComponent {
         a(
             classes: 'hero-button',
             target: Target.blank,
-            href:
-                'https://www.meetup.com/flutterista/events/305942245/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
+            href: 'https://www.meetup.com/flutterista/events/305942245'
+                '/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
             [text('RSVP Now')])
       ]),
     ]);
@@ -87,7 +87,7 @@ class WelcomePage extends StatelessComponent {
         img(
           src: '/images/FlutterInteract-2019.jpg',
           alt: 'flutteristas-image',
-          styles: Styles.box(
+          styles: Styles(
             width: Unit.percent(100),
             radius: BorderRadius.circular(Unit.pixels(14.0)),
           ),
@@ -146,7 +146,7 @@ class WelcomePage extends StatelessComponent {
           div([
             img(
                 src: '/images/number-1-svgrepo-com.svg',
-                styles: Styles.box(
+                styles: Styles(
                   width: Unit.pixels(100),
                 ),
                 alt: 'number-1-image')
@@ -164,7 +164,7 @@ class WelcomePage extends StatelessComponent {
             img(
                 classes: 'arrow-1',
                 src: '/images/Arrow15.png',
-                styles: Styles.box(
+                styles: Styles(
                   height: Unit.pixels(100),
                 ),
                 alt: 'arrow-image')
@@ -172,7 +172,7 @@ class WelcomePage extends StatelessComponent {
           div([
             img(
                 src: '/images/number-2-svgrepo-com.svg',
-                styles: Styles.box(
+                styles: Styles(
                   width: Unit.pixels(100),
                 ),
                 alt: 'number-2-image')
@@ -188,7 +188,7 @@ class WelcomePage extends StatelessComponent {
             img(
                 classes: 'arrow-2',
                 src: '/images/Arrow07.png',
-                styles: Styles.box(
+                styles: Styles(
                   height: Unit.pixels(100),
                 ),
                 alt: 'arrow-image')
@@ -198,7 +198,7 @@ class WelcomePage extends StatelessComponent {
           div([
             img(
                 src: '/images/number-3-svgrepo-com.svg',
-                styles: Styles.box(
+                styles: Styles(
                   width: Unit.pixels(100),
                 ),
                 alt: 'number-3-image')
@@ -209,11 +209,11 @@ class WelcomePage extends StatelessComponent {
                 'Do you agree with the Flutteristas ',
               ),
               a(
-                href: CodeOfConduct.route.path,
+                href: CodeOfConductPage.route.path,
                 events: {
                   'click': (event) {
-                    Router.of(context).push(CodeOfConduct.route.path);
-                    (event as Event).preventDefault();
+                    event.preventDefault();
+                    Router.of(context).push(CodeOfConductPage.route.path);
                   },
                 },
                 [
@@ -268,8 +268,8 @@ class _ProductItemState extends State<_ProductItem> {
           href: component.route.path,
           events: {
             'click': (event) {
+              event.preventDefault();
               Router.of(context).push(component.route.path);
-              (event as Event).preventDefault();
             },
           },
           [
