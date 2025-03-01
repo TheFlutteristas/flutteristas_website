@@ -1,10 +1,9 @@
-import 'dart:html';
-
 import 'package:flutteristas/layout/top_menu.dart';
-import 'package:flutteristas/pages/code_of_conduct.dart';
+import 'package:flutteristas/pages/code_of_conduct_page.dart';
 import 'package:flutteristas/pages/privacy_page.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:web/web.dart';
 
 class PageFrame extends StatefulComponent {
   const PageFrame({
@@ -51,8 +50,8 @@ class _PageFrameState extends State<PageFrame> {
               followUsSection(),
               a(
                 classes: 'button',
-                href:
-                    'https://docs.google.com/forms/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
+                href: 'https://docs.google.com/forms'
+                    '/d/e/1FAIpQLScR2hQ44u_zxgpOaxcZZAnOmVZoIllehX8Iv9HKot2KmIMxzA/viewform',
                 target: Target.blank,
                 [text('Join our community')],
               )
@@ -64,11 +63,12 @@ class _PageFrameState extends State<PageFrame> {
                 alt: 'Flutteristas',
                 src: '/images/flutterista_logo_white_outline_600.png',
                 attributes: {
-                  'srcset': //
-                      '/images/flutterista_logo_white_outline_150.png, '
-                          '/images/flutterista_logo_white_outline_225.png 1.5x, '
-                          '/images/flutterista_logo_white_outline_300.png 2x, '
-                          '/images/flutterista_logo_white_outline_600.png 3x',
+                  'srcset': [
+                    '/images/flutterista_logo_white_outline_150.png',
+                    '/images/flutterista_logo_white_outline_225.png 1.5x',
+                    '/images/flutterista_logo_white_outline_300.png 2x',
+                    '/images/flutterista_logo_white_outline_600.png 3x',
+                  ].join(', '),
                 },
               )
             ], href: '/'),
@@ -89,18 +89,18 @@ class _PageFrameState extends State<PageFrame> {
               href: PrivacyPolicyPage.route.path,
               events: {
                 'click': (event) {
+                  event.preventDefault();
                   Router.of(context).push(PrivacyPolicyPage.route.path);
-                  (event as Event).preventDefault();
                 },
               },
               [text('Privacy policy')],
             ),
             a(
-              href: CodeOfConduct.route.path,
+              href: CodeOfConductPage.route.path,
               events: {
                 'click': (event) {
-                  Router.of(context).push(CodeOfConduct.route.path);
-                  (event as Event).preventDefault();
+                  event.preventDefault();
+                  Router.of(context).push(CodeOfConductPage.route.path);
                 },
               },
               [
@@ -108,7 +108,7 @@ class _PageFrameState extends State<PageFrame> {
               ],
             )
           ]),
-          p([text('Copyright © 2023 Flutteristas.org.  All rights reserved.')]),
+          p([text('Copyright © ${DateTime.now().year} Flutteristas.org.  All rights reserved.')]),
         ]),
       ],
     );
@@ -118,29 +118,54 @@ class _PageFrameState extends State<PageFrame> {
     return div(classes: 'follow-us', [
       p([text('Follow us:')]),
       div(classes: 'social-media', [
-        a([img(classes: 'social-icon', src: '/images/Linkedin.svg', alt: 'linkedin-icon')],
-            target: Target.blank, href: 'https://www.linkedin.com/company/flutteristas/'),
-        a([img(classes: 'social-icon', src: '/images/x-logo.svg', alt: 'twitter-icon')],
-            target: Target.blank, href: 'https://twitter.com/flutteristas'),
-        a([img(classes: 'social-icon', src: '/images/Mastodon.svg', alt: 'mastodon-icon')],
-            target: Target.blank, href: 'https://fluttercommunity.social/@Flutteristas'),
-        a([img(classes: 'social-icon', src: '/images/instagram.svg', alt: 'instagram-icon')],
-            target: Target.blank, href: 'https://www.instagram.com/flutteristas/'),
-        a([img(classes: 'social-icon', src: '/images/youtube.svg', alt: 'youtube-icon')],
-            target: Target.blank, href: 'https://www.youtube.com/@Flutteristas'),
-        a([
-          img(
-              classes: 'social-icon',
-              src: '/images/github-color-svgrepo-com.svg',
-              alt: 'github-icon')
-        ], target: Target.blank, href: 'https://github.com/TheFlutteristas'),
-        a([
-          img(classes: 'social-icon', src: '/images/facebook-svgrepo-com.svg', alt: 'facebook-icon')
-        ],
+        for (final (:altText, :imageSrc, :href)
+            in <({String altText, String imageSrc, String href})>[
+          (
+            altText: 'LinkedIn',
+            imageSrc: '/images/Linkedin.svg',
+            href: 'https://www.linkedin.com/company/flutteristas/',
+          ),
+          (
+            altText: 'Twitter',
+            imageSrc: '/images/x-logo.svg',
+            href: 'https://twitter.com/flutteristas',
+          ),
+          (
+            altText: 'Mastodon',
+            imageSrc: '/images/Mastodon.svg',
+            href: 'https://fluttercommunity.social/@Flutteristas',
+          ),
+          (
+            altText: 'Instagram',
+            imageSrc: '/images/instagram.svg',
+            href: 'https://www.instagram.com/flutteristas/',
+          ),
+          (
+            altText: 'YouTube',
+            imageSrc: '/images/youtube.svg',
+            href: 'https://www.youtube.com/@Flutteristas',
+          ),
+          (
+            altText: 'GitHub',
+            imageSrc: '/images/github-color-svgrepo-com.svg',
+            href: 'https://github.com/TheFlutteristas',
+          ),
+          (
+            altText: 'Facebook',
+            imageSrc: '/images/facebook-svgrepo-com.svg',
+            href: 'https://www.facebook.com/people/Flutteristas/61552442970613/',
+          ),
+          (
+            altText: 'Bluesky',
+            imageSrc: '/images/bluesky-icon.svg',
+            href: 'https://bsky.app/profile/flutteristas.org',
+          ),
+        ]) //
+          a(
+            [img(classes: 'social-icon', src: imageSrc, alt: altText)],
             target: Target.blank,
-            href: 'https://www.facebook.com/people/Flutteristas/61552442970613/'),
-        a([img(classes: 'social-icon', src: '/images/bluesky-icon.svg', alt: 'facebook-icon')],
-            target: Target.blank, href: 'https://bsky.app/profile/flutteristas.org')
+            href: href,
+          ),
       ])
     ]);
   }

@@ -1,41 +1,22 @@
-import 'dart:convert';
+import 'package:collection/collection.dart';
+import 'package:flutteristas/models/agenda_item.dart';
+import 'package:flutteristas/utilities/extensions.dart';
 import 'package:intl/intl.dart';
-//import 'package:jaspr_router/jaspr_router.dart';
-import 'package:http/http.dart' as http;
 import 'package:jaspr/jaspr.dart';
-
-// class AgendaPage extends StatelessComponent {
-//   const AgendaPage({super.key});
-//
-//   static final route = Route(
-//     path: '/agenda',
-//     title: 'Agenda',
-//     builder: (context, state) => AgendaPage(),
-//   );
-//
-//   @override
-//   Iterable<Component> build(BuildContext context) sync* {
-//     yield AgendaTalkList(
-//       projectId: 'flutteristas-website-dev-default-rtdb',
-//     );
-//   }
-// }
 
 class AgendaTalkList extends StatefulComponent {
   const AgendaTalkList({
     super.key,
-    required this.projectId,
     required this.conferenceYear,
   });
 
-  final String projectId;
   final String conferenceYear;
 
   @override
-  State<AgendaTalkList> createState() => _AgendaState();
+  State<AgendaTalkList> createState() => _AgendaTalkList();
 }
 
-class _AgendaState extends State<AgendaTalkList> {
+class _AgendaTalkList extends State<AgendaTalkList> {
   late Future<List<AgendaItem>> _futureAgendaItems;
 
   @override
@@ -45,22 +26,18 @@ class _AgendaState extends State<AgendaTalkList> {
   }
 
   Future<List<AgendaItem>> fetchAgenda() async {
-    // see: https://firebase.google.com/docs/reference/rest/database
-    final url =
-        "https://${component.projectId}.firebaseio.com/conference_agenda/conference_year/${component.conferenceYear}.json";
-    final resp = await http.get(Uri.parse(url));
-    final data = json.decode(resp.body);
-    if (data == null) {
-      return [];
-    } else {
-      var dataFiltered = (data as List).nonNulls.toList();
-      List<AgendaItem> speakerList =
-          dataFiltered.cast<Map<String, dynamic>>().map((d) => AgendaItem.fromJson(d)).toList();
-      speakerList.sort((a, b) {
-        return a.time.compareTo(b.time);
-      });
-      return speakerList;
-    }
+    return await context.dataFetcher.fetchData(
+      '/conference_agenda/conference_year/${component.conferenceYear}',
+      fromJson: (data) {
+        return (data as List? ?? [])
+            .nonNulls
+            .cast<Map<String, dynamic>>()
+            .map(AgendaItem.fromJson)
+            .sorted((a, b) {
+          return a.time.compareTo(b.time);
+        });
+      },
+    );
   }
 
   @override
@@ -68,21 +45,22 @@ class _AgendaState extends State<AgendaTalkList> {
     yield div([
       p(classes: 'tune-in', [text('Tune-in on')]),
       //TODO we need to add the conference date as a record in the database to fetch it here
-      h3(
-          classes: 'conf-date',
-          [component.conferenceYear == "2025" ? text('5 April 2025') : text('11 November 2023')]),
+      h3(classes: 'conf-date', [
+        component.conferenceYear == '2025' //
+            ? text('5 April 2025')
+            : text('11 November 2023'),
+      ]),
       FutureBuilder<List<AgendaItem>>(
         initialData: <AgendaItem>[],
         future: _futureAgendaItems,
         builder: (BuildContext context, AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
-          if (snapshot.data!.isEmpty) {
+          if (snapshot.hasData == false) {
             yield div([
               p([text('Agenda Coming Soon ...')])
             ]);
           } else {
             for (final (index, item) in snapshot.requireData.indexed) {
-              List<dynamic> speakersList = item.speakers;
-
+              final speakersList = item.speakers;
               yield div(
                 classes: 'agenda-item',
                 id: 'agenda-item-$index',
@@ -90,8 +68,11 @@ class _AgendaState extends State<AgendaTalkList> {
                   div(classes: 'date-container', [
                     p(classes: 'agenda-date', [
                       //convert time from PTS to UTC then convert it to local timing
-                      text(DateFormat.jm()
-                          .format(DateTime.parse('${item.time}').add(Duration(hours: 8)).toLocal()))
+                      text(
+                        DateFormat.jm().format(
+                          DateTime.parse('${item.time}').add(Duration(hours: 8)).toLocal(),
+                        ),
+                      )
                     ]),
                     p(classes: 'date-zone', [
                       //show the time zone for the current user
@@ -138,33 +119,4 @@ class _AgendaState extends State<AgendaTalkList> {
       )
     ]);
   }
-}
-
-class AgendaItem {
-  const AgendaItem({
-    required this.title,
-    required this.speakers,
-    required this.description,
-    required this.time,
-    required this.type,
-  });
-
-  final String title;
-  final List speakers;
-  final String description;
-  final String type;
-  final DateTime time;
-
-  static AgendaItem fromJson(Map<String, dynamic> json) {
-    return AgendaItem(
-      title: json['title'] as String,
-      speakers: json['speaker'] as List,
-      description: json['description'] as String,
-      time: DateTime.parse('2023-11-11 ' + json['start_time'] + 'z'),
-      type: json['schedule_type'] as String,
-    );
-  }
-
-  @override
-  String toString() => 'AgendaItem{$title}';
 }

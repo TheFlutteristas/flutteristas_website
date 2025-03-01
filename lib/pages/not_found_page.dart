@@ -1,4 +1,4 @@
-import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
 class NotFoundPage extends StatelessComponent {
@@ -10,6 +10,8 @@ class NotFoundPage extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield Text('Not Found');
+    yield Center(
+      children: [Text('Not Found')],
+    );
   }
 }
