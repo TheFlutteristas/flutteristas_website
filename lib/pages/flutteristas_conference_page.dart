@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:js_interop';
+
 import 'package:collection/collection.dart';
 import 'package:flutteristas/pages/conference/agenda_talk_list.dart';
 import 'package:flutteristas/pages/conference/organizers_list.dart';
@@ -23,7 +26,6 @@ class FlutteristasConferencePage extends StatefulComponent {
     title: 'Flutteristas Conference',
     builder: (context, state) {
       final conferenceYear = state.params['conferenceYear']!;
-      print('loading conferenceYear: $conferenceYear');
       return FlutteristasConferencePage(conferenceYear: conferenceYear);
     },
   );
@@ -36,13 +38,17 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
   late String _selectedYear;
   late Future<List<String>> _futureYears;
 
-  final _currentYear = DateTime.now().year;
+  final _currentYear = DateTime.now().year.toString();
 
   @override
   void initState() {
     super.initState();
     _selectedYear = component.conferenceYear;
     _futureYears = fetchYears();
+
+    final pageUrl = Uri.parse(document.location!.href);
+    final defaultTab = pageUrl.hasFragment ? pageUrl.fragment : 'agenda';
+    scheduleMicrotask(() => _selectDefaultTab(defaultTab));
   }
 
   Future<List<String>> fetchYears() async {
@@ -56,6 +62,36 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             .sorted((a, b) => b.compareTo(a));
       },
     );
+  }
+
+  void _selectDefaultTab(String name) {
+    final button = (document.getElementById('tab-button-$name')! as HTMLElement);
+    button.className = 'active';
+    final content = (document.getElementById('tab-content-$name')! as HTMLElement);
+    content.style.display = 'block';
+  }
+
+  void _onTabPressed(Event event) {
+    final target = (event.currentTarget as HTMLElement);
+    final id = target.dataset['id'];
+
+    // Update URL to reflect current tab
+    window.history.replaceState({}.toJSBox, '', '/flutteristas-conference/$_selectedYear#$id');
+
+    // Get all conference tabs and set the selected one as active
+    final tabs = document.getElementById('conference-tabs')!.children;
+    for (int i = 0; i < tabs.length; i++) {
+      final item = tabs.item(i)! as HTMLElement;
+      item.className = (item == target ? 'active' : '');
+    }
+
+    // Get all conference tab contents and set the selected one as visible
+    final activeContent = document.getElementById('tab-content-$id');
+    final tabContent = document.getElementById('conference-tab-content')!.children;
+    for (int i = 0; i < tabContent.length; i++) {
+      final item = tabContent.item(i)! as HTMLElement;
+      item.style.display = item == activeContent ? 'block' : 'none';
+    }
   }
 
   @override
@@ -104,14 +140,14 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
       div(classes: 'conference-main', [
         div(classes: 'conference-hero', [
           div(classes: 'conference-title', [
-            _selectedYear == _currentYear.toString()
+            _selectedYear == _currentYear
                 ? p(classes: 'conference-coming-soon', [Text('Coming Soon!')])
                 : span([]),
             h2(
                 classes: 'conference-text',
                 [Text('Flutteristas'), br(), Text('Conference $_selectedYear')]),
           ]),
-          _selectedYear == _currentYear.toString()
+          _selectedYear == _currentYear
               ? div(classes: 'conference-details', [
                   p([
                     img(
@@ -196,190 +232,107 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             br(),
             br(),
           ]),
-          div(classes: 'conference-tab', [
-            button(id: 'default', type: ButtonType.button, classes: 'tab-link', [
-              text('Agenda')
-            ], events: {
-              'click': (dynamic event) {
-                // Get all elements with class="tabcontent" and hide them
-                final tabcontent = document.getElementsByClassName('tab-content');
-                for (int i = 0; i < tabcontent.length; i++) {
-                  final item = tabcontent.item(i)! as HTMLElement;
-                  item.style.display = 'none';
-                }
-
-                // Get all elements with class="tablinks" and remove the class "active"
-                final tablinks = document.getElementsByClassName('tab-link');
-                for (int i = 0; i < tablinks.length; i++) {
-                  final item = tablinks.item(i)! as HTMLElement;
-                  item.className = 'tab-link';
-                }
-
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                (document.getElementById('Agenda')! as HTMLElement).style.display = 'block';
-                event.currentTarget.className += ' active';
-              }
-            }),
-            button(id: 'default', type: ButtonType.button, classes: 'tab-link', [
-              text('Speakers')
-            ], events: {
-              'click': (dynamic event) {
-                // Get all elements with class="tabcontent" and hide them
-                final tabcontent = document.getElementsByClassName('tab-content');
-                for (int i = 0; i < tabcontent.length; i++) {
-                  final item = tabcontent.item(i)! as HTMLElement;
-                  item.style.display = 'none';
-                }
-
-                // Get all elements with class="tablinks" and remove the class "active"
-                final tablinks = document.getElementsByClassName('tab-link');
-                for (int i = 0; i < tablinks.length; i++) {
-                  final item = tablinks.item(i)! as HTMLElement;
-                  item.className = 'tab-link';
-                }
-
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                (document.getElementById('Speakers')! as HTMLElement).style.display = 'block';
-                event.currentTarget.className += ' active';
-              }
-            }),
-            button(type: ButtonType.button, classes: 'tab-link', [
-              text('Sponsors')
-            ], events: {
-              'click': (dynamic event) {
-                // Get all elements with class="tabcontent" and hide them
-                final tabcontent = document.getElementsByClassName('tab-content');
-                for (int i = 0; i < tabcontent.length; i++) {
-                  final item = tabcontent.item(i)! as HTMLElement;
-                  item.style.display = 'none';
-                }
-
-                // Get all elements with class="tablinks" and remove the class "active"
-                final tablinks = document.getElementsByClassName('tab-link');
-                for (int i = 0; i < tablinks.length; i++) {
-                  final item = tablinks.item(i)! as HTMLElement;
-                  item.className = 'tab-link';
-                }
-
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                (document.getElementById('Sponsors')! as HTMLElement).style.display = 'block';
-                event.currentTarget.className += ' active';
-              }
-            }),
-            button(type: ButtonType.button, classes: 'tab-link', [
-              text('Organizers')
-            ], events: {
-              'click': (dynamic event) {
-                // Get all elements with class="tabcontent" and hide them
-                final tabcontent = document.getElementsByClassName('tab-content');
-                for (int i = 0; i < tabcontent.length; i++) {
-                  final item = tabcontent.item(i)! as HTMLElement;
-                  item.style.display = 'none';
-                }
-
-                // Get all elements with class="tablinks" and remove the class "active"
-                final tablinks = document.getElementsByClassName('tab-link');
-                for (int i = 0; i < tablinks.length; i++) {
-                  final item = tablinks.item(i)! as HTMLElement;
-                  item.className = 'tab-link';
-                }
-
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                (document.getElementById('Organizers')! as HTMLElement).style.display = 'block';
-                event.currentTarget.className += ' active';
-              }
-            })
-            // button(type: ButtonType.button, classes: [
-            //   'tab-link'
-            // ], [
-            //   text('Code Challenge')
-            // ], events: {
-            //   'click': (dynamic event) {
-            //     var i, tabcontent, tablinks;
-            //     // Get all elements with class="tabcontent" and hide them
-            //     tabcontent = document.getElementsByClassName("tab-content");
-            //     for (i = 0; i < tabcontent.length; i++) {
-            //       tabcontent[i].style.display = "none";
-            //     }
-            //     // Get all elements with class="tablinks" and remove the class "active"
-            //     tablinks = document.getElementsByClassName("tab-link");
-            //     for (i = 0; i < tablinks.length; i++) {
-            //       tablinks[i].className = "tab-link";
-            //     }
-            //     // Show the current tab, and add an "active" class to the button that opened the tab
-            //     document.getElementById('challenge')?.style.display = "block";
-            //     event.currentTarget.className += " active";
-            //   }
-            // })
+          div(id: 'conference-tabs', [
+            button(
+              id: 'tab-button-agenda',
+              attributes: {'data-id': 'agenda'},
+              events: {'click': _onTabPressed},
+              [text('Agenda')],
+            ),
+            button(
+              id: 'tab-button-speakers',
+              attributes: {'data-id': 'speakers'},
+              events: {'click': _onTabPressed},
+              [text('Speakers')],
+            ),
+            button(
+              id: 'tab-button-sponsors',
+              attributes: {'data-id': 'sponsors'},
+              events: {'click': _onTabPressed},
+              [text('Sponsors')],
+            ),
+            button(
+              id: 'tab-button-organizers',
+              attributes: {'data-id': 'organizers'},
+              events: {'click': _onTabPressed},
+              [text('Organizers')],
+            ),
+            // button(
+            //   attributes: {'data-id': 'challenge'},
+            //   events: {'click': _onTabPressed},
+            //   [text('Code Challenge')],
+            // ),
           ]),
-          div(id: 'Agenda', classes: 'tab-content', [
-            div(classes: 'agenda-section', [
-              Spacer(height: Unit.pixels(50)),
-              h2([Text('Agenda')]),
-              div(classes: 'agenda-container', [
-                AgendaTalkList(
-                  key: Key(_selectedYear),
-                  conferenceYear: _selectedYear,
-                )
+          div(id: 'conference-tab-content', [
+            div(id: 'tab-content-agenda', [
+              div(classes: 'agenda-section', [
+                Spacer(height: Unit.pixels(50)),
+                h2([Text('Agenda')]),
+                div(classes: 'agenda-container', [
+                  AgendaTalkList(
+                    key: Key(_selectedYear),
+                    conferenceYear: _selectedYear,
+                  )
+                ])
               ])
-            ])
-          ]),
-          div(id: 'Speakers', classes: 'tab-content', [
-            div(classes: 'speakers-section', [
-              Spacer(height: Unit.pixels(50)),
-              h2([Text('Speakers')]),
-              div(classes: 'speakers-container', [
-                SpeakersList(
-                  key: Key(_selectedYear),
-                  conferenceYear: _selectedYear,
-                )
+            ]),
+            div(id: 'tab-content-speakers', [
+              div(classes: 'speakers-section', [
+                Spacer(height: Unit.pixels(50)),
+                h2([Text('Speakers')]),
+                div(classes: 'speakers-container', [
+                  SpeakersList(
+                    key: Key(_selectedYear),
+                    conferenceYear: _selectedYear,
+                  )
+                ])
               ])
-            ])
-          ]),
-          div(id: 'Sponsors', classes: 'tab-content', [
-            div(classes: 'sponsors-section', [
-              Spacer(height: Unit.pixels(50)),
-              h2([Text('Sponsors')]),
-              div(id: 'sponsors', classes: 'sponsors-container', [
-                h3(classes: 'sponsors-gold', [text('Gold')]),
-                SponsorsList(
-                  key: Key(_selectedYear),
-                  category: 'gold_sponsorship',
-                  conferenceYear: _selectedYear,
-                ),
-                h3(classes: 'sponsors-silver', [text('Silver')]),
-                SponsorsList(
-                  key: Key(_selectedYear),
-                  category: 'silver_sponsorship',
-                  conferenceYear: _selectedYear,
-                ),
-                // h3(classes: 'sponsors-bronze', [text('Bronze')]),
-              ]),
-            ])
-          ]),
-          div(id: 'Organizers', classes: 'tab-content', [
-            Spacer(height: Unit.pixels(50)),
-            div(classes: 'organizers-section', [
-              h2([Text('Organizers')]),
-              div(classes: 'organizers-container', [
-                OrganizersList(
-                  key: Key(_selectedYear),
-                  conferenceYear: _selectedYear,
-                )
+            ]),
+            div(id: 'tab-content-sponsors', [
+              div(classes: 'sponsors-section', [
+                Spacer(height: Unit.pixels(50)),
+                h2([Text('Sponsors')]),
+                div(id: 'sponsors', classes: 'sponsors-container', [
+                  h3(classes: 'sponsors-gold', [text('Gold')]),
+                  SponsorsList(
+                    key: Key(_selectedYear),
+                    category: 'gold_sponsorship',
+                    conferenceYear: _selectedYear,
+                  ),
+                  h3(classes: 'sponsors-silver', [text('Silver')]),
+                  SponsorsList(
+                    key: Key(_selectedYear),
+                    category: 'silver_sponsorship',
+                    conferenceYear: _selectedYear,
+                  ),
+                  // h3(classes: 'sponsors-bronze', [text('Bronze')]),
+                ]),
               ])
-            ])
+            ]),
+            div(id: 'tab-content-organizers', [
+              Spacer(height: Unit.pixels(50)),
+              div(classes: 'organizers-section', [
+                h2([Text('Organizers')]),
+                div(classes: 'organizers-container', [
+                  OrganizersList(
+                    key: Key(_selectedYear),
+                    conferenceYear: _selectedYear,
+                  )
+                ])
+              ])
+            ]),
+            //div(id: 'tab-content-challenge', [
+            //  div(classes: 'challenge-section', [
+            //    div(classes: 'challenge-container', [
+            //      div(id: 'code-challenge', [
+            //        Spacer(height: Unit.pixels(50)),
+            //        h2([Text('Flutterista Generate - Code Challenge')]),
+            //        div(classes: 'code-challenge-container', [CodeChallenge()]),
+            //      ])
+            //    ])
+            //  ])
+            //]),
           ]),
-          // div(id: 'challenge', classes: 'tab-content', [
-          //   div(classes: 'challenge-section', [
-          //     div(classes: 'challenge-container', [
-          //       div(id: 'code-challenge', [
-          //         Spacer(height: Unit.pixels(50)),
-          //         h2([Text('Flutterista Generate - Code Challenge')]),
-          //         div(classes: 'code-challenge-container', [CodeChallenge()]),
-          //       ])
-          //     ])
-          //   ])
-          // ])
         ])
       ])
     ]);
