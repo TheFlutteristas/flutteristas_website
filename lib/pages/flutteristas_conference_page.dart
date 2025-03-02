@@ -19,15 +19,24 @@ class FlutteristasConferencePage extends StatefulComponent {
 
   final String conferenceYear;
 
-  static final path = '/flutteristas-conference/2025';
+  static final path = '/flutteristas-conference';
 
   static final route = Route(
-    path: '/flutteristas-conference/:conferenceYear',
+    path: '/flutteristas-conference',
     title: 'Flutteristas Conference',
     builder: (context, state) {
-      final conferenceYear = state.params['conferenceYear']!;
-      return FlutteristasConferencePage(conferenceYear: conferenceYear);
+      return FlutteristasConferencePage(conferenceYear: '2025');
     },
+    routes: [
+      Route(
+        path: ':conferenceYear',
+        title: 'Flutteristas Conference',
+        builder: (context, state) {
+          final conferenceYear = state.params['conferenceYear']!;
+          return FlutteristasConferencePage(conferenceYear: conferenceYear);
+        },
+      ),
+    ],
   );
 
   @override
