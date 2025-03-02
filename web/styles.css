@@ -1306,7 +1306,7 @@ h3.sponsors-bronze {
 *************************************************************/
 
 /* Style the tab */
-.conference-tab {
+#conference-tabs {
   overflow: hidden;
   border: 1px solid #ccc;
   border-radius: 14px;
@@ -1314,7 +1314,7 @@ h3.sponsors-bronze {
 }
 
 /* Style the buttons that are used to open the tab content */
-.conference-tab button {
+#conference-tabs button {
   background-color: inherit;
   float: left;
   border: none;
@@ -1325,22 +1325,25 @@ h3.sponsors-bronze {
 }
 
 /* Change background color of buttons on hover */
-.conference-tab button:hover {
+#conference-tabs button:hover {
   background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.conference-tab button.active {
+#conference-tabs button.active {
   background-color: #ccc;
 }
 
 /* Style the tab content */
-.tab-content {
-  display: none;
-  padding: 6px 12px;
+#conference-tab-content {
   border: 1px solid #ccc;
   border-radius: 0 0 14px 14px;
   border-top: none;
+  padding: 6px 12px;
+}
+
+#conference-tab-content > div {
+  display: none;
   animation: fadeEffect 1s;
 }
 
