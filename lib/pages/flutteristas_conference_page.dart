@@ -6,6 +6,7 @@ import 'package:flutteristas/pages/conference/agenda_talk_list.dart';
 import 'package:flutteristas/pages/conference/organizers_list.dart';
 import 'package:flutteristas/pages/conference/speakers_list.dart';
 import 'package:flutteristas/pages/conference/sponsors_list.dart';
+import 'package:flutteristas/pages/code_challenge_page.dart';
 import 'package:flutteristas/utilities/extensions.dart';
 import 'package:jaspr/ui.dart';
 import 'package:jaspr_router/jaspr_router.dart';
@@ -266,11 +267,11 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
               events: {'click': _onTabPressed},
               [text('Organizers')],
             ),
-            // button(
-            //   attributes: {'data-id': 'challenge'},
-            //   events: {'click': _onTabPressed},
-            //   [text('Code Challenge')],
-            // ),
+            button(
+              attributes: {'data-id': 'challenge'},
+              events: {'click': _onTabPressed},
+              [text('Code Challenge')],
+            ),
           ]),
           div(id: 'conference-tab-content', [
             div(id: 'tab-content-agenda', [
@@ -330,17 +331,17 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                 ])
               ])
             ]),
-            //div(id: 'tab-content-challenge', [
-            //  div(classes: 'challenge-section', [
-            //    div(classes: 'challenge-container', [
-            //      div(id: 'code-challenge', [
-            //        Spacer(height: Unit.pixels(50)),
-            //        h2([Text('Flutterista Generate - Code Challenge')]),
-            //        div(classes: 'code-challenge-container', [CodeChallenge()]),
-            //      ])
-            //    ])
-            //  ])
-            //]),
+            div(id: 'tab-content-challenge', [
+             div(classes: 'challenge-section', [
+               div(classes: 'challenge-container', [
+                 div(id: 'code-challenge', [
+                   Spacer(height: Unit.pixels(50)),
+                   h2([Text('Flutterista Generate - Code Challenge')]),
+                   CodeChallenge( conferenceYear: _selectedYear),
+                 ])
+               ])
+             ])
+            ]),
           ]),
         ])
       ])
