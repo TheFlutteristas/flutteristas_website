@@ -332,15 +332,15 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
               ])
             ]),
             div(id: 'tab-content-challenge', [
-             div(classes: 'challenge-section', [
-               div(classes: 'challenge-container', [
-                 div(id: 'code-challenge', [
-                   Spacer(height: Unit.pixels(50)),
-                   h2([Text('Flutterista Generate - Code Challenge')]),
-                   CodeChallenge( conferenceYear: _selectedYear),
-                 ])
-               ])
-             ])
+              div(classes: 'challenge-section', [
+                div(classes: 'challenge-container', [
+                  div(id: 'code-challenge', [
+                    Spacer(height: Unit.pixels(50)),
+                    h2([Text('Flutterista Generate - Code Challenge')]),
+                    CodeChallenge(conferenceYear: _selectedYear),
+                  ])
+                ])
+              ])
             ]),
           ]),
         ])
