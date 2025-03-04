@@ -1,8 +1,23 @@
 import 'package:jaspr/jaspr.dart';
 
 class CodeChallenge extends StatelessComponent {
+  const CodeChallenge({
+    super.key,
+    required this.conferenceYear,
+  });
+
+  final String conferenceYear;
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
+    print('conferenceYear: $conferenceYear');
+    yield div(classes: 'code-challenge-container', [
+      if (conferenceYear == '2023') ...challenge2023(context),
+      if (conferenceYear == '2025') ...challenge2025(context),
+    ]);
+  }
+
+  Iterable<Component> challenge2023(BuildContext context) sync* {
     yield div([
       p([
         text(
@@ -34,7 +49,7 @@ class CodeChallenge extends StatelessComponent {
           target: Target.blank,
           [text('Get started!')],
         ),
-      ])
+      ]),
     ]);
     yield div(classes: 'code-challenge-image', [
       div(classes: 'code-challenge-sponsor', [
@@ -46,6 +61,23 @@ class CodeChallenge extends StatelessComponent {
         ),
       ]),
       img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),
+    ]);
+  }
+
+  Iterable<Component> challenge2025(BuildContext context) sync* {
+    yield div([
+      div([
+        p(
+            styles: Styles(
+                color: Color.hex('#66209B'),
+                fontSize: Unit.pixels(32),
+                fontWeight: FontWeight.bold),
+            [
+              text(
+                'Coming Soon!',
+              ),
+            ])
+      ]),
     ]);
   }
 }
