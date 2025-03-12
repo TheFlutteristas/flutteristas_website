@@ -16,9 +16,11 @@ class FlutteristasConferencePage extends StatefulComponent {
   const FlutteristasConferencePage({
     super.key,
     required this.conferenceYear,
+    required this.conferenceDate,
   });
 
   final String conferenceYear;
+  final String conferenceDate;
 
   static final path = '/flutteristas-conference';
 
@@ -26,7 +28,7 @@ class FlutteristasConferencePage extends StatefulComponent {
     path: '/flutteristas-conference',
     title: 'Flutteristas Conference',
     builder: (context, state) {
-      return FlutteristasConferencePage(conferenceYear: '2025');
+      return FlutteristasConferencePage(conferenceYear: '2025', conferenceDate: '5th April');
     },
     routes: [
       Route(
@@ -34,7 +36,8 @@ class FlutteristasConferencePage extends StatefulComponent {
         title: 'Flutteristas Conference',
         builder: (context, state) {
           final conferenceYear = state.params['conferenceYear']!;
-          return FlutteristasConferencePage(conferenceYear: conferenceYear);
+          final conferenceDate = state.params['conferenceYear']! == '2025' ? '5th April' : '5th November';
+          return FlutteristasConferencePage(conferenceYear: conferenceYear, conferenceDate: conferenceDate);
         },
       ),
     ],
@@ -238,7 +241,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             br(),
             br(),
             text('Mark your calendars because the highly anticipated Flutteristas Conference '
-                'is just around the corner, set to take place on 5th November this year. '),
+                'is just around the corner, set to take place on ${component.conferenceDate} this year. '),
             br(),
             br(),
           ]),
