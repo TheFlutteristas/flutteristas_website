@@ -71,8 +71,8 @@ class WelcomePage extends StatelessComponent {
           classes: 'hero-text',
           [
             Text(
-              'The Flutteristas is a world-wide community of people whose gender identity is either female or non-binary and '
-              'have an interest in the Flutter SDK.💙',
+              'The Flutteristas is a world-wide community of women and non-binary and '
+              'have an interest in the Flutter SDK.💙💜',
             ),
           ],
         ),
