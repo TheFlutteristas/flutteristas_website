@@ -53,7 +53,8 @@ class _AgendaTalkList extends State<AgendaTalkList> {
       FutureBuilder<List<AgendaItem>>(
         initialData: <AgendaItem>[],
         future: _futureAgendaItems,
-        builder: (BuildContext context, AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<AgendaItem>> snapshot) sync* {
           if (snapshot.hasData == false) {
             yield div([
               p([text('Agenda Coming Soon ...')])
@@ -70,13 +71,16 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                       //convert time from PTS to UTC then convert it to local timing
                       text(
                         DateFormat.jm().format(
-                          DateTime.parse('${item.time}').add(Duration(hours: 8)).toLocal(),
+                          DateTime.parse('${item.time}')
+                              .add(Duration(hours: 8))
+                              .toLocal(),
                         ),
                       )
                     ]),
                     p(classes: 'date-zone', [
                       //show the time zone for the current user
-                      text(DateTime.parse('${item.time}').toLocal().timeZoneName)
+                      text(
+                          DateTime.parse('${item.time}').toLocal().timeZoneName)
                     ])
                   ]),
                   div(classes: 'talk-info', [
@@ -86,14 +90,18 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                         item.type == 'talk'
                             ? img(
                                 classes: 'type-icon',
-                                src: '/images/female-user-talk-chat-svgrepo-com.svg',
+                                src:
+                                    '/images/female-user-talk-chat-svgrepo-com.svg',
                               )
                             : img(
                                 classes: 'type-icon',
-                                src: '/images/activity-community-group-svgrepo-com.svg'),
+                                src:
+                                    '/images/activity-community-group-svgrepo-com.svg'),
                         strong([text(item.title)]),
                         item.description != ''
-                            ? img(classes: 'type-icon', src: '/images/arrow-down-svgrepo-com.svg')
+                            ? img(
+                                classes: 'type-icon',
+                                src: '/images/arrow-down-svgrepo-com.svg')
                             : span([]),
                         p(classes: 'talk-description', [text(item.description)])
                       ],
@@ -104,8 +112,12 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                             ? div(classes: 'speaker-profile', [
                                 img(classes: 'speaker-img', src: item['photo']),
                                 div([
-                                  p(classes: 'speaker-name', [text(item['name'])]),
-                                  p(classes: 'speaker-role', [text(item['company'])])
+                                  p(
+                                      classes: 'speaker-name',
+                                      [text(item['name'])]),
+                                  p(
+                                      classes: 'speaker-role',
+                                      [text(item['company'])])
                                 ])
                               ])
                             : span([]),

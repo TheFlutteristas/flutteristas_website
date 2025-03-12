@@ -34,7 +34,8 @@ class CodeChallenge extends StatelessComponent {
         text('.'),
       ]),
       p([
-        text('The winning entry will be selected based on creativity, aesthetics, code '
+        text(
+            'The winning entry will be selected based on creativity, aesthetics, code '
             'organization, code quality, and overall execution. Find submission guidelines '
             'and the entry form at the link below.'),
       ]),
@@ -57,7 +58,12 @@ class CodeChallenge extends StatelessComponent {
         a(
           href: 'https://invertase.io/',
           target: Target.blank,
-          [img(classes: 'sponsor-logo', src: '/images/invertase_logo.png', alt: 'sponsor-logo')],
+          [
+            img(
+                classes: 'sponsor-logo',
+                src: '/images/invertase_logo.png',
+                alt: 'sponsor-logo')
+          ],
         ),
       ]),
       img(src: '/images/code_challenge_art.jpg', alt: 'banner-image'),

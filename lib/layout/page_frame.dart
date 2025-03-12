@@ -108,7 +108,10 @@ class _PageFrameState extends State<PageFrame> {
               ],
             )
           ]),
-          p([text('Copyright © ${DateTime.now().year} Flutteristas.org.  All rights reserved.')]),
+          p([
+            text(
+                'Copyright © ${DateTime.now().year} Flutteristas.org.  All rights reserved.')
+          ]),
         ]),
       ],
     );
@@ -153,7 +156,8 @@ class _PageFrameState extends State<PageFrame> {
           (
             altText: 'Facebook',
             imageSrc: '/images/facebook-svgrepo-com.svg',
-            href: 'https://www.facebook.com/people/Flutteristas/61552442970613/',
+            href:
+                'https://www.facebook.com/people/Flutteristas/61552442970613/',
           ),
           (
             altText: 'Bluesky',

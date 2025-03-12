@@ -18,32 +18,60 @@ class WelcomePage extends StatelessComponent {
     yield div(classes: 'conference-hero', [
       div(classes: 'conference-title', [
         p(classes: 'conference-coming-soon', [Text('Coming Soon!')]),
-        h2(classes: 'conference-text', [Text('Flutteristas'), br(), Text('Conference 2025')]),
+        h2(
+            classes: 'conference-text',
+            [Text('Flutteristas'), br(), Text('Conference 2025')]),
       ]),
       div(classes: 'conference-details', [
         p([
-          img(src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg', alt: 'date-icon'),
+          img(
+              src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'date-icon'),
           Text('Date: 5 April 2025 ')
         ]),
         p([
-          img(src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg', alt: 'location-icon'),
+          img(
+              src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'location-icon'),
           Text('Location: '),
-          a([Text('Youtube Live Stream')], href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM'),
-          a([img(src: '/images/external-link-svgrepo-com.svg', alt: 'external-link-icon')],
-              target: Target.blank, href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM')
-        ]),
-        p([
-          img(src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg', alt: 'hash-tag-icon'),
-          Text('FlutteristasConf2025 - '),
-          a([img(classes: 'social-icon', src: '/images/x-logo-conf.svg', alt: 'twitter-icon')],
-              target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
-          a([img(classes: 'social-icon', src: '/images/Mastodon-conf.svg', alt: 'mastodon-icon')],
-              target: Target.blank, href: 'https://fluttercommunity.social/@FlutteristasCon'),
+          a([Text('Youtube Live Stream')],
+              href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM'),
           a([
-            img(classes: 'social-icon', src: '/images/bluesky-icon-conf.svg', alt: 'facebook-icon')
+            img(
+                src: '/images/external-link-svgrepo-com.svg',
+                alt: 'external-link-icon')
           ],
               target: Target.blank,
-              href: 'https://bsky.app/profile/flutteristascon.flutter.community')
+              href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM')
+        ]),
+        p([
+          img(
+              src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg',
+              alt: 'hash-tag-icon'),
+          Text('FlutteristasConf2025 - '),
+          a([
+            img(
+                classes: 'social-icon',
+                src: '/images/x-logo-conf.svg',
+                alt: 'twitter-icon')
+          ], target: Target.blank, href: 'https://twitter.com/FlutteristasCon'),
+          a([
+            img(
+                classes: 'social-icon',
+                src: '/images/Mastodon-conf.svg',
+                alt: 'mastodon-icon')
+          ],
+              target: Target.blank,
+              href: 'https://fluttercommunity.social/@FlutteristasCon'),
+          a([
+            img(
+                classes: 'social-icon',
+                src: '/images/bluesky-icon-conf.svg',
+                alt: 'facebook-icon')
+          ],
+              target: Target.blank,
+              href:
+                  'https://bsky.app/profile/flutteristascon.flutter.community')
         ]),
         a(
             classes: 'hero-button',
@@ -102,14 +130,20 @@ class WelcomePage extends StatelessComponent {
     );
     yield div(classes: 'activities-section', [
       div(classes: 'activities-item', [
-        img(classes: 'activities-icon', src: '/images/4857010.png', alt: 'activities-icon'),
+        img(
+            classes: 'activities-icon',
+            src: '/images/4857010.png',
+            alt: 'activities-icon'),
         h3([text('Meetings')]),
-        p(
-            classes: 'activities-text',
-            [text('Monthly meetings to connect and share news and achievements')])
+        p(classes: 'activities-text', [
+          text('Monthly meetings to connect and share news and achievements')
+        ])
       ]),
       div(classes: 'activities-item', [
-        img(classes: 'activities-icon', src: '/images/6491438.png', alt: 'activities-icon'),
+        img(
+            classes: 'activities-icon',
+            src: '/images/6491438.png',
+            alt: 'activities-icon'),
         h3([text('Meet the Flutter Team')]),
         p(classes: 'activities-text', [
           text(
@@ -117,7 +151,10 @@ class WelcomePage extends StatelessComponent {
         ])
       ]),
       div(classes: 'activities-item', [
-        img(classes: 'activities-icon', src: '/images/4892807.png', alt: 'activities-icon'),
+        img(
+            classes: 'activities-icon',
+            src: '/images/4892807.png',
+            alt: 'activities-icon'),
         h3([text('Volunteering & Experiences')]),
         p(classes: 'activities-text', [
           text(
@@ -125,7 +162,10 @@ class WelcomePage extends StatelessComponent {
         ])
       ]),
       div(classes: 'activities-item', [
-        img(classes: 'activities-icon', src: '/images/7037084.png', alt: 'activities-icon'),
+        img(
+            classes: 'activities-icon',
+            src: '/images/7037084.png',
+            alt: 'activities-icon'),
         h3([text('Speaker\'s training')]),
         p(classes: 'activities-text', [
           text(

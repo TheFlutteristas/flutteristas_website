@@ -45,7 +45,8 @@ class _OrganizersState extends State<OrganizersList> {
       FutureBuilder<List<OrganizerItem>>(
         initialData: <OrganizerItem>[],
         future: _futureOrganizerItems,
-        builder: (BuildContext context, AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<OrganizerItem>> snapshot) sync* {
           if (snapshot.data!.isEmpty) {
             yield div([
               p([text('Organaizers Coming Soon ...')])
@@ -57,7 +58,10 @@ class _OrganizersState extends State<OrganizersList> {
                 classes: 'OrganizerItem',
                 id: 'organizer-$index',
                 [
-                  img(classes: 'Organizer-photo', src: item.photoLink, alt: 'Organizer-photo'),
+                  img(
+                      classes: 'Organizer-photo',
+                      src: item.photoLink,
+                      alt: 'Organizer-photo'),
                   div(classes: 'social-bar', [
                     for (var item in socialIcons.entries) socialIcon(item),
                   ]),
@@ -110,7 +114,11 @@ class _OrganizersState extends State<OrganizersList> {
           return a(
             href: item.value as String,
             target: Target.blank,
-            [img(src: '/images/github-color-svgrepo-com.svg', alt: 'github-icon')],
+            [
+              img(
+                  src: '/images/github-color-svgrepo-com.svg',
+                  alt: 'github-icon')
+            ],
           );
         case 'medium':
           return a(

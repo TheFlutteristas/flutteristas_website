@@ -44,7 +44,8 @@ class _SponsorsState extends State<SponsorsList> {
       FutureBuilder<List<SponsorItem>>(
         initialData: <SponsorItem>[],
         future: _futureSponsorItems,
-        builder: (BuildContext context, AsyncSnapshot<List<SponsorItem>> snapshot) sync* {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<SponsorItem>> snapshot) sync* {
           if (snapshot.data!.isEmpty) {
             yield div([
               p([text('Sponsors Coming Soon ...')])
@@ -58,7 +59,12 @@ class _SponsorsState extends State<SponsorsList> {
                   a(
                     target: Target.blank,
                     href: item.website,
-                    [img(classes: 'sponsor-photo', src: item.logoLink, alt: 'sponsor-photo')],
+                    [
+                      img(
+                          classes: 'sponsor-photo',
+                          src: item.logoLink,
+                          alt: 'sponsor-photo')
+                    ],
                   ),
                   h4(classes: 'sponsor-name', [
                     text(item.name),

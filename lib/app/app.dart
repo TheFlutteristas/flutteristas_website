@@ -31,7 +31,8 @@ class App extends StatefulComponent {
 }
 
 class _AppState extends State<App> {
-  final dataFetcher = DataFetcher(projectId: 'flutteristas-website-ffa6d-default-rtdb');
+  final dataFetcher =
+      DataFetcher(projectId: 'flutteristas-website-ffa6d-default-rtdb');
 
   @override
   Iterable<Component> build(BuildContext context) sync* {

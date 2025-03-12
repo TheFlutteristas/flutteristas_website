@@ -92,10 +92,21 @@ class PrivacyPolicyPage extends StatelessComponent {
       ),
     ]);
     yield ul([
-      li([text('Acquisition: How you reached our site (ex. direct or search)')]),
-      li([text('Demographics: Language, Country, and City (NOT your specific location)')]),
-      li([text('Mobile: Device brand, model, marketing name, and screen resolution')]),
-      li([text('Technology: Browser & operating system and Internet service provider')]),
+      li([
+        text('Acquisition: How you reached our site (ex. direct or search)')
+      ]),
+      li([
+        text(
+            'Demographics: Language, Country, and City (NOT your specific location)')
+      ]),
+      li([
+        text(
+            'Mobile: Device brand, model, marketing name, and screen resolution')
+      ]),
+      li([
+        text(
+            'Technology: Browser & operating system and Internet service provider')
+      ]),
     ]);
     yield Spacer(height: Unit.em(3.0));
   }
