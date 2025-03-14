@@ -28,8 +28,7 @@ class FlutteristasConferencePage extends StatefulComponent {
     path: '/flutteristas-conference',
     title: 'Flutteristas Conference',
     builder: (context, state) {
-      return FlutteristasConferencePage(
-          conferenceYear: '2025', conferenceDate: '5th April');
+      return FlutteristasConferencePage(conferenceYear: '2025', conferenceDate: '5th April');
     },
     routes: [
       Route(
@@ -37,9 +36,8 @@ class FlutteristasConferencePage extends StatefulComponent {
         title: 'Flutteristas Conference',
         builder: (context, state) {
           final conferenceYear = state.params['conferenceYear']!;
-          final conferenceDate = state.params['conferenceYear']! == '2025'
-              ? '5th April'
-              : '11th November';
+          final conferenceDate =
+              state.params['conferenceYear']! == '2025' ? '5th April' : '11th November';
           return FlutteristasConferencePage(
               conferenceYear: conferenceYear, conferenceDate: conferenceDate);
         },
@@ -48,8 +46,7 @@ class FlutteristasConferencePage extends StatefulComponent {
   );
 
   @override
-  State<FlutteristasConferencePage> createState() =>
-      _FlutteristasConferenceState();
+  State<FlutteristasConferencePage> createState() => _FlutteristasConferenceState();
 }
 
 class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
@@ -83,11 +80,9 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
   }
 
   void _selectDefaultTab(String name) {
-    final button =
-        (document.getElementById('tab-button-$name')! as HTMLElement);
+    final button = (document.getElementById('tab-button-$name')! as HTMLElement);
     button.className = 'active';
-    final content =
-        (document.getElementById('tab-content-$name')! as HTMLElement);
+    final content = (document.getElementById('tab-content-$name')! as HTMLElement);
     content.style.display = 'block';
   }
 
@@ -96,8 +91,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
     final id = target.dataset['id'];
 
     // Update URL to reflect current tab
-    window.history.replaceState(
-        {}.toJSBox, '', '/flutteristas-conference/$_selectedYear#$id');
+    window.history.replaceState({}.toJSBox, '', '/flutteristas-conference/$_selectedYear#$id');
 
     // Get all conference tabs and set the selected one as active
     final tabs = document.getElementById('conference-tabs')!.children;
@@ -108,8 +102,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
 
     // Get all conference tab contents and set the selected one as visible
     final activeContent = document.getElementById('tab-content-$id');
-    final tabContent =
-        document.getElementById('conference-tab-content')!.children;
+    final tabContent = document.getElementById('conference-tab-content')!.children;
     for (int i = 0; i < tabContent.length; i++) {
       final item = tabContent.item(i)! as HTMLElement;
       item.style.display = item == activeContent ? 'block' : 'none';
@@ -125,8 +118,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
         FutureBuilder<List<String>>(
           initialData: <String>[],
           future: _futureYears,
-          builder: (BuildContext context,
-              AsyncSnapshot<List<String>> snapshot) sync* {
+          builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) sync* {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasData == false) {
                 yield div([
@@ -166,18 +158,15 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             _selectedYear == _currentYear
                 ? p(classes: 'conference-coming-soon', [Text('Coming Soon!')])
                 : span([]),
-            h2(classes: 'conference-text', [
-              Text('Flutteristas'),
-              br(),
-              Text('Conference $_selectedYear')
-            ]),
+            h2(
+                classes: 'conference-text',
+                [Text('Flutteristas'), br(), Text('Conference $_selectedYear')]),
           ]),
           _selectedYear == _currentYear
               ? div(classes: 'conference-details', [
                   p([
                     img(
-                      src:
-                          '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
+                      src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg',
                       alt: 'date-icon',
                     ),
                     Text('Date: 5 April 2025 ')
@@ -194,18 +183,14 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                     ),
                     a(
                       [
-                        img(
-                            src: '/images/external-link-svgrepo-com.svg',
-                            alt: 'external-link-icon')
+                        img(src: '/images/external-link-svgrepo-com.svg', alt: 'external-link-icon')
                       ],
                       target: Target.blank,
                       href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM',
                     )
                   ]),
                   p([
-                    img(
-                        src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg',
-                        alt: 'hash-tag-icon'),
+                    img(src: '/images/tag_FILL0_wght400_GRAD0_opsz24.svg', alt: 'hash-tag-icon'),
                     Text('FlutteristasConf2025 - '),
                     a(
                       [
@@ -238,8 +223,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                         )
                       ],
                       target: Target.blank,
-                      href:
-                          'https://bsky.app/profile/flutteristascon.flutter.community',
+                      href: 'https://bsky.app/profile/flutteristascon.flutter.community',
                     )
                   ]),
                   a(
@@ -259,8 +243,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             br(),
             br(),
             _selectedYear == _currentYear
-                ? text(
-                    'Mark your calendars because the highly anticipated Flutteristas Conference '
+                ? text('Mark your calendars because the highly anticipated Flutteristas Conference '
                     'is just around the corner, set to take place on '
                     '${component.conferenceDate} this year. ')
                 : text('The conference took place on '

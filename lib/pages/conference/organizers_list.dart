@@ -93,11 +93,17 @@ class _OrganizersState extends State<OrganizersList> {
       return span(classes: 'empty-span', []);
     } else {
       switch (item.key as String) {
+        case 'bluesky':
+          return a(
+            href: item.value as String,
+            target: Target.blank,
+            [img(src: '/images/bluesky-icon.svg', alt: 'bluesky-icon')],
+          );
         case 'x':
           return a(
             href: item.value as String,
             target: Target.blank,
-            [img(src: '/images/x-logo.svg', alt: 'twitter-icon')],
+            [img(src: '/images/x-logo.svg', alt: 'x-icon')],
           );
 
         case 'linkedin':
