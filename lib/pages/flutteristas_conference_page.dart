@@ -261,9 +261,11 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             _selectedYear == _currentYear
                 ? text(
                     'Mark your calendars because the highly anticipated Flutteristas Conference '
-                    'is just around the corner, set to take place on ${component.conferenceDate} this year. ')
+                    'is just around the corner, set to take place on '
+                    '${component.conferenceDate} this year. ')
                 : text(
-                    'The conference took place on ${component.conferenceDate} ${component.conferenceYear}, '
+                    'The conference took place on '
+                    '${component.conferenceDate} ${component.conferenceYear}, '
                     'you can still find all the details below.'),
             br(),
             br(),
