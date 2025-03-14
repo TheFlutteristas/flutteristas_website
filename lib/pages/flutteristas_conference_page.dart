@@ -39,7 +39,7 @@ class FlutteristasConferencePage extends StatefulComponent {
           final conferenceYear = state.params['conferenceYear']!;
           final conferenceDate = state.params['conferenceYear']! == '2025'
               ? '5th April'
-              : '5th November';
+              : '11th November';
           return FlutteristasConferencePage(
               conferenceYear: conferenceYear, conferenceDate: conferenceDate);
         },
@@ -258,9 +258,13 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             Text('Greetings, Flutteristas! 💜'),
             br(),
             br(),
-            text(
-                'Mark your calendars because the highly anticipated Flutteristas Conference '
-                'is just around the corner, set to take place on ${component.conferenceDate} this year. '),
+            _selectedYear == _currentYear
+                ? text(
+                    'Mark your calendars because the highly anticipated Flutteristas Conference '
+                    'is just around the corner, set to take place on ${component.conferenceDate} this year. ')
+                : text(
+                    'The conference took place on ${component.conferenceDate} ${component.conferenceYear}, '
+                    'you can still find all the details below.'),
             br(),
             br(),
           ]),
