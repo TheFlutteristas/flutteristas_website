@@ -263,8 +263,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                     'Mark your calendars because the highly anticipated Flutteristas Conference '
                     'is just around the corner, set to take place on '
                     '${component.conferenceDate} this year. ')
-                : text(
-                    'The conference took place on '
+                : text('The conference took place on '
                     '${component.conferenceDate} ${component.conferenceYear}, '
                     'you can still find all the details below.'),
             br(),
