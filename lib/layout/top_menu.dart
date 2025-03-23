@@ -38,37 +38,40 @@ class TopMenuState extends State {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield nav([
-      input(
-        id: 'menu-state',
-        classes: 'toggle',
-        type: InputType.checkbox,
-        [],
-      ),
-      label(
-        htmlFor: 'menu-state',
-        classes: 'menu-toggle',
-        [
-          i([], classes: 'icon fa fa-solid fa-bars'),
-          text('Menu'),
-        ],
-      ),
-      ul([
-        for (final (index, MapEntry(:key, :value)) in routes.entries.indexed) //
-          li([
-            a(
-              href: key,
-              events: {
-                'click': (event) {
-                  event.preventDefault();
-                  _onNavItemSelected(index, key);
-                },
-              },
-              classes: index == _selected ? 'current' : null,
-              [text(value.title!)],
-            ),
-          ]),
-      ]),
-    ]);
+    yield nav(
+      [
+        input(
+          id: 'menu-state',
+          classes: 'toggle',
+          type: InputType.checkbox,
+          [],
+        ),
+        label(
+          htmlFor: 'menu-state',
+          classes: 'menu-toggle',
+          [text('☰ Menu')],
+        ),
+        ul(
+          [
+            for (final (index, MapEntry(:key, :value)) in routes.entries.indexed) //
+              li(
+                [
+                  a(
+                    href: key,
+                    events: {
+                      'click': (event) {
+                        event.preventDefault();
+                        _onNavItemSelected(index, key);
+                      },
+                    },
+                    classes: index == _selected ? 'current' : null,
+                    [text(value.title!)],
+                  ),
+                ],
+              ),
+          ],
+        ),
+      ],
+    );
   }
 }
