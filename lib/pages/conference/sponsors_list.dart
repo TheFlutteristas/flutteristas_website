@@ -3,12 +3,8 @@ import 'package:flutteristas/utilities/extensions.dart';
 import 'package:jaspr/ui.dart';
 
 class SponsorsList extends StatefulComponent {
-  const SponsorsList({
-    super.key,
-    required this.category,
-    required this.conferenceYear,
-    required this.columnCount
-  });
+  const SponsorsList(
+      {super.key, required this.category, required this.conferenceYear, required this.columnCount});
 
   final String category;
   final String conferenceYear;
