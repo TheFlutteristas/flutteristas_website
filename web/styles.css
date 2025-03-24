@@ -315,7 +315,7 @@ div #post-content {
   font-weight: 400 !important;
 }
 
-.hero-button:link {
+.hero-button:link, .more-button:link {
   text-decoration: none !important;
 }
 
@@ -830,6 +830,17 @@ div #welcome-items {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 14px;
+}
+
+.conference-hero .buttons-container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center
+}
+
+a.more-button{
+  font-weight: normal !important;
 }
 
 

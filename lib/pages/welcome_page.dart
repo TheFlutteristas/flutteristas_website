@@ -45,12 +45,20 @@ class WelcomePage extends StatelessComponent {
               target: Target.blank,
               href: 'https://bsky.app/profile/flutteristascon.flutter.community')
         ]),
-        a(
-            classes: 'hero-button',
-            target: Target.blank,
-            href: 'https://www.meetup.com/flutterista/events/305942245'
-                '/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
-            [text('RSVP Now')])
+        div(classes: 'buttons-container', [
+          a(
+              classes: 'hero-button',
+              target: Target.blank,
+              href: 'https://www.meetup.com/flutterista/events/305942245'
+                  '/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
+              [text('RSVP Now')]),
+          a(
+              classes: 'more-button',
+              target: Target.blank,
+              href: 'https://www.meetup.com/flutterista/events/305942245'
+                  '/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
+              [text('more details')])
+        ])
       ]),
     ]);
     yield div(classes: 'product-layout hero-section', [

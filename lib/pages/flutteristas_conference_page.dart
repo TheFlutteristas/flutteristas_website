@@ -346,7 +346,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                 div(classes: 'challenge-container', [
                   div(id: 'code-challenge', [
                     Spacer(height: Unit.pixels(50)),
-                    h2([Text('Flutterista Generate - Code Challenge')]),
+                    h2([Text('Flutterista - Code Challenge')]),
                     CodeChallenge(conferenceYear: _selectedYear),
                   ])
                 ])
