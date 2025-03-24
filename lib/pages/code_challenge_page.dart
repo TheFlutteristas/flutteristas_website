@@ -66,18 +66,41 @@ class CodeChallenge extends StatelessComponent {
 
   Iterable<Component> challenge2025(BuildContext context) sync* {
     yield div([
-      div([
-        p(
-            styles: Styles(
-                color: Color.hex('#66209B'),
-                fontSize: Unit.pixels(32),
-                fontWeight: FontWeight.bold),
-            [
-              text(
-                'Coming Soon!',
-              ),
-            ])
+      p([
+        text(
+          'Create mesmerizing looping animations with optical illusions and generative art.'
+          'The Flutteristas Infinite Loop is coding contest that challenges you to build a unique art! It can be  looping animations with optical illusions, generative art or anything you want! (just make sure it can run in DartPad)'
+          'The winning entry will be selected based on creativity, seamless execution, code organization, quality, and overall visual impact. ',
+        ),
       ]),
+      p([
+        span(styles: Styles(fontWeight: FontWeight.bold), [
+          text('STARTS:'),
+        ]),
+        text(' NOW!'),
+      ]),
+      p([
+        span(styles: Styles(fontWeight: FontWeight.bold), [
+          text('ENDS:'),
+        ]),
+        text(' 2 April 2025'),
+      ]),
+      p([
+        text(
+            'for more details about the contest and submission guidelines, check out the link below.'),
+      ]),
+      p([
+        a(
+          classes: 'hero-button',
+          href: 'https://docs.google.com/forms/d/1FkG3tdEh7n6RMREgogP6me6Lnm_Vg9cwixdoc78qXzs',
+          target: Target.blank,
+          [text('Get started!')],
+        ),
+      ]),
+    ]);
+    yield div(classes: 'code-challenge-image', [
+      div(styles: Styles(zIndex: ZIndex(-10)), classes: 'code-challenge-sponsor', []),
+      img(src: '/images/code_challenge_website.jpg', alt: 'banner-image'),
     ]);
   }
 }
