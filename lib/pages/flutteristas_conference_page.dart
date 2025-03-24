@@ -316,12 +316,16 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                   h3(classes: 'sponsors-gold', [text('Gold')]),
                   SponsorsList(
                     key: Key(_selectedYear),
+                    columnCount: 3,
                     category: 'gold_sponsorship',
                     conferenceYear: _selectedYear,
                   ),
+                ]),
+                div(id: 'sponsors', classes: 'sponsors-container', [
                   h3(classes: 'sponsors-silver', [text('Silver')]),
                   SponsorsList(
                     key: Key(_selectedYear),
+                    columnCount: 4,
                     category: 'silver_sponsorship',
                     conferenceYear: _selectedYear,
                   ),

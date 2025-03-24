@@ -7,10 +7,12 @@ class SponsorsList extends StatefulComponent {
     super.key,
     required this.category,
     required this.conferenceYear,
+    required this.columnCount
   });
 
   final String category;
   final String conferenceYear;
+  final int columnCount;
 
   @override
   State<SponsorsList> createState() => _SponsorsState();
@@ -40,7 +42,7 @@ class _SponsorsState extends State<SponsorsList> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield Row(children: [
+    yield Grid(columns: component.columnCount, gap: Unit.pixels(30), spread: true, children: [
       FutureBuilder<List<SponsorItem>>(
         initialData: <SponsorItem>[],
         future: _futureSponsorItems,
@@ -60,9 +62,6 @@ class _SponsorsState extends State<SponsorsList> {
                     href: item.website,
                     [img(classes: 'sponsor-photo', src: item.logoLink, alt: 'sponsor-photo')],
                   ),
-                  h4(classes: 'sponsor-name', [
-                    text(item.name),
-                  ]),
                 ],
               );
             }
