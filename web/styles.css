@@ -981,6 +981,7 @@ p.conference-coming-soon {
 
 
 .speakers-container>div,
+.sponsors-container>div,
 .organizers-container>div {
   align-content: center;
   justify-content: space-around;
@@ -1140,6 +1141,7 @@ h3.Organizer-name:hover .Organizer-bio {
 @media only screen and (max-width:52.5em) {
 
   .speakers-container>div,
+  .sponsors-container>div,
   .organizers-container>div {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -1166,9 +1168,10 @@ h3.Organizer-name:hover .Organizer-bio {
 *************************************************************/
 
 .sponsors-container {
-  border: 1px solid #CDBDFF;
+  border: 0px solid #CDBDFF;
   border-radius: 14px;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sponsors-container>div {
