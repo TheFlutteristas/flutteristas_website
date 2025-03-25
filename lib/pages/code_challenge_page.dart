@@ -83,7 +83,7 @@ class CodeChallenge extends StatelessComponent {
         span(styles: Styles(fontWeight: FontWeight.bold), [
           text('ENDS:'),
         ]),
-        text(' 2 April 2025'),
+        text(' 4 April 2025'),
       ]),
       p([
         text(
