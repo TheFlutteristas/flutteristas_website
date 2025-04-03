@@ -54,7 +54,6 @@ class WelcomePage extends StatelessComponent {
               [text('RSVP Now')]),
           a(
               classes: 'more-button',
-              target: Target.blank,
               href: 'https://flutteristas.org/flutteristas-conference/2025'
                   '/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
               [text('more details')])
