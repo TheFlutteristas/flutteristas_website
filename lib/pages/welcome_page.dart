@@ -17,7 +17,7 @@ class WelcomePage extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'conference-hero', [
       div(classes: 'conference-title', [
-        p(classes: 'conference-coming-soon', [Text('Coming Soon!')]),
+        // p(classes: 'conference-coming-soon', [Text('Coming Soon!')]),
         h2(classes: 'conference-text', [Text('Flutteristas'), br(), Text('Conference 2025')]),
       ]),
       div(classes: 'conference-details', [

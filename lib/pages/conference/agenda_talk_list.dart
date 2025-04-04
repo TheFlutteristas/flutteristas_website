@@ -68,21 +68,31 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                 [
                   div(classes: 'date-container', [
                     p(classes: 'agenda-date', [
-                      //convert time from PTS to UTC then convert it to local timing
+                      //convert time from UTC to local timing
                       text(
                         component.conferenceYear == '2025'?
                         DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').add(Duration(hours: 8)).toLocal(),
+                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal(),
                         ):DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').add(Duration(hours: 8)).toLocal(),
+                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal(),
                         ),
-                      )
-                    ]),
-                    p(classes: 'date-zone', [
-                      //show the time zone for the current user
+                      ),
+                      text(' '),
                       component.conferenceYear == '2025'?
-                      text(DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName):
-                      text(DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName)
+                        text(DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName.split(' ').map((e) => e[0]).join()): 
+                      text(DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName.split(' ').map((e) => e[0]).join()),
+                    ]),
+                    p(classes: 'agenda-date', [
+                      //Show time as UTC
+                      text(
+                        component.conferenceYear == '2025'?
+                        DateFormat.jm().format(
+                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z'),
+                        ):DateFormat.jm().format(
+                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z'),
+                        ),
+                      ),
+                      text(' UTC'),
                     ])
                   ]),
                   div(classes: 'talk-info', [

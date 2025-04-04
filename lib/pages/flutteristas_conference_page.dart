@@ -155,9 +155,9 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
       div(classes: 'conference-main', [
         div(classes: 'conference-hero', [
           div(classes: 'conference-title', [
-            _selectedYear == _currentYear
-                ? p(classes: 'conference-coming-soon', [Text('Coming Soon!')])
-                : span([]),
+            // _selectedYear == _currentYear
+            //     ? p(classes: 'conference-coming-soon', [Text('Coming Soon!')])
+            //     : span([]),
             h2(
                 classes: 'conference-text',
                 [Text('Flutteristas'), br(), Text('Conference $_selectedYear')]),

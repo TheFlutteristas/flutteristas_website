@@ -1407,7 +1407,7 @@ h3.sponsors-bronze {
 }
 
 .date-container .agenda-date {
-  font-size: 1.7em;
+  font-size: 1em;
   font-weight: 700;
   color: #F1ECF1;
   text-align: right;
@@ -1488,7 +1488,7 @@ h3.sponsors-bronze {
 
 @media only screen and (max-width:30em) {
   .date-container .agenda-date {
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
 
   .talk-info .talk-title {
