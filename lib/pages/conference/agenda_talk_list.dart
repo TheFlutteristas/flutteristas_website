@@ -26,7 +26,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
   }
 
   Future<List<AgendaItem>> fetchAgenda() async {
-    return await context.dataFetcher.fetchData(
+  return await context.dataFetcher.fetchData(
       '/conference_agenda/conference_year/${component.conferenceYear}',
       fromJson: (data) {
         return (data as List? ?? [])
@@ -38,7 +38,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
         });
       },
     );
-  }
+}
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -60,6 +60,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
             ]);
           } else {
             for (final (index, item) in snapshot.requireData.indexed) {
+                                   
               final speakersList = item.speakers;
               yield div(
                 classes: 'agenda-item',
@@ -69,14 +70,19 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                     p(classes: 'agenda-date', [
                       //convert time from PTS to UTC then convert it to local timing
                       text(
+                        component.conferenceYear == '2025'?
                         DateFormat.jm().format(
-                          DateTime.parse('${item.time}').add(Duration(hours: 8)).toLocal(),
+                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').add(Duration(hours: 8)).toLocal(),
+                        ):DateFormat.jm().format(
+                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').add(Duration(hours: 8)).toLocal(),
                         ),
                       )
                     ]),
                     p(classes: 'date-zone', [
                       //show the time zone for the current user
-                      text(DateTime.parse('${item.time}').toLocal().timeZoneName)
+                      component.conferenceYear == '2025'?
+                      text(DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName):
+                      text(DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName)
                     ])
                   ]),
                   div(classes: 'talk-info', [

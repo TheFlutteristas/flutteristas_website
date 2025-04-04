@@ -10,7 +10,6 @@ class CodeChallenge extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    print('conferenceYear: $conferenceYear');
     yield div(classes: 'code-challenge-container', [
       if (conferenceYear == '2023') ...challenge2023(context),
       if (conferenceYear == '2025') ...challenge2025(context),
