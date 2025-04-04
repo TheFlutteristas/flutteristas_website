@@ -26,7 +26,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
   }
 
   Future<List<AgendaItem>> fetchAgenda() async {
-  return await context.dataFetcher.fetchData(
+    return await context.dataFetcher.fetchData(
       '/conference_agenda/conference_year/${component.conferenceYear}',
       fromJson: (data) {
         return (data as List? ?? [])
@@ -38,7 +38,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
         });
       },
     );
-}
+  }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -60,7 +60,6 @@ class _AgendaTalkList extends State<AgendaTalkList> {
             ]);
           } else {
             for (final (index, item) in snapshot.requireData.indexed) {
-                                   
               final speakersList = item.speakers;
               yield div(
                 classes: 'agenda-item',
@@ -70,27 +69,47 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                     p(classes: 'agenda-date', [
                       //convert time from UTC to local timing
                       text(
-                        component.conferenceYear == '2025'?
-                        DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal(),
-                        ):DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal(),
-                        ),
+                        component.conferenceYear == '2025'
+                            ? DateFormat.jm().format(
+                                DateTime.parse(
+                                        '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z')
+                                    .toLocal(),
+                              )
+                            : DateFormat.jm().format(
+                                DateTime.parse(
+                                        '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z')
+                                    .toLocal(),
+                              ),
                       ),
                       text(' '),
-                      component.conferenceYear == '2025'?
-                        text(DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName.split(' ').map((e) => e[0]).join()): 
-                      text(DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z').toLocal().timeZoneName.split(' ').map((e) => e[0]).join()),
+                      component.conferenceYear == '2025'
+                          ? text(DateTime.parse(
+                                  '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}')
+                              .toLocal()
+                              .timeZoneName
+                              .split(' ')
+                              .map((e) => e[0])
+                              .join())
+                          : text(DateTime.parse(
+                                  '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}')
+                              .toLocal()
+                              .timeZoneName
+                              .split(' ')
+                              .map((e) => e[0])
+                              .join()),
                     ]),
                     p(classes: 'agenda-date', [
                       //Show time as UTC
                       text(
-                        component.conferenceYear == '2025'?
-                        DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}z'),
-                        ):DateFormat.jm().format(
-                          DateTime.parse('${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}z'),
-                        ),
+                        component.conferenceYear == '2025'
+                            ? DateFormat.jm().format(
+                                DateTime.parse(
+                                    '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z'),
+                              )
+                            : DateFormat.jm().format(
+                                DateTime.parse(
+                                    '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z'),
+                              ),
                       ),
                       text(' UTC'),
                     ])
