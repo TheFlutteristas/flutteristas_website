@@ -227,12 +227,10 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                     )
                   ]),
                   a(
-                    classes: 'hero-button',
-                    target: Target.blank,
-                    href: 'https://www.meetup.com/flutterista/events/305942245/'
-                        '?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link',
-                    [text('RSVP Now')],
-                  )
+                      classes: 'hero-button',
+                      target: Target.blank,
+                      href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM',
+                      [text('JOIN US NOW!')])
                 ])
               : span([])
         ]),
