@@ -70,16 +70,20 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                       //convert time from UTC to local timing
                       text(
                         component.conferenceYear == '2025'
-                            ? DateFormat.jm().format(
-                                DateTime.parse(
-                                        '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z')
-                                    .toLocal(),
-                              )
-                            : DateFormat.jm().format(
-                                DateTime.parse(
-                                        '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z')
-                                    .toLocal(),
-                              ),
+                            ? DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                          '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z')
+                                      .toLocal(),
+                                )
+                                .toLowerCase()
+                            : DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                          '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z')
+                                      .toLocal(),
+                                )
+                                .toLowerCase(),
                       ),
                       text(' '),
                       component.conferenceYear == '2025'
@@ -98,18 +102,22 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                               .map((e) => e[0])
                               .join()),
                     ]),
-                    p(classes: 'agenda-date', [
+                    p(classes: 'agenda-date-utc', [
                       //Show time as UTC
                       text(
                         component.conferenceYear == '2025'
-                            ? DateFormat.jm().format(
-                                DateTime.parse(
-                                    '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z'),
-                              )
-                            : DateFormat.jm().format(
-                                DateTime.parse(
-                                    '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z'),
-                              ),
+                            ? DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                      '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z'),
+                                )
+                                .toLowerCase()
+                            : DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                      '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z'),
+                                )
+                                .toLowerCase(),
                       ),
                       text(' UTC'),
                     ])
