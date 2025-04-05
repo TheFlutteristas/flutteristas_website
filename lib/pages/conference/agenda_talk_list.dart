@@ -26,7 +26,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
   }
 
   Future<List<AgendaItem>> fetchAgenda() async {
-  return await context.dataFetcher.fetchData(
+    return await context.dataFetcher.fetchData(
       '/conference_agenda/conference_year/${component.conferenceYear}',
       fromJson: (data) {
         return (data as List? ?? [])
@@ -38,7 +38,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
         });
       },
     );
-}
+  }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -60,7 +60,6 @@ class _AgendaTalkList extends State<AgendaTalkList> {
             ]);
           } else {
             for (final (index, item) in snapshot.requireData.indexed) {
-                                   
               final speakersList = item.speakers;
               yield div(
                 classes: 'agenda-item',
@@ -71,16 +70,20 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                       //convert time from UTC to local timing
                       text(
                         component.conferenceYear == '2025'
-                            ? DateFormat.jm().format(
-                                DateTime.parse(
-                                        '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z')
-                                    .toLocal(),
-                              )
-                            : DateFormat.jm().format(
-                                DateTime.parse(
-                                        '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z')
-                                    .toLocal(),
-                              ),
+                            ? DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                          '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z')
+                                      .toLocal(),
+                                )
+                                .toLowerCase()
+                            : DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                          '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z')
+                                      .toLocal(),
+                                )
+                                .toLowerCase(),
                       ),
                       text(' '),
                       component.conferenceYear == '2025'
@@ -99,22 +102,24 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                               .map((e) => e[0])
                               .join()),
                     ]),
-                    p(classes: 'agenda-date', [
+                    p(classes: 'agenda-date-utc', [
                       //Show time as UTC
                       text(
                         component.conferenceYear == '2025'
-                            ? DateFormat.jm().format(
-                                DateTime.parse(
-                                    '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z'),
-                              )
-                            : DateFormat.jm().format(
-                                DateTime.parse(
-                                    '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z'),
-                              ),
+                            ? DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                      '${component.conferenceYear}-04-05 ${item.time.padLeft(5, '0')}Z'),
+                                )
+                                .toLowerCase()
+                            : DateFormat.jm()
+                                .format(
+                                  DateTime.parse(
+                                      '${component.conferenceYear}-11-11 ${item.time.padLeft(5, '0')}Z'),
+                                )
+                                .toLowerCase(),
                       ),
                       text(' UTC'),
-
-
                     ])
                   ]),
                   div(classes: 'talk-info', [

@@ -1407,8 +1407,16 @@ h3.sponsors-bronze {
 }
 
 .date-container .agenda-date {
-  font-size: 1em;
-  font-weight: 700;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #F1ECF1;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.date-container .agenda-date-utc {
+  font-size: 0.8em;
+  font-weight: 400;
   color: #F1ECF1;
   text-align: right;
   margin-bottom: 0;
