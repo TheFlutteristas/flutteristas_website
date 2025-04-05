@@ -26,7 +26,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
   }
 
   Future<List<AgendaItem>> fetchAgenda() async {
-  return await context.dataFetcher.fetchData(
+    return await context.dataFetcher.fetchData(
       '/conference_agenda/conference_year/${component.conferenceYear}',
       fromJson: (data) {
         return (data as List? ?? [])
@@ -38,7 +38,7 @@ class _AgendaTalkList extends State<AgendaTalkList> {
         });
       },
     );
-}
+  }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -60,7 +60,6 @@ class _AgendaTalkList extends State<AgendaTalkList> {
             ]);
           } else {
             for (final (index, item) in snapshot.requireData.indexed) {
-                                   
               final speakersList = item.speakers;
               yield div(
                 classes: 'agenda-item',
@@ -113,8 +112,6 @@ class _AgendaTalkList extends State<AgendaTalkList> {
                               ),
                       ),
                       text(' UTC'),
-
-
                     ])
                   ]),
                   div(classes: 'talk-info', [
