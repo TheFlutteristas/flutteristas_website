@@ -246,8 +246,8 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             //         '${component.conferenceDate} this year. ')
             //     :
             text('The conference took place on '
-                    '${component.conferenceDate} ${component.conferenceYear}, '
-                    'you can still find all the details below.'),
+                '${component.conferenceDate} ${component.conferenceYear}, '
+                'you can still find all the details below.'),
             br(),
             br(),
           ]),
