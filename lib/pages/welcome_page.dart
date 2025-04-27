@@ -18,17 +18,23 @@ class WelcomePage extends StatelessComponent {
     yield div(classes: 'conference-hero', [
       div(classes: 'conference-title', [
         // p(classes: 'conference-coming-soon', [Text('Coming Soon!')]),
-        h2(classes: 'conference-text', [Text('Flutteristas'), br(), Text('Conference 2025')]),
+        h2(classes: 'conference-text', [Text('Flutteristas events'), br()]),
+        a(
+            classes: 'hero-button',
+            target: Target.blank,
+            href: 'https://www.meetup.com/flutterista/',
+            [text('Get notified of our next event...')]),
       ]),
       div(classes: 'conference-details', [
-        p([
-          img(src: '/images/calendar_month_FILL0_wght400_GRAD0_opsz24.svg', alt: 'date-icon'),
-          Text('Date: 5 April 2025 ')
+        h3(classes: 'conference-text', [
+          Text('Our past Flutteristas Conference:'),
+          br(),
         ]),
+        p([Text('The conference took place 5th April 2025')]),
         p([
           img(src: '/images/location_on_FILL0_wght400_GRAD0_opsz24.svg', alt: 'location-icon'),
-          Text('Location: '),
-          a([Text('Youtube Live Stream')], href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM'),
+          Text(' '),
+          a([Text('Youtube Recording')], href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM'),
           a([img(src: '/images/external-link-svgrepo-com.svg', alt: 'external-link-icon')],
               target: Target.blank, href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM')
         ]),
@@ -50,7 +56,7 @@ class WelcomePage extends StatelessComponent {
               classes: 'hero-button',
               target: Target.blank,
               href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM',
-              [text('JOIN US NOW!')]),
+              [text('In case you missed it...')]),
           a(
               classes: 'more-button',
               href: 'https://flutteristas.org/flutteristas-conference/2025'
