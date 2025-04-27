@@ -230,7 +230,7 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
                       classes: 'hero-button',
                       target: Target.blank,
                       href: 'https://www.youtube.com/watch?v=ftTXXAx8AxM',
-                      [text('JOIN US NOW!')])
+                      [text('In case you missed it...')])
                 ])
               : span([])
         ]),
@@ -240,13 +240,14 @@ class _FlutteristasConferenceState extends State<FlutteristasConferencePage> {
             Text('Greetings, Flutteristas! 💜'),
             br(),
             br(),
-            _selectedYear == _currentYear
-                ? text('Mark your calendars because the highly anticipated Flutteristas Conference '
-                    'is just around the corner, set to take place on '
-                    '${component.conferenceDate} this year. ')
-                : text('The conference took place on '
-                    '${component.conferenceDate} ${component.conferenceYear}, '
-                    'you can still find all the details below.'),
+            // _selectedYear == _currentYear
+            //     ? text('Mark your calendars because the highly anticipated Flutteristas Conference '
+            //         'is just around the corner, set to take place on '
+            //         '${component.conferenceDate} this year. ')
+            //     :
+            text('The conference took place on '
+                '${component.conferenceDate} ${component.conferenceYear}, '
+                'you can still find all the details below.'),
             br(),
             br(),
           ]),
